@@ -1,0 +1,140 @@
+h6.button-text {
+    margin-top: 18px !important;
+    padding: 0;
+    font-weight: 400;
+}
+
+#topnav .navigation-menu > li > a.active {
+    border-bottom: 3px solid red;
+}
+
+#topnav .navigation-menu > li > a:active {
+    color: #468189 !important;
+}
+
+a {
+    color: #ffffff;
+}
+
+
+/* Menüü */
+
+li.has-submenu.active, li.has-submenu:hover, #topnav .navigation-menu > li > a i:hover{
+    background-color: #eff3f6;
+}
+
+li.has-submenu.active a, li.has-submenu:hover a, #topnav .navigation-menu > li > a i:hover{
+    color: #468189 !important;
+}
+
+li > i:hover {
+    color: #468189 !important;
+}
+/* Avalehe nupud */
+
+.mini-stat.clearfix.bg-white.border-pink {
+    border-left: 4px solid #b4436c;
+}
+
+.text-pink {
+    color: #b4436c !important;
+}
+
+.text-green {
+    color: #4d9078 !important;
+}
+
+.mini-stat.clearfix.bg-white.border-green {
+    border-left: 4px solid #4d9078 ;
+}
+
+.text-orange {
+    color: #f78154 !important;
+}
+
+.mini-stat.clearfix.bg-white.border-orange {
+    border-left: 4px solid #f78154 ;
+}
+
+.bg-add {
+    background-color: #5fad56 !important;
+}
+
+.text-add {
+    color: #5fad56 !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+/* Modal style */
+
+.modal-footer {
+    justify-content: center !important;
+}
+
+.modal-body {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.modal-header .close {
+    padding: 5px !important;
+    padding-right: 10px !important;
+    margin-left: 0px !important;
+}
+
+.modal-title, h5#exampleModalLongTitle {
+    margin: 0 auto;
+}
+
+span.input-group-text {
+    border-top-right-radius: 3px !important;
+    border-bottom-right-radius: 3px !important;
+}
+
+.input-group>.custom-select:not(:first-child), .input-group>.form-control:not(:first-child) {
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.custom-file-label {
+    height: 36px !important;
+    padding: .375rem .75rem;
+    color: #6a7177;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    font-weight: 400;
+}
+
+.custom-file-label::after {
+    height: 34px;
+    color: #495057;
+    content: "Vali";
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.input#customFile:focus {
+    border-color: #0f9cf3 !important;
+    box-shadow: none !important;
+}
+
+.custom-file:focus {
+    box-shadow: none !important;
+    border: none !important;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0 !important;
+}
+
+li.competition {
+    margin-bottom: 15px;
+}
+
+
