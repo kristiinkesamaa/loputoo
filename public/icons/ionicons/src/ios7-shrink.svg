@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
-        <!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
-        <!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
-        <!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
-        <!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
-        <!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
-        <!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
-        <!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
-        <!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
-        ]>
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
 <svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
-     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
-     enable-background="new 0 0 512 512" xml:space="preserve">
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+	 enable-background="new 0 0 512 512" xml:space="preserve">
 <switch>
 	<foreignObject requiredExtensions="&ns_ai;" x="0" y="0" width="1" height="1">
-		<i:pgfRef xlink:href="#adobe_illustrator_pgf">
+		<i:pgfRef  xlink:href="#adobe_illustrator_pgf">
 		</i:pgfRef>
 	</foreignObject>
-    <g i:extraneous="self">
+	<g i:extraneous="self">
 		<g>
 			<polygon points="438,429.7 346.1,337.9 396,288 288,288 288,396 337.9,346.1 429.7,438 			"/>
-            <polygon points="74,82.3 165.9,174.1 116,224 224,224 224,116 174.1,165.9 82.3,74 			"/>
+			<polygon points="74,82.3 165.9,174.1 116,224 224,224 224,116 174.1,165.9 82.3,74 			"/>
 		</g>
 	</g>
 </switch>
-    <i:pgf id="adobe_illustrator_pgf">
+<i:pgf  id="adobe_illustrator_pgf">
 	<![CDATA[
 	eJzVvfl+8jjMKPzdAPcAtLTsJGGnKzttaUtLS6EbZUkLLVsTmJnn/HGu/djO5oQ4cYDnO++Z+U0H
 EiPZsixLsmT5PI1mJD+c9/lIPMq4XT5fUeB7y7mQc6On7ovJZCUuBfjIfx9ws+koAxrlLzJduWGL

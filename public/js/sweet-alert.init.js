@@ -32,12 +32,12 @@
         $('#sa-success').click(function () {
             swal(
                 {
-                    title: 'Good job!',
-                    text: 'You clicked the button!',
+                    title: 'Muudetud!',
+                    text: 'See võistlus on muudetud!',
                     type: 'success',
-                    showCancelButton: true,
-                    confirmButtonClass: 'btn btn-success',
-                    cancelButtonClass: 'btn btn-danger m-l-10'
+                    timer: 1500,
+                    showCancelButton: false,
+                    showConfirmButton: false
                 }
             )
         });
@@ -45,19 +45,22 @@
         //Warning Message
         $('#sa-warning').click(function () {
             swal({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
+                title: 'Kas sa oled kindel?',
+                text: "Seda tegevust ei saa hiljem tagasi võtta!",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger m-l-10',
-                confirmButtonText: 'Yes, delete it!'
+                confirmButtonClass: 'btn btn-add',
+                cancelButtonClass: 'btn btn-delete m-l-10',
+                cancelButtonText: 'Tühista',
+                confirmButtonText: 'Jah'
             }).then(function () {
-                swal(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
+                swal({
+                    timer: 1500,
+                    title:'Kustutatud!',
+                    text: 'See võistlus on kustutatud',
+                    type: 'success',
+                    showConfirmButton: false
+                })
             })
         });
 
@@ -78,7 +81,7 @@
                     'Deleted!',
                     'Your file has been deleted.',
                     'success'
-                )
+            )
             }, function (dismiss) {
                 // dismiss can be 'cancel', 'overlay',
                 // 'close', and 'timer'
@@ -127,8 +130,8 @@
                 title: '<i>HTML</i> <u>example</u>',
                 type: 'info',
                 html: 'You can use <b>bold text</b>, ' +
-                    '<a href="//themesdesign.in/">links</a> ' +
-                    'and other HTML tags',
+                '<a href="//themesdesign.in/">links</a> ' +
+                'and other HTML tags',
                 showCloseButton: true,
                 showCancelButton: true,
                 confirmButtonClass: 'btn btn-success',
@@ -203,8 +206,8 @@
                 swal({
                     title: 'All done!',
                     html: 'Your answers: <pre>' +
-                        JSON.stringify(result) +
-                        '</pre>',
+                    JSON.stringify(result) +
+                    '</pre>',
                     confirmButtonText: 'Lovely!',
                     showCancelButton: false
                 })
@@ -219,7 +222,7 @@
                 title: 'Your public IP',
                 confirmButtonText: 'Show my public IP',
                 text: 'Your public IP will be received ' +
-                    'via AJAX request',
+                'via AJAX request',
                 showLoaderOnConfirm: true,
                 preConfirm: function () {
                     return new Promise(function (resolve) {

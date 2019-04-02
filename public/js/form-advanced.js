@@ -1,18 +1,17 @@
 /*
- Template Name: Upcube - Bootstrap 4 Admin Dashboard
+ Template Name: Upcube - Bootstrap 4 Admin Dashboards
  Author: Themesdesign
  Website: www.themesdesign.in
  File: Form Advanced components
  */
 
 
-!function ($) {
+!function($) {
     "use strict";
 
-    var AdvancedForm = function () {
-    };
-
-    AdvancedForm.prototype.init = function () {
+    var AdvancedForm = function() {};
+    
+    AdvancedForm.prototype.init = function() {
         //creating various controls
 
         //colorpicker start
@@ -134,12 +133,12 @@
             buttonup_class: 'btn btn-primary'
         });
     },
-        //init
-        $.AdvancedForm = new AdvancedForm, $.AdvancedForm.Constructor = AdvancedForm
+    //init
+    $.AdvancedForm = new AdvancedForm, $.AdvancedForm.Constructor = AdvancedForm
 }(window.jQuery),
 
 //initializing
-    function ($) {
-        "use strict";
-        $.AdvancedForm.init();
-    }(window.jQuery);
+function ($) {
+    "use strict";
+    $.AdvancedForm.init();
+}(window.jQuery);

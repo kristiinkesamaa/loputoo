@@ -45,7 +45,7 @@ File: Main Css File
 ===================*/
 body {
   background: #eff3f6;
-  font-family: "Work-Sans", sans-serif;
+  font-family: "Work Sans", sans-serif;
   margin: 0;
   font-size: 15px;
 }
@@ -57,9 +57,16 @@ html {
   background: #eff3f6;
 }
 
+footer {
+  background: #eff3f6;
+  font-family: "Work Sans", sans-serif !important;
+  margin: 0;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 10px 0;
-  font-weight: 700;
+  font-weight: 600;
+
 }
 
 h1 {
@@ -121,13 +128,12 @@ code {
 }
 
 .footer {
+  position: absolute;
   background-color: #f9f9f9;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   bottom: 0;
   color: #0a1832;
   text-align: center;
-  padding: 20px 30px;
-  position: absolute;
   right: 0;
   left: 240px;
 }
@@ -973,6 +979,7 @@ code {
 
 .header-title {
   font-size: 16px;
+  font-family: "work sans", sans-serif;
 }
 
 /* ==============
@@ -1223,8 +1230,8 @@ code {
 }
 
 .btn-info {
-  background-color: #0097a7;
-  border: 1px solid #0097a7;
+  background-color: #468189;
+  border: 1px solid #468189;
 }
 
 .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .btn-info.focus,
@@ -1232,8 +1239,8 @@ code {
 .btn-outline-info.active, .btn-outline-info:active,
 .show > .btn-outline-info.dropdown-toggle, .btn-outline-info:hover, .btn-info.active, .btn-info:active,
 .show > .btn-info.dropdown-toggle {
-  background-color: #00808e;
-  border: 1px solid #00808e;
+  background-color: #468189;
+  border: 1px solid #468189;
 }
 
 .btn-warning {
@@ -1994,16 +2001,16 @@ label {
 }
 
 .form-control:focus {
-  border-color: #0f9cf3;
+  border-color: #468189;
   box-shadow: none;
 }
 
 .custom-control-input:checked ~ .custom-control-indicator {
-  background-color: #0f9cf3;
+  background-color: #468189;
 }
 
 .custom-control-input:focus ~ .custom-control-indicator {
-  -webkit-box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #0f9cf3;
+  -webkit-box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #468189;
   box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #0f9cf3;
 }
 
@@ -2661,7 +2668,8 @@ Invoice
   Account Pages
 ===================*/
 .accountbg {
-  background: url("../images/bg-1.jpg");
+  background: url("../images/login.jpg");
+  opacity: 0.4;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -2884,6 +2892,7 @@ body {
 #topnav .navigation-menu > li {
   display: inline-block;
   position: relative;
+  margin-top: 10px;
 }
 
 #topnav .navigation-menu > li > a {
@@ -3085,11 +3094,11 @@ body {
     padding-left: 25px;
   }
   #topnav .navigation-menu > li.last-elements .submenu {
-    left: auto;
+    left: 0;
     right: 0;
   }
   #topnav .navigation-menu > li.last-elements .submenu > li.has-submenu .submenu {
-    left: auto;
+    left: 0;
     right: 100%;
     margin-left: 0;
     margin-right: 10px;
@@ -3300,9 +3309,13 @@ body {
   }
   .logo-small {
     display: inline-block !important;
+    padding-top: 0 !important;
+  }
+  .topbar-custom .nav-link {
+    font-size: 10px; !important;
   }
   .notification-list .noti-icon {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 
@@ -3328,7 +3341,7 @@ body {
   left: 0 !important;
   font-family: "Arimo", sans-serif;
   font-size: inherit;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .header-title {
