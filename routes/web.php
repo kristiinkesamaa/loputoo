@@ -12,3 +12,7 @@
 */
 
 Route::get('/', "pages@index");
+
+Route::resource('competitions', "Competitions");
+
+Route::get('login', "pages@login");

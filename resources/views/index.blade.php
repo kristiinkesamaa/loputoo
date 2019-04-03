@@ -9,13 +9,6 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="page-title-box">
-                        <div class="btn-group pull-right">
-                            <ol class="breadcrumb hide-phone p-0 m-0">
-                                <li class="breadcrumb-item"><a href="#">Upcube</a></li>
-                                <li class="breadcrumb-item active">Avaleht</li>
-                            </ol>
-                        </div>
-                        <h4 class="page-title">Avaleht</h4>
                     </div>
                 </div>
             </div>
@@ -23,7 +16,7 @@
 
 
             <div class="row">
-                <div class="col-md-6 col-xl-3">
+                <div class="col-md-6 col-xl-4">
                     <div class="mini-stat clearfix bg-white border-green">
                         <span class="mini-stat-icon bg-light"><i class="fa fa-check text-green"></i></span>
                         <div class="mini-stat-info text-right text-muted">
@@ -32,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-3">
+                <div class="col-md-6 col-xl-4">
                     <div class="mini-stat clearfix bg-white border-pink">
                         <span class="mini-stat-icon bg-light"><i class="fa fa-trophy text-pink"></i></span>
                         <div class="mini-stat-info text-right text-muted">
@@ -41,7 +34,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-3">
+                <div class="col-md-6 col-xl-4">
                     <div class="mini-stat clearfix bg-white border-orange">
                         <span class="mini-stat-icon bg-light"><i class="fa fa-users text-orange"></i></span>
                         <div class="mini-stat-info text-right text-muted">
@@ -50,16 +43,18 @@
                         </div>
                     </div>
                 </div>
+                <!---
                 <div class="col-md-6 col-xl-3">
                     <a href="#">
                         <div class="mini-stat clearfix bg-add" data-toggle="modal" data-target=".bd-example-modal-lg">
-                            <span class="mini-stat-icon bg-light"><i class="fa fa-plus text-add"></i></span>
-                            <div class="mini-stat-info text-right text-light">
-                                <h6 class="button-text">Lisa uus võistlus</h6>
-                            </div>
+                        <span class="mini-stat-icon bg-light"><i class="fa fa-plus text-add"></i></span>
+                        <div class="mini-stat-info text-right text-light">
+                            <h6 class="button-text">Lisa uus võistlus</h6>
                         </div>
+                    </div>
                     </a>
                 </div>
+                -->
             </div>
 
             <div class="row">
@@ -69,24 +64,14 @@
                             <h4 class="mt-0 header-title mb-4">Võistlused</h4>
                             <div class="competition">
                                 <ul>
-                                    <li class="competition"><a class="text-black-50" href="#">Hooaja avavõistlus,
-                                            Tondiraba
-                                            Tennisekeskus, M-IV liiga, 01/09/18 </a></li>
-                                    <li class="competition"><a class="text-black-50" href="#">Hooaja avavõistlus,
-                                            Tondiraba
-                                            Tennisekeskus, M-IV liiga, 01/09/18 </a></li>
-                                    <li class="competition"><a class="text-black-50" href="#">Hooaja avavõistlus,
-                                            Tondiraba
-                                            Tennisekeskus, M-IV liiga, 01/09/18 </a></li>
-                                    <li class="competition"><a class="text-black-50" href="#">Hooaja avavõistlus,
-                                            Tondiraba
-                                            Tennisekeskus, M-IV liiga, 01/09/18 </a></li>
-                                    <li class="competition"><a class="text-black-50" href="#">Hooaja avavõistlus,
-                                            Tondiraba
-                                            Tennisekeskus, M-IV liiga, 01/09/18 </a></li>
-                                    <li class="competition"><a class="text-black-50" href="#">Hooaja avavõistlus,
-                                            Tondiraba
-                                            Tennisekeskus, M-IV liiga, 01/09/18 </a></li>
+                                    <li class="competition"><a class="text-grey" href="competitions/1">Jõgeva Sügis
+                                            2018, Jõgeva Spordikeskus Virtus, M-IV liiga, 01/09/18 </a></li>
+                                    <li class="competition"><a class="text-grey" href="competitions/1">Jõgeva Sügis
+                                            2018, Jõgeva Spordikeskus Virtus, M-IV liiga, 01/09/18 </a></li>
+                                    <li class="competition"><a class="text-grey" href="competitions/1">Jõgeva Sügis
+                                            2018, Jõgeva Spordikeskus Virtus, M-IV liiga, 01/09/18 </a></li>
+                                    <li class="competition"><a class="text-grey" href="competitions/1">Jõgeva Sügis
+                                            2018, Jõgeva Spordikeskus Virtus, M-IV liiga, 01/09/18 </a></li>
 
                                 </ul>
                             </div>
@@ -129,8 +114,8 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Vali kuupäev"
-                                                   id="datepicker-autoclose">
+                                            <input type="text" class="form-control" data-date-start-date="+1d"
+                                                   placeholder="Vali kuupäev" id="datepicker-autoclose">
                                             <div class="input-group-append bg-custom b-0"><span
                                                         class="input-group-text"><i
                                                             class="mdi mdi-calendar"></i></span></div>
@@ -259,13 +244,11 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                    <input type="submit" class="btn btn-primary" value="Lisa võistlus">
+                                    <input type="submit" class="btn btn-add" value="Lisa võistlus">
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
-
-                        <!-- end wrapper -->
-                    </div>
+                    </div> <!-- end modal body -->
                 </div>
             </div>
         </div>
