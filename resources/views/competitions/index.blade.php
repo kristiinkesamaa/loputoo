@@ -1,35 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>Sk Badmint võistlused</title>
-    <meta content="Admin Dashboard" name="description"/>
-    <meta content="Themesdesign" name="author"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+@extends("master_template")
 
-    <!--Morris Chart CSS -->
-    <link rel="stylesheet" href="public/plugins/morris/morris.css">
-
-    <!-- Plugins css -->
-    <link href="public/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
-    <link href="public/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet">
-    <link href="public/plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet"/>
-
-    <!-- App css -->
-    <link href="public/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="public/css/icons.css" rel="stylesheet" type="text/css"/>
-    <link href="public/css/style.css" rel="stylesheet" type="text/css"/>
-    <link href="public/css/custom.css" rel="stylesheet" type="text/css"/>
-
-
-</head>
-
-
-<body>
-
-<?php include('header.php'); ?>
+@section("content")
 
 <div class="wrapper">
     <div class="container-fluid">
@@ -50,7 +21,7 @@
                         <div class="container">
                             <div class="row align-items-center">
                                 <div class="col-sm-3">
-                                    <img id="myImg" src="public/images/voistluse-pilt.png" alt="Voistluse_pilt"
+                                    <img id="myImg" src="{{ url('images/voistluse-pilt.png') }}" alt="Voistluse_pilt"
                                          style="width:100%;max-width:300px">
                                     <div id="myModal" class="modal">
                                         <span class="close-modal">&times;</span>
@@ -58,7 +29,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <h5><a class="text-grey-dark" href="competition.php">Jõgeva Sügis 2018</a></h5>
+                                    <h5><a class="text-grey-dark" href="/competitions/1">Jõgeva Sügis 2018</a></h5>
                                     <ul>
                                         <li>Koht: Lasnamäe Sulgpallihall</li>
                                         <li>Aeg: 12/11/2018</li>
@@ -68,9 +39,8 @@
                                 <div class="col-sm-3 pt-3">
                                     <ul>
                                         <li>
-                                            <button type="button" class="btn btn-change btn-block" data-toggle="modal"
-                                                    data-target=".bd-example-modal-lg">
-                                                <a href="competition.php" class="text-white">Vaata infot</a>
+                                            <button type="button" class="btn btn-change btn-block">
+                                                <a href="/competitions/1" class="text-white">Vaata infot</a>
                                             </button>
                                         </li>
                                         <li class="mt-1">
@@ -313,7 +283,7 @@
                                         <div class="input-group-append bg-custom b-0"><span class="input-group-text"><i
                                                         class="mdi mdi-calendar"></i></span></div>
                                         <input type="text" class="form-control ml-4" name="end"
-                                               placeholder="Registreerimine lõppeb"/>
+                                               placeholder="Registreerimine lõpeb"/>
                                         <div class="input-group-append bg-custom b-0"><span class="input-group-text"><i
                                                         class="mdi mdi-calendar"></i></span></div>
                                     </div>
@@ -329,7 +299,6 @@
             </div>
         </div>
     </div>
-    <?php include('footer.php'); ?>
 </div>
-</body>
-</html>
+
+@endsection

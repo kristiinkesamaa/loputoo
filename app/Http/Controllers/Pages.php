@@ -11,4 +11,8 @@ class Pages extends Controller
         return view('index');
     }
 
+    public function login()
+    {
+        return "Siia tuleb login";
+    }
 }
