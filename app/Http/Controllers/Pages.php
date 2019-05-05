@@ -2,17 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Competition;
 use Illuminate\Http\Request;
 
 class Pages extends Controller
 {
     public function index()
     {
-        return view('index');
+        $competitions = Competition::convertDatetimeForView(Competition::all());
+
+        return view('index', [
+            'competitions' => $competitions
+        ]);
     }
 
-    public function login()
+    public function logout()
     {
-        return "Siia tuleb login";
+        auth()->logout();
+
+        return redirect('/');
+    }
+
+    public function test()
+    {
+        return view('/test');
     }
 }

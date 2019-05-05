@@ -182,13 +182,15 @@ hr.margin {
 /* Võistlused */
 
 /* Style the Image Used to Trigger the Modal */
-#myImg {
+.myImg {
     border-radius: 3px;
     cursor: pointer;
     transition: 0.3s;
 }
 
-#myImg:hover {opacity: 0.7;}
+.myImg:hover {
+    opacity: 0.7;
+}
 
 /* The Modal (background) */
 .modal {
@@ -254,6 +256,10 @@ hr.margin {
     .modal-content {
         width: 100%;
     }
+}
+
+.add {
+    cursor: pointer;
 }
 
 /* Custom nupud */

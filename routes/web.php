@@ -11,8 +11,10 @@
 |
 */
 
-Route::get('/', "pages@index");
+Route::get('/', "Pages@index");
 
 Route::resource('competitions', "Competitions");
 
-Route::get('login', "pages@login");
+Auth::routes();
+
+Route::get('/logout', 'Pages@logout');

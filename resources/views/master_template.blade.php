@@ -47,15 +47,23 @@
                 <ul class="list-inline float-right mb-0">
 
                     <!-- User-->
-                    <li class="list-inline-item dropdown notification-list">
-                        <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" href="login"
-                           role="button"
-                           aria-haspopup="false" aria-expanded="false">Logi sisse</a>
-                    </li>
+                    @if(Auth::check())
+                        <li class="list-inline-item dropdown notification-list">
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" href="/logout"
+                               role="button"
+                               aria-haspopup="false" aria-expanded="false">Logi välja</a>
+                        </li>
+                    @else
+                        <li class="list-inline-item dropdown notification-list">
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" href="/login"
+                               role="button"
+                               aria-haspopup="false" aria-expanded="false">Logi sisse</a>
+                        </li>
+                    @endif
                     <li class="menu-item list-inline-item">
 
                         <!-- Mobile menu toggle-->
-                        <a class="navbar-toggle nav-link">
+                        <a class="navbar-toggle nav-link" data-toggle="collapse" data-target="#navigation">
                             <div class="lines">
                                 <span></span>
                                 <span></span>
@@ -88,7 +96,7 @@
                     </li>
 
                     <li class="has-submenu">
-                        <a href="competitions"><i class="ti-cup"></i>Võistlused</a>
+                        <a href="/competitions"><i class="ti-cup"></i>Võistlused</a>
                     </li>
                 </ul>
                 <!-- End navigation menu -->
@@ -126,6 +134,8 @@
 </footer>
 <!-- End Footer -->
 
+<!-- custom js -->
+<script src="{{ url('js/custom.js') }}"></script>
 
 <!-- jQuery  -->
 <script src="{{ url('js/jquery.min.js') }}"></script>
