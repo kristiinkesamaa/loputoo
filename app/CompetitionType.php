@@ -12,7 +12,7 @@ class CompetitionType extends Model
         "type_id"
     ];
 
-    public static function get_by_order($competition_id)
+    public static function get_by_competition_id($competition_id)
     {
         return DB::table('competition_types')
             ->where('competition_id', '=', $competition_id)

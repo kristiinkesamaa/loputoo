@@ -74,15 +74,20 @@
                             <h4 class="mt-0 header-title mb-4">Võistlused</h4>
                             <div class="competition">
                                 <ul>
-                                    @foreach ($competitions as $competition)
+                                    @if($competitions->count() < 1)
+                                        <span>Võistlusi pole</span>
+                                    @else
+                                        @foreach ($competitions as $competition)
 
-                                        <li class="competition">
-                                            <a class="text-grey" href="/competitions/{{ $competition->id }}">
-                                                {{ $competition->title }}, {{ $competition->location }}, *liigad*, {{ $competition->datetime }}
-                                            </a>
-                                        </li>
+                                            <li class="competition">
+                                                <a class="text-grey" href="/competitions/{{ $competition->id }}">
+                                                    {{ $competition->title }}, {{ $competition->location }},
+                                                    *liigad*, {{ $competition->datetime }}
+                                                </a>
+                                            </li>
 
-                                    @endforeach
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -175,7 +180,7 @@
                                         <div class="col-sm-8">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="customFile"
-                                                       name="instructions">
+                                                       name="instructions" accept=".pdf">
                                                 <label class="custom-file-label" id="instructions-label"
                                                        for="customFile">Vali fail</label>
 
@@ -193,7 +198,7 @@
                                         <div class="col-sm-8">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="customImage"
-                                                       name="image" value="{{ old("image") }}">
+                                                       name="image" accept=".png">
                                                 <label class="custom-file-label" id="image-label" for="customImage">Vali
                                                     fail</label>
                                                 <small id="guideHelp" class="form-text text-muted">

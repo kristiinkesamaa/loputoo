@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Competition;
+use App\RegisteredContestant;
+use App\RegisteredTeam;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class Pages extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Exception
+     */
     public function index()
     {
         $competitions = Competition::convertDatetimeForView(Competition::all());
@@ -21,10 +29,5 @@ class Pages extends Controller
         auth()->logout();
 
         return redirect('/');
-    }
-
-    public function test()
-    {
-        return view('/test');
     }
 }

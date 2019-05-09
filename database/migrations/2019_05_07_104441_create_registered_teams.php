@@ -1,11 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompetitionTypesTable extends Migration
+class CreateRegisteredTeams extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +13,16 @@ class CreateCompetitionTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('competition_types', function (Blueprint $table) {
+        Schema::create('registered_teams', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('competition_id');
             $table->unsignedBigInteger('type_id');
+            $table->unsignedBigInteger('league_id')->default(1);
+            $table->boolean('confirmed')->default(false);
             $table->timestamps();
             $table->foreign('competition_id')->references('id')->on('competitions')->onDelete("cascade");
             $table->foreign('type_id')->references('id')->on('types');
+            $table->foreign('league_id')->references('id')->on('leagues');
         });
     }
 
@@ -31,6 +33,6 @@ class CreateCompetitionTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('competition_types');
+        Schema::dropIfExists('registered_teams');
     }
 }

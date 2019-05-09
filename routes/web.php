@@ -15,6 +15,10 @@ Route::get('/', "Pages@index");
 
 Route::resource('competitions', "Competitions");
 
+Route::post('/competitions/{id}/register', 'Registration@register');
+
+Route::patch('/competitions/{id}/confirm', 'Registration@confirm');
+
 Auth::routes();
 
 Route::get('/logout', 'Pages@logout');

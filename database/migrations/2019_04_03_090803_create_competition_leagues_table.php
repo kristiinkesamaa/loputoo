@@ -19,7 +19,7 @@ class CreateCompetitionLeaguesTable extends Migration
             $table->unsignedBigInteger('competition_id');
             $table->unsignedBigInteger('league_id');
             $table->timestamps();
-            $table->foreign('competition_id')->references('id')->on('competitions');
+            $table->foreign('competition_id')->references('id')->on('competitions')->onDelete("cascade");
             $table->foreign('league_id')->references('id')->on('leagues');
         });
     }

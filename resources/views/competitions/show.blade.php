@@ -1,6 +1,7 @@
 @extends("master_template")
 
 @section("content")
+    <script src="{{ url('js/jquery.min.js') }}"></script>
 
     <div class="wrapper" id="page-wrap">
         <div class="container-fluid">
@@ -12,6 +13,9 @@
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-info-tab" data-toggle="tab" href="#nav-info"
                                role="tab" aria-controls="nav-info" aria-selected="true">Info</a>
+                            <a class="nav-item nav-link" id="nav-new-participants-tab" data-toggle="tab"
+                               href="#nav-new-participants" role="tab" aria-controls="nav-new-participants"
+                               aria-selected="false">Kinnitamata</a>
                             <a class="nav-item nav-link" id="nav-participants-tab" data-toggle="tab"
                                href="#nav-participants" role="tab" aria-controls="nav-participants"
                                aria-selected="false">Osalejad</a>
@@ -30,61 +34,109 @@
                                     <div class="card m-b-30">
                                         <div class="card-body">
                                             <div class="container">
-                                                <div class="container">
 
+                                                <div class="container">
                                                     <div class="row justify-content-start text-center">
                                                         <div class="col-12">
                                                             <p class="text-black-strong">
                                                                 <img src="{{ url('images/sulgpall.png') }}" width="40">
-                                                                Jõgeva sügis 2018
+                                                                {{ $competition->title }}
                                                                 <img src="{{ url('images/sulgpall2.png') }}" width="40">
                                                             </p>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                                 <hr>
+
                                                 <div class="row justify-content-center">
-                                                    <div class="col-md-3"><p class="text-black-strong">Võistluse
-                                                            aeg:</p></div>
-                                                    <div class="col-md-3"><p class="text-black-light">12/11/2018</p>
+                                                    <div class="col-md-3">
+                                                        <p class="text-black-strong">Võistluse kuupäev:</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p class="text-black-light">{{ date('d/m/Y', $datetime) }}</p>
                                                     </div>
                                                 </div>
+
                                                 <div class="row justify-content-center">
-                                                    <div class="col-md-3 text-left"><p class="text-black-strong">
-                                                            Võistluse algus:</p></div>
-                                                    <div class="col-md-3 text-left"><p class="text-black-light">
-                                                            10:00</p></div>
-                                                </div>
-                                                <div class="row justify-content-center">
-                                                    <div class="col-md-3"><p class="text-black-strong">Võistluse
-                                                            toimumise koht:</p></div>
-                                                    <div class="col-md-3"><p class="text-black-light">Jõgeva
-                                                            Spordikeskus Virtus</p></div>
-                                                </div>
-                                                <div class="row justify-content-center">
-                                                    <div class="col-md-3"><p class="text-black-strong">
-                                                            Mänguliigid:</p></div>
-                                                    <div class="col-md-3"><p class="text-black-light">Nais-, mees- ja
-                                                            segapaarid</p></div>
-                                                </div>
-                                                <div class="row justify-content-center">
-                                                    <div class="col-md-3"><p class="text-black-strong">Liigad:</p>
+                                                    <div class="col-md-3 text-left">
+                                                        <p class="text-black-strong">Võistluse algus:</p>
                                                     </div>
-                                                    <div class="col-md-3"><p class="text-black-light">Meistriliiga -
-                                                            4.liiga</p></div>
+                                                    <div class="col-md-3 text-left">
+                                                        <p class="text-black-light">{{ date('H:i', $datetime) }}</p>
+                                                    </div>
                                                 </div>
+
                                                 <div class="row justify-content-center">
-                                                    <div class="col-md-3"><p class="text-black-strong">Võistluse
-                                                            juhend:</p></div>
-                                                    <div class="col-md-3"><p class="text-black-light"><a
-                                                                    class="text-grey" href="#">juhend.pdf</a></p></div>
+                                                    <div class="col-md-3">
+                                                        <p class="text-black-strong">Võistluse toimumise koht:</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p class="text-black-light">{{ $competition->location }}</p>
+                                                    </div>
                                                 </div>
+
                                                 <div class="row justify-content-center">
-                                                    <button type="button" class="btn btn-add"
-                                                            data-toggle="modal" data-target=".bd-example-modal-lg">
-                                                        Registreeru
-                                                    </button>
+                                                    <div class="col-md-3">
+                                                        <p class="text-black-strong">Mänguliigid:</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p class="text-black-light">
+                                                            @foreach ($types as $type)
+                                                                {{ $type->name }}
+                                                            @endforeach
+                                                        </p>
+                                                    </div>
                                                 </div>
+
+                                                <div class="row justify-content-center">
+                                                    <div class="col-md-3">
+                                                        <p class="text-black-strong">Liigad:</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        @foreach ($leagues as $league)
+                                                            <p class="text-black-light">{{ $league->name }}</p>
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+
+                                                <div class="row justify-content-center">
+                                                    <div class="col-md-3">
+                                                        <p class="text-black-strong">Võistluse juhend:</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p class="text-black-light">
+                                                            <a class="text-grey"
+                                                               href="{{ asset('storage/competition_instructions/' . $competition->instructions) }}">
+                                                                {{ $competition->instructions }}
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row justify-content-center">
+                                                    <div class="col-md-3">
+                                                        <p class="text-black-strong">Registreerimine:</p>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <p class="text-black-light">{{ date('d/m/Y',$registration_starts) }}
+                                                            - {{ date('d/m/Y',$registration_ends) }}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row justify-content-center">
+                                                    @if($now < $registration_starts)
+                                                        <p>Registreerimine ei ole veel alanud.</p>
+                                                    @elseif($now > $registration_ends)
+                                                        <p>Registreerimine on lõppenud.</p>
+                                                    @else
+                                                        <button type="button" class="btn btn-add" data-toggle="modal"
+                                                                data-target=".bd-example-modal-lg" id="register-btn">
+                                                            Registreeru
+                                                        </button>
+                                                    @endif
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -155,6 +207,26 @@
                                                         </tr>
                                                         </tbody>
                                                     </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-new-participants" role="tabpanel"
+                             aria-labelledby="nav-new-participants-tab">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card m-b-30">
+                                        <div class="card-body">
+                                            <div class="container">
+                                                <div class="table-responsive-sm">
+                                                    @if($second_person)
+                                                        @include('partials/doubles_confirm_table')
+                                                    @else
+                                                        @include('partials/singles_confirm_table')
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -372,12 +444,13 @@
 
         <!-- registreeru võistlusele Modal -->
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-             aria-hidden="true">
+             aria-hidden="true" id="register-modal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Registreeru võistlusele Jõgeva Sügis
-                            2018</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">
+                            Registreeru võistlusele {{ $competition->title }}
+                        </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -385,63 +458,68 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Naispaar või meespaar?</label>
-                                    <div class="col-sm-8">
-                                        <select class="custom-select form-control">
-                                            <option selected>Vali</option>
-                                            <option value="1">Naispaar</option>
-                                            <option value="2">Meespaar</option>
-                                        </select>
+
+                                <form method="post" action="/competitions/{{ $competition->id }}/register">
+                                    @csrf
+
+                                    <div class="form-group row">
+                                        <label for="types" class="col-sm-4 col-form-label">Vali mänguliik</label>
+                                        <div class="col-sm-8">
+                                            <select class="custom-select form-control" id="types" name="type">
+                                                <option value="" selected>Vali</option>
+
+                                                @foreach ($types as $type)
+                                                    <option class="competition-type"
+                                                            value="{{ $type->id }}">{{ $type->name }}</option>
+                                                @endforeach
+
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Vali liiga</label>
-                                    <div class="col-sm-8">
-                                        <select class="custom-select form-control">
-                                            <option selected>Vali</option>
-                                            <option value="1">Esiliiga</option>
-                                            <option value="2">2.liiga</option>
-                                            <option value="2">3.liiga</option>
-                                            <option value="2">4.liiga</option>
-                                        </select>
+
+                                    <div class="form-group row">
+                                        <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
+                                        <div class="col-sm-8">
+                                            <select class="custom-select form-control" id="leagues">
+                                                <option selected>Vali</option>
+                                                <option value="1">Esiliiga</option>
+                                                <option value="2">2.liiga</option>
+                                                <option value="2">3.liiga</option>
+                                                <option value="2">4.liiga</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">1. mängija
-                                        nimi</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="contest-name"
-                                               placeholder="Sisesta mängija nimi" required/>
+
+                                    <div class="form-group row">
+                                        <label for="first-contestant-name" class="col-sm-4 col-form-label">
+                                            {{ $second_person ? "1. mängija nimi" : "Mängija nimi" }}
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="first-contestant-name"
+                                                   placeholder="Sisesta mängija nimi" name="person_1_name">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">2. mängija
-                                        nimi</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="competition-name"
-                                               placeholder="Sisesta mängija nimi" required/>
+
+                                    <div class="form-group row">
+                                        <label for="first-contestant-email" class="col-sm-4 col-form-label">
+                                            {{ $second_person ? "1. mängija meiliaadress" : "Mängija meiliaadress" }}
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input type="email" class="form-control" id="first-contestant-email"
+                                                   placeholder="Sisesta meiliaadress" name="person_1_email">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">1. mängija
-                                        meiliaadress</label>
-                                    <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="competition-name"
-                                               placeholder="Sisesta meiliaadress" required/>
+
+                                    @if($second_person)
+                                        @include("partials/second_person")
+                                    @endif
+
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-add" value="Registreeru">
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">2. mängija
-                                        meiliaadress</label>
-                                    <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="competition-name"
-                                               placeholder="Sisesta meiliaadress" required/>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="submit" class="btn btn-add" value="Registreeru">
-                                </div>
+
+                                </form>
+
                             </div> <!-- end col -->
                         </div> <!-- end row -->
                     </div><!-- end modal body -->
@@ -449,5 +527,16 @@
             </div>
         </div> <!-- end modal -->
     </div>
+
+    @if ($errors->any())
+        <div style="background: red">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
 
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Competition;
 use App\CompetitionType;
+use App\RegisteredContestant;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -53,12 +54,13 @@ class Competitions extends Controller
             "image" => "required",
             "instructions" => "required",
             "doubles" => "required_without:singles",
-            "singles" => "required_without:doubles"
+            "singles" => "required_without:doubles",
+            "types" => "required_with:doubles,singles"
         ]);
 
         // Save uploaded files (storage/app/*)
-        $request->image->storeAs('competition_images', $request->image->getClientOriginalName());
-        $request->instructions->storeAs('competition_instructions', $request->instructions->getClientOriginalName());
+        $request->image->storeAs('public/competition_images', $request->image->getClientOriginalName());
+        $request->instructions->storeAs('public/competition_instructions', $request->instructions->getClientOriginalName());
 
 
         // Save new competition to database
@@ -96,9 +98,36 @@ class Competitions extends Controller
      * @param  \App\Competition $competition
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(Request $request, Competition $competition)
     {
-        return view('competitions/show');
+        $competition_id = $request->competition->id;
+        $types = Competition::getTypes($competition_id);
+        $registration_starts = strtotime($competition->registration_starts);
+        $registration_ends = strtotime($competition->registration_ends);
+        $now = strtotime(Carbon::now());
+        $contestants = RegisteredContestant::get_unconfirmed_by_competition_id($competition_id);
+
+        // Find if competition type is 1 or 2 people
+        $second_person = false;
+
+        foreach ($types as $type) {
+            if ($type->id > 2) {
+                $second_person = true;
+            }
+        }
+
+
+        return view('competitions/show', [
+            'competition' => $competition,
+            'datetime' => strtotime($competition->datetime),
+            'leagues' => Competition::getLeagues($competition_id),
+            'types' => $types,
+            'second_person' => $second_person,
+            'registration_starts' => $registration_starts,
+            'registration_ends' => $registration_ends,
+            'now' => $now,
+            'contestants' => $contestants
+        ]);
     }
 
     /**
@@ -186,7 +215,7 @@ class Competitions extends Controller
         $competition_types_to_insert = [];
         $previous_competition_options = [];
         $selected_competition_options = $request->get("types");
-        $competition_types = CompetitionType::get_by_order($competition->id);
+        $competition_types = CompetitionType::get_by_competition_id($competition->id);
 
         foreach ($competition_types as $competition_type) {
             $previous_competition_options[] = $competition_type->type_id;
