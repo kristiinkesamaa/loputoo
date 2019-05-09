@@ -8,6 +8,8 @@
     <meta content="Admin Dashboard" name="description"/>
     <meta content="Themesdesign" name="author"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Favicons -->
+    <link rel="icon" href="{{ url('images/icon.png') }}" type="image/gif" sizes="16x16 32x32">
 
     <!--Morris Chart CSS -->
     <link rel="stylesheet" href="{{ url('plugins/morris/morris.css') }}">
@@ -16,6 +18,9 @@
     <link href="{{ url('plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}" rel="stylesheet">
     <link href="{{ url('plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
     <link href="{{ url('plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet"/>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
     <!-- App css -->
     <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
@@ -36,8 +41,8 @@
             <!-- Logo container-->
             <div class="logo">
                 <a href="/" class="logo">
-                    <img src="{{ url('images/loputoo-logo.png') }}" alt="logo" height="35" class="logo-small">
-                    <img src="{{ url('images/loputoo-logo.png') }}" alt="logo" height="55" class="logo-large">
+                    <img src="{{ url('images/logo.png') }}" alt="logo" height="35" class="logo-small">
+                    <img src="{{ url('images/logo.png') }}" alt="logo" height="55" class="logo-large">
                 </a>
 
             </div>
@@ -114,20 +119,9 @@
 <!-- Footer -->
 <footer class="footer">
     <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-sm-4">
-                <p class="text-grey-light">Võta meiega ühendust</p>
-                <hr class="margin">
-                +372 506 1430 või koitkesamaa71@gmail.com
-            </div>
-            <div class="col-sm-4">
-                <img src="{{ url('images/SkBadMint.png') }}" width="30%">
-
-            </div>
-            <div class="col-sm-4">
-                <p class="text-grey-light">Võistlustasud palume kanda sellele arvele</p>
-                <hr class="margin">
-                A/a 12345678910111213 Swedbank
+        <div class="row">
+            <div class="col-12 text-grey-light">
+                © 2019 MTÜ Sulgpalliklubi BadMint. Kõik õigused kaitstud.
             </div>
         </div>
     </div>
@@ -147,9 +141,11 @@
 <script src="{{ url('js/jquery.nicescroll.js') }}"></script>
 <script src="{{ url('js/jquery.scrollTo.min.js') }}"></script>
 
+
 <!--Morris Chart-->
 <script src="{{ url('plugins/morris/morris.min.js') }}"></script>
 <script src="{{ url('plugins/raphael/raphael-min.js') }}"></script>
+
 
 <!-- Plugins js -->
 <script src="{{ url('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
@@ -158,8 +154,20 @@
 <script src="{{ url('plugins/bootstrap-touchspin/js/jquery.bootstrap-touchspin.min.js') }}"
         type="text/javascript"></script>
 
+
+<script src="{{ url('plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js') }}"></script>
+
+
 <!-- Plugins Init js -->
 <script src="{{ url('js/form-advanced.js') }}"></script>
+
+<!-- Parsley js -->
+<script src="{{ url('plugins/parsleyjs/parsley.min.js') }}"></script>
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
 
 </body>
 </html>

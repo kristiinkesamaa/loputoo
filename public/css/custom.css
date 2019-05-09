@@ -29,6 +29,7 @@ li.has-submenu.active a, li.has-submenu:hover a, #topnav .navigation-menu > li >
 li > i:hover {
     color: #468189 !important;
 }
+
 /* Avalehe nupud */
 
 .mini-stat.clearfix.bg-white.border-pink {
@@ -123,13 +124,13 @@ span.input-group-text {
 }
 
 .input#customFile:focus {
-    border-color: #0f9cf3 !important;
+    border-color: #468189 !important;
     box-shadow: none !important;
 }
 
 .custom-file:focus {
+    border-color: #468189 !important;
     box-shadow: none !important;
-    border: none !important;
 }
 
 ul {
@@ -154,16 +155,43 @@ li.competitions {
     color: #468189;
 }
 
-/* Footer */
+/* Multiselect */
+.bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 100% !important;
 
+}
+
+.btn-light {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    color: #000000 !important;
+    background-color: #fff !important;
+    background-clip: padding-box !important;
+    border: 1px solid #ced4da !important;
+    border-radius: .25rem !important;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out !important;
+}
+
+button.btn.dropdown-toggle.btn-light.bs-placeholder {
+    color: #6c757d !important;
+}
+
+.show>.btn-light.dropdown-toggle, .btn-light:not(:disabled):not(.disabled).focus,
+.btn-light:not(:disabled):not(.disabled):focus,
+.show>.btn-light.dropdown-toggle  {
+    border-color: #468189 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+    /* Footer */
 h4.page-title {
     color: #393939;
     font-family: "Work Sans", sans-serif;
 }
 
 .text-grey-dark {
-      color: #393939;
-      font-weight: 400;
+    color: #393939;
+    font-weight: 400;
 }
 
 .text-grey-dark:hover {
@@ -179,7 +207,7 @@ hr.margin {
     margin-bottom: 0;
 }
 
-/* Võistlused */
+/* Võistluste leht */
 
 /* Style the Image Used to Trigger the Modal */
 .myImg {
@@ -196,7 +224,6 @@ hr.margin {
 .modal {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -275,10 +302,6 @@ button.swal2-confirm.btn.btn-add.swal2-styled:hover {
     border: 1px solid #1b8413 !important;
 }
 
-button.swal2-confirm.swal2-styled {
-
-}
-
 button.swal2-cancel.btn.btn-delete.m-l-10.swal2-styled:hover {
     border: 1px solid rgb(170, 170, 170);
 }
@@ -343,6 +366,7 @@ button.swal2-cancel.btn.btn-delete.m-l-10.swal2-styled:hover {
 .btn-add:hover {
     background-color: #1b8413;
     border: 1px solid #1b8413;
+    color: #ffffff;
 }
 
 .btn-add.focus, .btn-add:focus {

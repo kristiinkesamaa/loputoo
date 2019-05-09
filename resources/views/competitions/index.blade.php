@@ -1,19 +1,18 @@
 @extends("master_template")
 
 @section("content")
-    <script src="{{ url('js/jquery.min.js') }}"></script>
 
-    <div class="wrapper">
-        <div class="container-fluid">
+<div class="wrapper">
+    <div class="container-fluid">
 
-            <!-- Page-Title -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="page-title-box">
-                    </div>
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="page-title-box">
                 </div>
             </div>
-            <!-- end page title end breadcrumb -->
+        </div>
+        <!-- end page title end breadcrumb -->
 
             <div class="row">
                 <div class="col-md-12">
@@ -23,7 +22,7 @@
                             @foreach ($competitions as $competition)
                                 <div class="container">
                                     <div class="row align-items-center">
-                                        <div class="col-sm-3">
+                                        <div class="col-sm-4">
                                             <img class="myImg"
                                                  src="{{ asset('storage/competition_images/' . $competition->image) }}"
                                                  alt="Võistluse pilt" style="width: 100%; max-width: 300px">
@@ -35,7 +34,7 @@
                                                 <img class="modal-content">
                                             </div>
                                         </div>
-                                        <div class="col-sm-6">
+                                        <div class="col-sm">
                                             <h5>
                                                 <a class="text-grey-dark" href="/competitions/{{ $competition->id }}">
                                                     {{ $competition->title }}
@@ -50,36 +49,30 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <div class="col-sm-3 pt-3">
-                                            <ul>
-                                                <li>
-                                                    <button type="button" class="btn btn-change btn-block">
-                                                        <a href="/competitions/{{ $competition->id }}"
-                                                           class="text-white">Vaata infot</a>
+                                        <div class="col-sm-3 d-flex flex-column">
+                                            <div class="p-1">
+                                                <a class="btn btn-change btn-block text-white"
+                                                   href="/competitions/{{ $competition->id }}">Vaata infot</a>
+                                            </div>
+                                            @if(Auth::check())
+                                                <div class="p-1">
+                                                    <a href="/competitions/{{ $competition->id }}/edit"
+                                                       class="btn btn-add btn-block">
+                                                        Muuda
+                                                    </a>
+                                                </div>
+                                                <div class="p-1">
+                                                    <button type="button" class="btn btn-block btn-delete"
+                                                            data-competition_id="{{ $competition->id }}">
+                                                        Kustuta
                                                     </button>
-                                                </li>
-
-                                                @if(Auth::check())
-                                                    <li class="mt-1">
-                                                        <a href="/competitions/{{ $competition->id }}/edit"
-                                                           class="btn btn-add btn-block">
-                                                            Muuda
-                                                        </a>
-                                                        <button type="button" class="btn btn-block btn-delete"
-                                                                data-competition_id="{{ $competition->id }}">
-                                                            Kustuta
-                                                        </button>
-                                                    </li>
-                                                @else
-                                                    <li class="mt-1">
-                                                        <button type="button" class="btn btn-add btn-block"
-                                                                data-toggle="modal" data-target=".register-modal">
-                                                            Registreeru
-                                                        </button>
-                                                    </li>
-                                                @endif
-
-                                            </ul>
+                                                </div>
+                                            @else
+                                                <button type="button" class="btn btn-add btn-block"
+                                                        data-toggle="modal" data-target=".register-modal">
+                                                    Registreeru
+                                                </button>
+                                            @endif
                                         </div>
                                     </div>
                                     <hr>
@@ -93,85 +86,81 @@
             <!-- end row -->
         </div> <!-- end container -->
 
-        <!-- registreeru võistlusele Modal -->
-        <div class="modal fade register-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">
-                            Registreeru võistlusele Jõgeva Sügis 2018
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Naispaar või meespaar?</label>
-                                    <div class="col-sm-8">
-                                        <select class="custom-select form-control">
-                                            <option selected>Vali</option>
-                                            <option value="1">Naispaar</option>
-                                            <option value="2">Meespaar</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Vali liiga</label>
-                                    <div class="col-sm-8">
-                                        <select class="custom-select form-control">
-                                            <option selected>Vali</option>
-                                            <option value="1">Esiliiga</option>
-                                            <option value="2">2.liiga</option>
-                                            <option value="2">3.liiga</option>
-                                            <option value="2">4.liiga</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">1. mängija
-                                        nimi</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="contest-name"
-                                               placeholder="Sisesta mängija nimi" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">2. mängija
-                                        nimi</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="competition-name"
-                                               placeholder="Sisesta mängija nimi" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">1. mängija
-                                        meiliaadress</label>
-                                    <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="competition-name"
-                                               placeholder="Sisesta meiliaadress" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">2. mängija
-                                        meiliaadress</label>
-                                    <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="competition-name"
-                                               placeholder="Sisesta meiliaadress" required/>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="submit" class="btn btn-add" value="Registreeru">
-                                </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-                    </div><!-- end modal body -->
+    <!-- registreeru võistlusele Modal -->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Registreeru võistlusele Jõgeva Sügis 2018</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Naispaar või meespaar?</label>
+                                <div class="col-sm-8">
+                                    <select class="custom-select form-control">
+                                        <option selected>Vali</option>
+                                        <option value="1">Naispaar</option>
+                                        <option value="2">Meespaar</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label">Vali liiga</label>
+                                <div class="col-sm-8">
+                                    <select class="custom-select form-control">
+                                        <option selected>Vali</option>
+                                        <option value="1">Esiliiga</option>
+                                        <option value="2">2.liiga</option>
+                                        <option value="2">3.liiga</option>
+                                        <option value="2">4.liiga</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="competition-name" class="col-sm-4 col-form-label">1. mängija nimi</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="contest-name"
+                                           placeholder="Sisesta mängija nimi" required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="competition-name" class="col-sm-4 col-form-label">2. mängija nimi</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="competition-name"
+                                           placeholder="Sisesta mängija nimi" required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="competition-name" class="col-sm-4 col-form-label">1. mängija
+                                    meiliaadress</label>
+                                <div class="col-sm-8">
+                                    <input type="email" class="form-control" id="competition-name"
+                                           placeholder="Sisesta meiliaadress" required/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="competition-name" class="col-sm-4 col-form-label">2. mängija
+                                    meiliaadress</label>
+                                <div class="col-sm-8">
+                                    <input type="email" class="form-control" id="competition-name"
+                                           placeholder="Sisesta meiliaadress" required/>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" class="btn btn-add" value="Registreeru">
+                            </div>
+                        </div> <!-- end col -->
+                    </div> <!-- end row -->
+                </div><!-- end modal body -->
             </div>
-        </div> <!-- end modal -->
+        </div>
+    </div> <!-- end modal -->
 
 
         <!-- kustuta võistlus modal -->

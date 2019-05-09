@@ -1,7 +1,6 @@
 @extends("master_template")
 
 @section("content")
-    <script src="{{ url('js/jquery.min.js') }}"></script>
 
     <div class="wrapper">
         <div class="container-fluid">
@@ -58,7 +57,7 @@
             </div>
 
             @if ($errors->any())
-                <div style="background: red">
+                <div style="background: linear-gradient(135deg,blue, blue, red, orange, red, green, yellow, violet, violet)">
                     <ul>
                         @foreach($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -150,6 +149,28 @@
                                     </div>
 
                                     <div class="form-group row">
+                                        <label for="competition-place" class="col-sm-4 col-form-label">
+                                            Liigad
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group">
+                                                <select class="selectpicker" multiple title="Vali liigad">
+                                                    <option>Meistriliiga</option>
+                                                    <option>Esiliiga</option>
+                                                    <option>2. liiga</option>
+                                                    <option>3. liiga</option>
+                                                    <option>4. liiga</option>
+                                                </select>
+                                            </div><!-- input-group -->
+                                        </div>
+                                    </div>
+                                    <script>
+                                        $(document).ready(function () {
+                                            $('.selectpicker').selectpicker();
+                                        });
+                                    </script>
+
+                                    <div class="form-group row">
                                         <label for="customFile" class="col-sm-4 col-form-label">Võistluse juhend</label>
                                         <div class="col-sm-8">
                                             <div class="custom-file">
@@ -183,7 +204,9 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <div class="col-sm-4"></div>
+                                        <label class="col-sm-4 col-form-label">
+                                            Mänguliigid
+                                        </label>
 
                                         <div class="col-sm-6">
                                             <div class="form-check form-check-inline">
@@ -250,38 +273,58 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
-                                        <label for="date-range" class="col-sm-4 col-form-label">Registreerimine</label>
-                                        <div class="col-sm-8">
-                                            <div class="input-daterange input-group" id="date-range">
-                                                <input type="text" class="form-control" name="registration_starts"
-                                                       placeholder="Registreerimine algab" autocomplete="off"
-                                                       value="{{ old("registration_starts") }}"/>
+                                <script>
+                                    function myFunction() {
+                                        // Get the checkbox
+                                        var checkBox = document.getElementById("inlineCheckbox1");
+                                        // Get the output text
+                                        var text = document.getElementById("doubles");
 
-                                                <div class="input-group-append bg-custom b-0">
-                                                    <span class="input-group-text">
-                                                        <i class="mdi mdi-calendar"></i>
-                                                    </span>
-                                                </div>
+                                        // If the checkbox is checked, display the output text
+                                        if (checkBox.checked == true) {
+                                            text.style.display = "block";
+                                        } else {
+                                            text.style.display = "none";
+                                        }
+                                    }
 
-                                                <input type="text" class="form-control ml-4" name="registration_ends"
-                                                       placeholder="Registreerimine lõppeb" autocomplete="off"
-                                                       value="{{ old("registration_ends") }}"/>
+                                    function mySecondFunction() {
+                                        // Get the checkbox
+                                        var checkBox = document.getElementById("inlineCheckbox2");
+                                        // Get the output text
+                                        var text = document.getElementById("singles");
 
-                                                <div class="input-group-append bg-custom b-0">
-                                                    <span class="input-group-text">
-                                                        <i class="mdi mdi-calendar"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
+                                        // If the checkbox is checked, display the output text
+                                        if (checkBox.checked == true) {
+                                            text.style.display = "block";
+                                        } else {
+                                            text.style.display = "none";
+                                        }
+                                    }
+                                </script>
+
+                                <div class="form-group row">
+                                    <label for="date-range" class="col-sm-4 col-form-label">Registreerimine</label>
+                                    <div class="col-sm-8">
+                                        <div class="input-daterange input-group" id="date-range">
+                                            <input type="text" class="form-control" name="start"
+                                                   placeholder="Registreerimine algab"/>
+                                            <div class="input-group-append bg-custom b-0"><span
+                                                        class="input-group-text"><i
+                                                            class="mdi mdi-calendar"></i></span></div>
+                                            <input type="text" class="form-control ml-4" name="end"
+                                                   placeholder="Registreerimine lõppeb"/>
+                                            <div class="input-group-append bg-custom b-0"><span
+                                                        class="input-group-text"><i
+                                                            class="mdi mdi-calendar"></i></span></div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="modal-footer">
-                                        <input type="submit" class="btn btn-add" value="Lisa võistlus">
-                                    </div>
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-add" value="Lisa võistlus">
+                                </div>
                                 </form>
-
                             </div> <!-- end col -->
                         </div> <!-- end row -->
                     </div> <!-- end modal body -->
