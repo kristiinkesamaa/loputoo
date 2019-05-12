@@ -14,6 +14,7 @@ class RegisteredContestant extends Model
 
     public static function get_unconfirmed_by_competition_id($competition_id)
     {
+        // Get all contestants who haven't been confirmed by admin
         return DB::table('registered_contestants')
             ->leftJoin('registered_teams', 'team_id', '=', 'registered_teams.id')
             ->leftJoin('types', 'type_id', '=', 'types.id')
@@ -26,5 +27,15 @@ class RegisteredContestant extends Model
                 'types.name AS type_name',
                 'leagues.name AS league_name'
             ]);
+    }
+
+    public static function getPastContestants()
+    {
+
+        return DB::table('registered_contestants')
+            ->leftJoin('registered_teams', 'team_id', '=', 'registered_teams.id')
+            ->leftJoin('competitions', 'registered_teams.competition_id', '=', 'competitions.id')
+            ->where('competitions.datetime', '<', DB::raw('NOW()'))
+            ->count('registered_contestants.id');
     }
 }

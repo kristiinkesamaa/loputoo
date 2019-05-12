@@ -1,6 +1,7 @@
 @extends("master_template")
 
 @section("content")
+    <script src="{{ url('js/jquery.min.js') }}"></script>
 
     <div class="wrapper">
         <div class="container-fluid">

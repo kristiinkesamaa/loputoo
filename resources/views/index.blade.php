@@ -1,6 +1,7 @@
 @extends("master_template")
 
 @section("content")
+    <script src="{{ url('js/jquery.min.js') }}"></script>
 
     <div class="wrapper">
         <div class="container-fluid">
@@ -20,7 +21,7 @@
                     <div class="mini-stat clearfix bg-white border-green">
                         <span class="mini-stat-icon bg-light"><i class="fa fa-check text-green"></i></span>
                         <div class="mini-stat-info text-right text-muted">
-                            <span class="counter text-green">13</span>
+                            <span class="counter text-green">{{ $past_competitions }}</span>
                             Toimunud võistlust kokku
                         </div>
                     </div>
@@ -29,7 +30,7 @@
                     <div class="mini-stat clearfix bg-white border-pink">
                         <span class="mini-stat-icon bg-light"><i class="fa fa-trophy text-pink"></i></span>
                         <div class="mini-stat-info text-right text-muted">
-                            <span class="counter text-pink">6</span>
+                            <span class="counter text-pink">{{ $future_competitions }}</span>
                             Võistlust tulemas
                         </div>
                     </div>
@@ -38,7 +39,7 @@
                     <div class="mini-stat clearfix bg-white border-orange">
                         <span class="mini-stat-icon bg-light"><i class="fa fa-users text-orange"></i></span>
                         <div class="mini-stat-info text-right text-muted">
-                            <span class="counter text-orange">500</span>
+                            <span class="counter text-orange">{{ $past_contestants }}</span>
                             Võistlejat osalenud kokku
                         </div>
                     </div>
@@ -81,8 +82,12 @@
 
                                             <li class="competition">
                                                 <a class="text-grey" href="/competitions/{{ $competition->id }}">
-                                                    {{ $competition->title }}, {{ $competition->location }},
-                                                    *liigad*, {{ $competition->datetime }}
+                                                    {{ $competition->title }},
+                                                    {{ $competition->location }},
+                                                    @foreach ($competition->leagues as $league)
+                                                        {{ $league->name }},
+                                                    @endforeach
+                                                    {{ $competition->datetime }}
                                                 </a>
                                             </li>
 
@@ -159,12 +164,12 @@
                                         </label>
                                         <div class="col-sm-8">
                                             <div class="input-group">
-                                                <select class="selectpicker" multiple title="Vali liigad">
-                                                    <option>Meistriliiga</option>
-                                                    <option>Esiliiga</option>
-                                                    <option>2. liiga</option>
-                                                    <option>3. liiga</option>
-                                                    <option>4. liiga</option>
+                                                <select name="leagues[]" class="selectpicker" multiple title="Vali liigad">
+                                                    <option value="1">Meistriliiga</option>
+                                                    <option value="2">Esiliiga</option>
+                                                    <option value="3">Ⅱ liiga</option>
+                                                    <option value="4">Ⅲ liiga</option>
+                                                    <option value="5">Ⅳ liiga</option>
                                                 </select>
                                             </div><!-- input-group -->
                                         </div>
@@ -278,46 +283,16 @@
                                         </div>
                                     </div>
 
-                                <script>
-                                    function myFunction() {
-                                        // Get the checkbox
-                                        var checkBox = document.getElementById("inlineCheckbox1");
-                                        // Get the output text
-                                        var text = document.getElementById("doubles");
-
-                                        // If the checkbox is checked, display the output text
-                                        if (checkBox.checked == true) {
-                                            text.style.display = "block";
-                                        } else {
-                                            text.style.display = "none";
-                                        }
-                                    }
-
-                                    function mySecondFunction() {
-                                        // Get the checkbox
-                                        var checkBox = document.getElementById("inlineCheckbox2");
-                                        // Get the output text
-                                        var text = document.getElementById("singles");
-
-                                        // If the checkbox is checked, display the output text
-                                        if (checkBox.checked == true) {
-                                            text.style.display = "block";
-                                        } else {
-                                            text.style.display = "none";
-                                        }
-                                    }
-                                </script>
-
                                 <div class="form-group row">
                                     <label for="date-range" class="col-sm-4 col-form-label">Registreerimine</label>
                                     <div class="col-sm-8">
                                         <div class="input-daterange input-group" id="date-range">
-                                            <input type="text" class="form-control" name="start"
+                                            <input type="text" class="form-control" name="registration starts"
                                                    placeholder="Registreerimine algab"/>
                                             <div class="input-group-append bg-custom b-0"><span
                                                         class="input-group-text"><i
                                                             class="mdi mdi-calendar"></i></span></div>
-                                            <input type="text" class="form-control ml-4" name="end"
+                                            <input type="text" class="form-control ml-4" name="registration ends"
                                                    placeholder="Registreerimine lõppeb"/>
                                             <div class="input-group-append bg-custom b-0"><span
                                                         class="input-group-text"><i

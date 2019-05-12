@@ -82,9 +82,7 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <p class="text-black-light">
-                                                            @foreach ($types as $type)
-                                                                {{ $type->name }}
-                                                            @endforeach
+                                                            @foreach ($types as $type){{ $loop->first ? '' : ', ' }}{{ $type->name }}@endforeach
                                                         </p>
                                                     </div>
                                                 </div>
@@ -94,9 +92,9 @@
                                                         <p class="text-black-strong">Liigad:</p>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        @foreach ($leagues as $league)
-                                                            <p class="text-black-light">{{ $league->name }}</p>
-                                                        @endforeach
+                                                        <p class="text-black-light">
+                                                            @foreach ($leagues as $league){{ $loop->first ? '' : ', ' }}{{ $league->name }}@endforeach
+                                                        </p>
                                                     </div>
                                                 </div>
 

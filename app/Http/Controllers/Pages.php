@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Competition;
+use App\CompetitionLeague;
 use App\RegisteredContestant;
-use App\RegisteredTeam;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
 class Pages extends Controller
 {
@@ -17,10 +14,21 @@ class Pages extends Controller
      */
     public function index()
     {
-        $competitions = Competition::convertDatetimeForView(Competition::all());
+        $competitions = Competition::all();
+        $past_competitions = Competition::getNumberOfPastCompetitions($competitions);
+        $future_competitions = count($competitions) - $past_competitions;
+        $past_contestants = RegisteredContestant::getPastContestants();
+        $competitions = Competition::convertDatetimeForView($competitions);
+
+        foreach ($competitions as $key => $competition) {
+            $competitions[$key]->leagues = CompetitionLeague::getNames($competition->id);
+        }
 
         return view('index', [
-            'competitions' => $competitions
+            'competitions' => $competitions,
+            'past_competitions' => $past_competitions,
+            'future_competitions' => $future_competitions,
+            'past_contestants' => $past_contestants
         ]);
     }
 

@@ -96,11 +96,11 @@
 
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu">
-                    <li class="has-submenu">
+                    <li class="has-submenu {{ Request::path() === "/" ? "active" : null }}">
                         <a href="/"><i class="ti-home"></i>Avaleht</a>
                     </li>
 
-                    <li class="has-submenu">
+                    <li class="has-submenu {{ Request::path() === "competitions" ? "active" : null }}">
                         <a href="/competitions"><i class="ti-cup"></i>Võistlused</a>
                     </li>
                 </ul>

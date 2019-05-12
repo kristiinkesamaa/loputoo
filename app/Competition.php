@@ -25,27 +25,27 @@ class Competition extends Model
      */
     public static function convertDatetimeForView($competitions)
     {
+        // Convert database time to more readable format
         foreach ($competitions as $competition) {
             $datetime = new Carbon($competition->datetime);
-            $competition->datetime = $datetime->format("d/m/Y");
+            $competition->datetime = $datetime->format("d.m.Y");
         }
 
         return $competitions;
     }
 
-    public static function getLeagues($competition_id)
+    public static function getNumberOfPastCompetitions($competitions)
     {
-        return DB::table('competition_leagues')
-            ->leftJoin('leagues', 'competition_leagues.league_id', '=', 'leagues.id')
-            ->where('competition_id', '=', $competition_id)
-            ->get();
-    }
+        // Count number of competitions that have taken place
+        $now = strtotime(Carbon::now());
+        $number = 0;
 
-    public static function getTypes($competition_id)
-    {
-        return DB::table('competition_types')
-            ->leftJoin('types', 'competition_types.type_id', '=', 'types.id')
-            ->where('competition_id', '=', $competition_id)
-            ->get();
+        foreach ($competitions as $competition) {
+            if (strtotime($competition->datetime) < $now) {
+                $number++;
+            }
+        }
+
+        return $number;
     }
 }

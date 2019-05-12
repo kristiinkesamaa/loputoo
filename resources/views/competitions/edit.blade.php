@@ -37,6 +37,24 @@
                         </div><!-- input-group -->
                     </div>
                 </div>
+
+                <div class="form-group row">
+                    <label for="competition-place" class="col-sm-4 col-form-label">
+                        Liigad
+                    </label>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <select name="leagues[]" class="selectpicker" multiple title="Vali liigad">
+                                <option value="1">Meistriliiga</option>
+                                <option value="2">Esiliiga</option>
+                                <option value="3">Ⅱ liiga</option>
+                                <option value="4">Ⅲ liiga</option>
+                                <option value="5">Ⅳ liiga</option>
+                            </select>
+                        </div><!-- input-group -->
+                    </div>
+                </div>
+
                 <div class="form-group row">
                     <label for="customFile" class="col-sm-4 col-form-label">Võistluse juhend</label>
                     <div class="col-sm-8">
@@ -253,5 +271,32 @@
             // use fileName however fits your app best, i.e. add it into a div
             imageName.textContent = input.files[0].name;
         }
+
+        $(document).ready(function () {
+
+            // Select leagues
+            var leagues = {{ json_encode($leagues) }};
+
+            $('.selectpicker').val(leagues).selectpicker('refresh');
+
+
+            // Select types
+            var types = {{ json_encode($types) }};
+
+            // Find out if doubles
+            if (types[1] > 2) {
+                $("#inlineCheckbox1").click();
+
+                // Click all previously selected doubles
+                for (var i = 0; i < types.length; i++)
+                    $('#doubles :input[value="' + types[i] + '"]').click();
+            } else {
+                $("#inlineCheckbox2").click();
+
+                // Click all previously selected singles
+                for (var i = 0; i < types.length; i++)
+                    $('#doubles :input[value="' + types[i] + '"]').click();
+            }
+        })
     </script>
 @endsection

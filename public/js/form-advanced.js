@@ -28,7 +28,7 @@
         });
         jQuery('#datepicker-inline').datepicker();
         jQuery('#datepicker-multiple-date').datepicker({
-            format: "mm/dd/yyyy",
+            format: "dd.mm.yyyy",
             clearBtn: true,
             multidate: true,
             multidateSeparator: ","

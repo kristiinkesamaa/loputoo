@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Competition;
+use App\CompetitionLeague;
 use App\CompetitionType;
 use App\RegisteredContestant;
 use Carbon\Carbon;
@@ -55,7 +56,8 @@ class Competitions extends Controller
             "instructions" => "required",
             "doubles" => "required_without:singles",
             "singles" => "required_without:doubles",
-            "types" => "required_with:doubles,singles"
+            "types" => "required_with:doubles,singles",
+            "leagues" => "required"
         ]);
 
         // Save uploaded files (storage/app/*)
@@ -88,6 +90,16 @@ class Competitions extends Controller
             $type->save();
         }
 
+        // Save competition leagues to database
+        foreach ($request->get("leagues") as $value) {
+            $league = new CompetitionLeague();
+
+            $league->competition_id = $competition_id;
+            $league->league_id = $value;
+
+            $league->save();
+        }
+
         // Redirect to homepage
         return redirect("/");
     }
@@ -101,7 +113,7 @@ class Competitions extends Controller
     public function show(Request $request, Competition $competition)
     {
         $competition_id = $request->competition->id;
-        $types = Competition::getTypes($competition_id);
+        $types = CompetitionType::get($competition_id);
         $registration_starts = strtotime($competition->registration_starts);
         $registration_ends = strtotime($competition->registration_ends);
         $now = strtotime(Carbon::now());
@@ -120,7 +132,7 @@ class Competitions extends Controller
         return view('competitions/show', [
             'competition' => $competition,
             'datetime' => strtotime($competition->datetime),
-            'leagues' => Competition::getLeagues($competition_id),
+            'leagues' => CompetitionLeague::getNames($competition_id),
             'types' => $types,
             'second_person' => $second_person,
             'registration_starts' => $registration_starts,
@@ -139,20 +151,28 @@ class Competitions extends Controller
      */
     public function edit(Competition $competition)
     {
-
         // Convert all dates into a format that can be used in html
         $datetime = new Carbon($competition->datetime);
-        $competition->datetime = $datetime->format("d/m/Y");
+        $competition->datetime = $datetime->format("d.m.Y");
 
         $registration_starts = new Carbon($competition->registration_starts);
-        $competition->registration_starts = $registration_starts->format("d/m/Y");
+        $competition->registration_starts = $registration_starts->format("d.m.Y");
 
         $registration_ends = new Carbon($competition->registration_ends);
-        $competition->registration_ends = $registration_ends->format("d/m/Y");
+        $competition->registration_ends = $registration_ends->format("d.m.Y");
 
+        foreach (CompetitionLeague::get_by_competition_id($competition->id) as $league) {
+            $leagues[] = $league->league_id;
+        }
+
+        foreach (CompetitionType::get_by_competition_id($competition->id) as $type) {
+            $types[] = $type->type_id;
+        }
 
         return view('competitions/edit', [
-            'competition' => $competition
+            'competition' => $competition,
+            'leagues' => $leagues,
+            'types' => $types
         ]);
     }
 
@@ -174,7 +194,8 @@ class Competitions extends Controller
             "registration_ends" => "required",
             "doubles" => "required_without:singles",
             "singles" => "required_without:doubles",
-            "types" => "required_with:doubles,singles"
+            "types" => "required_with:doubles,singles",
+            "leagues" => "required"
         ]);
 
         $image = $request->image;
@@ -210,44 +231,12 @@ class Competitions extends Controller
         $competition->update();
 
 
-        // --------- Save competition types to database -----------
-        $competition_types_to_delete = [];
-        $competition_types_to_insert = [];
-        $previous_competition_options = [];
-        $selected_competition_options = $request->get("types");
-        $competition_types = CompetitionType::get_by_competition_id($competition->id);
+        // Update competition types in database
+        CompetitionType::update_types($request, $competition->id);
 
-        foreach ($competition_types as $competition_type) {
-            $previous_competition_options[] = $competition_type->type_id;
-        }
+        // Update competition leagues in database
+        CompetitionLeague::update_leagues($request, $competition->id);
 
-        // Find which types to delete
-        $competition_types_to_delete = array_merge(
-            $competition_types_to_delete,
-            array_diff($previous_competition_options, $selected_competition_options));
-
-        // Find which types to insert
-        $competition_types_to_insert = array_merge(
-            $competition_types_to_insert,
-            array_diff($selected_competition_options, $previous_competition_options));
-
-        // Delete unselected types
-        foreach ($competition_types_to_delete as $type_id) {
-            DB::table('competition_types')
-                ->where('competition_id', '=', $competition->id)
-                ->where('type_id', '=', $type_id)
-                ->delete();
-        }
-
-        // Insert selected types
-        foreach ($competition_types_to_insert as $type_id) {
-            $type = new CompetitionType();
-
-            $type->competition_id = $competition->id;
-            $type->type_id = $type_id;
-
-            $type->save();
-        }
 
         // Redirect to competitions page
         return redirect("/competitions");
