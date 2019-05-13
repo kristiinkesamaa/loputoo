@@ -13,6 +13,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <strong>Hästi!</strong> Võistlus on kustutatud.
+            </div>
             <!-- end page title end breadcrumb -->
 
             <div class="row">
@@ -26,10 +33,10 @@
                                 @foreach ($competitions as $competition)
                                     <div class="container">
                                         <div class="row align-items-center">
-                                            <div class="col-sm-4">
+                                            <div class="col-md-4">
                                                 <img class="myImg"
                                                      src="{{ asset('storage/competition_images/' . $competition->image) }}"
-                                                     alt="Võistluse pilt" style="width: 100%; max-width: 300px">
+                                                     alt="Võistluse pilt" style="width: 100%; max-width: 250em;">
                                                 <div id="image-show-modal" class="modal">
                                                     <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -38,9 +45,10 @@
                                                     <img class="modal-content">
                                                 </div>
                                             </div>
-                                            <div class="col-sm">
+                                            <div class="col-md">
                                                 <h5>
-                                                    <a class="text-grey-dark" href="/competitions/{{ $competition->id }}">
+                                                    <a class="text-grey-dark"
+                                                       href="/competitions/{{ $competition->id }}">
                                                         {{ $competition->title }}
                                                     </a>
                                                 </h5>
@@ -51,31 +59,35 @@
                                                                   href="{{ asset('storage/competition_instructions/' . $competition->instructions) }}">
                                                             {{ $competition->instructions }}</a>
                                                     </li>
+                                                    <li>Mänguliigid:</li>
                                                 </ul>
                                             </div>
-                                            <div class="col-sm-3 d-flex flex-column">
+                                            <div class="col-lg-2">
                                                 <div class="p-1">
-                                                    <a class="btn btn-change btn-block text-white"
+                                                    <a class="btn btn-change btn-block text-white btn-width"
                                                        href="/competitions/{{ $competition->id }}">Vaata infot</a>
                                                 </div>
                                                 @if(Auth::check())
                                                     <div class="p-1">
                                                         <a href="/competitions/{{ $competition->id }}/edit"
-                                                           class="btn btn-add btn-block">
+                                                           class="btn btn-add btn-block btn-width">
                                                             Muuda
                                                         </a>
                                                     </div>
                                                     <div class="p-1">
-                                                        <button type="button" class="btn btn-block btn-delete"
+                                                        <button type="button"
+                                                                class="btn btn-block btn-delete btn-width"
                                                                 data-competition_id="{{ $competition->id }}">
                                                             Kustuta
                                                         </button>
                                                     </div>
                                                 @else
-                                                    <button type="button" class="btn btn-add btn-block"
-                                                            data-toggle="modal" data-target=".register-modal">
-                                                        Registreeru
-                                                    </button>
+                                                    <div class="p-1">
+                                                        <button type="button" class="btn btn-add btn-block btn-width"
+                                                                data-toggle="modal" data-target=".register-modal">
+                                                            Registreeru
+                                                        </button>
+                                                    </div>
                                                 @endif
                                             </div>
                                         </div>
@@ -170,23 +182,22 @@
             </div>
         </div> <!-- end modal -->
 
-
         <!-- kustuta võistlus modal -->
         <div class="modal fade delete-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
              aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Kustuta võistlus</h5>
+                    <div class="modal-header no-border">
+                        <h5 class="modal-title text-center pt-5" id="exampleModalLongTitle">Kas sa soovid selle
+                            võistluse kustutada?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        Kas sa tahad võistluse kustutada?
+                    <div class="modal-body  pl-5 pr-5 pt-5 pb-5">
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <div class="modal-footer no-border">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Tühista</button>
                         <form method="post" id="delete-form">
                             @method("delete")
                             @csrf
@@ -201,7 +212,7 @@
 
     <script>
 
-        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        // Get the image and insert it inside the modal
         $(".myImg").on("click", function () {
             var imageSrc = $(this).attr("src");
             var modal = $("#image-show-modal");

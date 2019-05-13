@@ -24,7 +24,9 @@
         jQuery('#datepicker').datepicker();
         jQuery('#datepicker-autoclose').datepicker({
             autoclose: true,
-            todayHighlight: true
+            todayHighlight: true,
+            startDate: new Date(),
+            format: "dd.mm.yyyy"
         });
         jQuery('#datepicker-inline').datepicker();
         jQuery('#datepicker-multiple-date').datepicker({
@@ -34,7 +36,11 @@
             multidateSeparator: ","
         });
         jQuery('#date-range').datepicker({
-            toggleActive: true
+            toggleActive: true,
+            todayHighlight: true,
+            autoclose: true,
+            startDate: new Date(),
+            format: "dd.mm.yyyy"
         });
 
         //Bootstrap-MaxLength

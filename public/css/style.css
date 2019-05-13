@@ -2095,6 +2095,10 @@ label {
     color: #ffffff;
 }
 
+.datepicker table tr td.today:hover:hover {
+    color: white !important;
+}
+
 .datepicker table tr td.active.active {
     background-color: #468189 !important;;
 }
@@ -2373,7 +2377,7 @@ td.selected.range-start.day {
 }
 
 .mini-stat-info {
-  font-size: 14px;
+  font-size: 12px;
   padding-top: 2px;
 }
 
@@ -2381,6 +2385,7 @@ td.selected.range-start.day {
   display: block;
   font-size: 24px;
 }
+
 
 /* ==============
   Timeline
@@ -3345,9 +3350,9 @@ body {
 
 .footer {
   left: 0 !important;
-  font-family: "Arimo", sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-size: inherit;
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 .header-title {

@@ -44,7 +44,8 @@
             color: '#98a6ad',
             wheelStep: 10
         });
-    }
+    };
+
     // === fo,llowing js will activate the menu in left side bar based on url ====
     MainApp.prototype.initMenuItem = function () {
         $(".navigation-menu a").each(function () {

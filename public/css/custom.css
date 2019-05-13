@@ -1,3 +1,7 @@
+@font-face {
+    text-rendering: optimizeLegibility;
+}
+
 h6.button-text {
     margin-top: 18px !important;
     padding: 0;
@@ -83,6 +87,7 @@ li > i:hover {
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
+    padding-bottom: 0 !important;
 }
 
 .modal-header .close {
@@ -183,6 +188,24 @@ button.btn.dropdown-toggle.btn-light.bs-placeholder {
     box-shadow: none !important;
     outline: 0 !important;
 }
+
+
+/* Sisse logimine */
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px #f9f9f9 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+
     /* Footer */
 h4.page-title {
     color: #393939;
@@ -290,6 +313,11 @@ hr.margin {
 }
 
 /* Custom nupud */
+
+.btn-width {
+    width: 100%;
+    max-width: 10em;
+}
 
 
 button.swal2-confirm.btn.btn-add.swal2-styled {

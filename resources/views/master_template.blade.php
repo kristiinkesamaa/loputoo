@@ -49,7 +49,7 @@
             <!-- End Logo container-->
 
             <div class="menu-extras topbar-custom">
-                <ul class="list-inline float-right mb-0">
+                <ul class="list-inline float-right mb-0 mr-0 pr-0">
 
                     <!-- User-->
                     @if(Auth::check())
@@ -161,9 +161,13 @@
 <!-- Plugins Init js -->
 <script src="{{ url('js/form-advanced.js') }}"></script>
 
-<!-- Parsley js -->
+{{--<!-- Parsley js -->
 <script src="{{ url('plugins/parsleyjs/parsley.min.js') }}"></script>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('form').parsley();
+        });
+</script>--}}
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>

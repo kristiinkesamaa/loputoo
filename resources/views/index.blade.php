@@ -2,7 +2,6 @@
 
 @section("content")
     <script src="{{ url('js/jquery.min.js') }}"></script>
-
     <div class="wrapper">
         <div class="container-fluid">
 
@@ -15,38 +14,37 @@
             </div>
             <!-- end page title end breadcrumb -->
 
+            @if(Auth::check())
+                <div class="row">
+                    <div class="col-md-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-white border-green">
+                            <span class="mini-stat-icon bg-light"><i class="fa fa-check text-green"></i></span>
+                            <div class="mini-stat-info text-right text-muted">
+                                <span class="counter text-green">{{ $past_competitions }}</span>
+                                Toimunud võistlust kokku
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-white border-pink">
+                            <span class="mini-stat-icon bg-light"><i class="fa fa-trophy text-pink"></i></span>
+                            <div class="mini-stat-info text-right text-muted">
+                                <span class="counter text-pink">{{ $future_competitions }}</span>
+                                Võistlust tulemas
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3">
+                        <div class="mini-stat clearfix bg-white border-orange">
+                            <span class="mini-stat-icon bg-light"><i class="fa fa-users text-orange"></i></span>
+                            <div class="mini-stat-info text-right text-muted">
+                                <span class="counter text-orange">{{ $past_contestants }}</span>
+                                Võistlejat osalenud kokku
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="row">
-                <div class="col-md-6 col-xl-4">
-                    <div class="mini-stat clearfix bg-white border-green">
-                        <span class="mini-stat-icon bg-light"><i class="fa fa-check text-green"></i></span>
-                        <div class="mini-stat-info text-right text-muted">
-                            <span class="counter text-green">{{ $past_competitions }}</span>
-                            Toimunud võistlust kokku
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="mini-stat clearfix bg-white border-pink">
-                        <span class="mini-stat-icon bg-light"><i class="fa fa-trophy text-pink"></i></span>
-                        <div class="mini-stat-info text-right text-muted">
-                            <span class="counter text-pink">{{ $future_competitions }}</span>
-                            Võistlust tulemas
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xl-4">
-                    <div class="mini-stat clearfix bg-white border-orange">
-                        <span class="mini-stat-icon bg-light"><i class="fa fa-users text-orange"></i></span>
-                        <div class="mini-stat-info text-right text-muted">
-                            <span class="counter text-orange">{{ $past_contestants }}</span>
-                            Võistlejat osalenud kokku
-                        </div>
-                    </div>
-                </div>
-
-                @if(Auth::check())
-                    <div class="col-md-6 col-xl-4 add">
+                    <div class="col-md-6 col-xl-3 add">
                         <div class="mini-stat clearfix bg-add" data-toggle="modal" data-target=".bd-example-modal-lg">
                             <span class="mini-stat-icon bg-light"><i class="fa fa-plus text-add"></i></span>
                             <div class="mini-stat-info text-right text-light">
@@ -54,10 +52,45 @@
                             </div>
                         </div>
                     </div>
-                @endif
-            </div>
+                </div>
+            @else
+                <style>
+                    .mini-stat-info {
+                        font-size: 14px;
+                    }
+                </style>
+                <div class="row">
+                    <div class="col-md-6 col-xl-4">
+                        <div class="mini-stat clearfix bg-white border-green">
+                            <span class="mini-stat-icon bg-light"><i class="fa fa-check text-green"></i></span>
+                            <div class="mini-stat-info text-right text-muted">
+                                <span class="counter text-green">{{ $past_competitions }}</span>
+                                Toimunud võistlust kokku
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="mini-stat clearfix bg-white border-pink">
+                            <span class="mini-stat-icon bg-light"><i class="fa fa-trophy text-pink"></i></span>
+                            <div class="mini-stat-info text-right text-muted">
+                                <span class="counter text-pink">{{ $future_competitions }}</span>
+                                Võistlust tulemas
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-4">
+                        <div class="mini-stat clearfix bg-white border-orange">
+                            <span class="mini-stat-icon bg-light"><i class="fa fa-users text-orange"></i></span>
+                            <div class="mini-stat-info text-right text-muted">
+                                <span class="counter text-orange">{{ $past_contestants }}</span>
+                                Võistlejat osalenud kokku
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
 
-            @if ($errors->any())
+         {{--   @if ($errors->any())
                 <div style="background: linear-gradient(135deg,blue, blue, red, orange, red, green, yellow, violet, violet)">
                     <ul>
                         @foreach($errors->all() as $error)
@@ -65,7 +98,7 @@
                         @endforeach
                     </ul>
                 </div>
-            @endif
+            @endif--}}
 
 
             <div class="row">
@@ -119,8 +152,9 @@
                         <div class="row">
                             <div class="col-12">
 
-                                <form method="post" action="/competitions" enctype="multipart/form-data">
+                                <form id="add" method="post" action="/competitions" enctype="multipart/form-data">
                                     @csrf
+
 
                                     <div class="form-group row">
                                         <label for="competition-name" class="col-sm-4 col-form-label">
@@ -128,26 +162,32 @@
                                         </label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" id="competition-name" name="title"
-                                                   placeholder="Sisesta võistluse nimi" required
+                                                   placeholder="Sisesta võistluse nimi" autocomplete="off" required
                                                    value="{{ old("title") }}"/>
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="competition-place" class="col-sm-4 col-form-label">
-                                            Võistluse koht ja aeg
+                                            Võistluse koht
                                         </label>
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-8">
                                             <input type="text" class="form-control" id="competition-place"
-                                                   name="location" placeholder="Sisesta võistluse koht" required
+                                                   name="location" placeholder="Sisesta võistluse koht" autocomplete="off" required
                                                    value="{{ old("location") }}"/>
                                         </div>
+                                    </div>
 
+                                    <div class="form-group row">
+                                        <label for="competition-place" class="col-sm-4 col-form-label">
+                                            Võistluse toimumise aeg
+                                        </label>
                                         <div class="col-sm-4">
                                             <div class="input-group">
                                                 <input type="text" class="form-control" data-date-start-date="+1d"
                                                        placeholder="Vali kuupäev" id="datepicker-autoclose"
-                                                       name="datetime" value="{{ old("datetime") }}" autocomplete="off">
+                                                       name="datetime" value="{{ old("datetime") }}" autocomplete="off"
+                                                       required>
 
                                                 <div class="input-group-append bg-custom b-0">
                                                     <span class="input-group-text">
@@ -156,6 +196,12 @@
                                                 </div>
                                             </div><!-- input-group -->
                                         </div>
+
+                                        <div class="col-sm-4">
+                                            <input class="form-control" type="time"
+                                                   id="example-time-input" required>
+                                        </div>
+
                                     </div>
 
                                     <div class="form-group row">
@@ -164,12 +210,13 @@
                                         </label>
                                         <div class="col-sm-8">
                                             <div class="input-group">
-                                                <select name="leagues[]" class="selectpicker" multiple title="Vali liigad">
+                                                <select name="leagues[]" class="selectpicker" multiple
+                                                        title="Vali liigad" required>
                                                     <option value="1">Meistriliiga</option>
                                                     <option value="2">Esiliiga</option>
-                                                    <option value="3">Ⅱ liiga</option>
-                                                    <option value="4">Ⅲ liiga</option>
-                                                    <option value="5">Ⅳ liiga</option>
+                                                    <option value="3">2. liiga</option>
+                                                    <option value="4">3. liiga</option>
+                                                    <option value="5">4. liiga</option>
                                                 </select>
                                             </div><!-- input-group -->
                                         </div>
@@ -185,7 +232,7 @@
                                         <div class="col-sm-8">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="customFile"
-                                                       name="instructions" accept=".pdf">
+                                                       name="instructions" accept=".pdf" required>
                                                 <label class="custom-file-label" id="instructions-label"
                                                        for="customFile">Vali fail</label>
 
@@ -233,6 +280,8 @@
                                                 </label>
                                             </div>
                                         </div>
+
+
                                     </div>
 
                                     <div id="doubles" style="display: none">
@@ -283,28 +332,31 @@
                                         </div>
                                     </div>
 
-                                <div class="form-group row">
-                                    <label for="date-range" class="col-sm-4 col-form-label">Registreerimine</label>
-                                    <div class="col-sm-8">
-                                        <div class="input-daterange input-group" id="date-range">
-                                            <input type="text" class="form-control" name="registration starts"
-                                                   placeholder="Registreerimine algab"/>
-                                            <div class="input-group-append bg-custom b-0"><span
-                                                        class="input-group-text"><i
-                                                            class="mdi mdi-calendar"></i></span></div>
-                                            <input type="text" class="form-control ml-4" name="registration ends"
-                                                   placeholder="Registreerimine lõppeb"/>
-                                            <div class="input-group-append bg-custom b-0"><span
-                                                        class="input-group-text"><i
-                                                            class="mdi mdi-calendar"></i></span></div>
+                                    <div class="form-group row">
+                                        <label for="date-range" class="col-sm-4 col-form-label">Registreerimine</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-daterange input-group" id="date-range">
+                                                <input type="text" class="form-control" name="registration starts"
+                                                       placeholder="Algab" autocomplete="off" required/>
+                                                <div class="input-group-append bg-custom b-0"><span
+                                                            class="input-group-text"><i
+                                                                class="mdi mdi-calendar"></i></span></div>
+                                                <input type="text" class="form-control ml-4" name="registration ends"
+                                                       placeholder="Lõppeb" autocomplete="off" required/>
+                                                <div class="input-group-append bg-custom b-0"><span
+                                                            class="input-group-text"><i
+                                                                class="mdi mdi-calendar"></i></span></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="modal-footer">
-                                    <input type="submit" class="btn btn-add" value="Lisa võistlus">
-                                </div>
+
+                                    <div class="modal-footer no-border">
+                                        <input type="submit" class="btn btn-add" value="Lisa võistlus" disabled>
+                                    </div>
+
                                 </form>
+
                             </div> <!-- end col -->
                         </div> <!-- end row -->
                     </div> <!-- end modal body -->
@@ -402,6 +454,19 @@
             // use fileName however fits your app best, i.e. add it into a div
             imageName.textContent = input.files[0].name;
         }
+
+
+        //Change Valmis! button color when checkboxes are checked
+        $("input[class='form-check-input']").click(function () {
+            if ($("input:checkbox:checked").length > 0) {
+
+                $(".btn-add").removeAttr("disabled");
+            }
+            else {
+                $(".btn-add").attr("disabled", "disabled");
+            }
+        });
     </script>
+
 
 @endsection
