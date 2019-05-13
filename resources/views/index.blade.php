@@ -173,7 +173,8 @@
                                         </label>
                                         <div class="col-sm-8">
                                             <input type="text" class="form-control" id="competition-place"
-                                                   name="location" placeholder="Sisesta võistluse koht" autocomplete="off" required
+                                                   name="location" placeholder="Sisesta võistluse koht"
+                                                   autocomplete="off" required
                                                    value="{{ old("location") }}"/>
                                         </div>
                                     </div>
@@ -186,7 +187,7 @@
                                             <div class="input-group">
                                                 <input type="text" class="form-control" data-date-start-date="+1d"
                                                        placeholder="Vali kuupäev" id="datepicker-autoclose"
-                                                       name="datetime" value="{{ old("datetime") }}" autocomplete="off"
+                                                       name="date" value="{{ old("date") }}" autocomplete="off"
                                                        required>
 
                                                 <div class="input-group-append bg-custom b-0">
@@ -198,8 +199,8 @@
                                         </div>
 
                                         <div class="col-sm-4">
-                                            <input class="form-control" type="time"
-                                                   id="example-time-input" required>
+                                            <input class="form-control" type="time" name="time"
+                                                   value="{{ old("time") }}" id="example-time-input" required>
                                         </div>
 
                                     </div>
@@ -461,8 +462,7 @@
             if ($("input:checkbox:checked").length > 0) {
 
                 $(".btn-add").removeAttr("disabled");
-            }
-            else {
+            } else {
                 $(".btn-add").attr("disabled", "disabled");
             }
         });

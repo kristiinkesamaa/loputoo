@@ -20,7 +20,18 @@ class Competitions extends Controller
      */
     public function index()
     {
-        $competitions = Competition::convertDatetimeForView(Competition::all());
+        $competitions = Competition::convert_datetime_for_view(Competition::all());
+
+        foreach ($competitions as $key => $competition) {
+            $competitions[$key]->types = CompetitionType::get_types($competition->id);
+
+            foreach ($competitions[$key]->types as $type) {
+                if ($type->id > 2) {
+                    $competitions[$key]->second_person = true;
+                }
+            }
+
+        }
 
         return view('competitions/index', [
             'competitions' => $competitions
@@ -49,7 +60,8 @@ class Competitions extends Controller
         request()->validate([
             "title" => "required",
             "location" => "required",
-            "datetime" => "required",
+            "date" => "required",
+            "time" => "required",
             "registration_starts" => "required",
             "registration_ends" => "required",
             "image" => "required",
@@ -59,6 +71,8 @@ class Competitions extends Controller
             "types" => "required_with:doubles,singles",
             "leagues" => "required"
         ]);
+
+        $datetime = $request->date . " " . $request->time;
 
         // Save uploaded files (storage/app/*)
         $request->image->storeAs('public/competition_images', $request->image->getClientOriginalName());
@@ -70,7 +84,7 @@ class Competitions extends Controller
 
         $competition->title = $request->get("title");
         $competition->location = $request->get("location");
-        $competition->datetime = Carbon::parse($request->get("datetime"));
+        $competition->datetime = Carbon::parse($datetime);
         $competition->registration_starts = Carbon::parse($request->get("registration_starts"));
         $competition->registration_ends = Carbon::parse($request->get("registration_ends"));
         $competition->image = $request->image->getClientOriginalName();
@@ -113,7 +127,7 @@ class Competitions extends Controller
     public function show(Request $request, Competition $competition)
     {
         $competition_id = $request->competition->id;
-        $types = CompetitionType::get($competition_id);
+        $types = CompetitionType::get_types($competition_id);
         $registration_starts = strtotime($competition->registration_starts);
         $registration_ends = strtotime($competition->registration_ends);
         $now = strtotime(Carbon::now());
@@ -128,11 +142,10 @@ class Competitions extends Controller
             }
         }
 
-
         return view('competitions/show', [
             'competition' => $competition,
             'datetime' => strtotime($competition->datetime),
-            'leagues' => CompetitionLeague::getNames($competition_id),
+            'leagues' => CompetitionLeague::get_league_names($competition_id),
             'types' => $types,
             'second_person' => $second_person,
             'registration_starts' => $registration_starts,
@@ -153,7 +166,8 @@ class Competitions extends Controller
     {
         // Convert all dates into a format that can be used in html
         $datetime = new Carbon($competition->datetime);
-        $competition->datetime = $datetime->format("d.m.Y");
+        $competition->date = $datetime->format("d.m.Y");
+        $competition->time = $datetime->format("H:i");
 
         $registration_starts = new Carbon($competition->registration_starts);
         $competition->registration_starts = $registration_starts->format("d.m.Y");
@@ -251,14 +265,11 @@ class Competitions extends Controller
      */
     public function destroy(Competition $competition)
     {
-
-
-        // Delete all competition_types
-        DB::table('competition_types')->where('competition_id', '=', $competition->id)->delete();
-
         // Delete competition
         $competition->delete();
 
-        return redirect('/competitions');
+        $deleted = true;
+
+        return back()->with('deleted', $deleted);
     }
 }

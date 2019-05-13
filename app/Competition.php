@@ -23,7 +23,7 @@ class Competition extends Model
      * @return mixed
      * @throws \Exception
      */
-    public static function convertDatetimeForView($competitions)
+    public static function convert_datetime_for_view($competitions)
     {
         // Convert database time to more readable format
         foreach ($competitions as $competition) {
@@ -34,7 +34,7 @@ class Competition extends Model
         return $competitions;
     }
 
-    public static function getNumberOfPastCompetitions($competitions)
+    public static function get_number_of_past_competitions($competitions)
     {
         // Count number of competitions that have taken place
         $now = strtotime(Carbon::now());

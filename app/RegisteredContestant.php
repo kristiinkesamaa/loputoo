@@ -29,7 +29,7 @@ class RegisteredContestant extends Model
             ]);
     }
 
-    public static function getPastContestants()
+    public static function get_past_contestants()
     {
 
         return DB::table('registered_contestants')

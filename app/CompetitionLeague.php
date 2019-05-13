@@ -60,7 +60,7 @@ class CompetitionLeague extends Model
         }
     }
 
-    public static function getNames($competition_id)
+    public static function get_league_names($competition_id)
     {
         return DB::table('competition_leagues')
             ->leftJoin('leagues', 'competition_leagues.league_id', '=', 'leagues.id')

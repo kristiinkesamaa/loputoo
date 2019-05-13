@@ -60,7 +60,7 @@ class CompetitionType extends Model
         }
     }
 
-    public static function get($competition_id)
+    public static function get_types($competition_id)
     {
         return DB::table('competition_types')
             ->leftJoin('types', 'competition_types.type_id', '=', 'types.id')

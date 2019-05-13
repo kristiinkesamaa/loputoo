@@ -34,23 +34,35 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="competition-place" class="col-sm-4 col-form-label">Võistluse koht ja
-                                        aeg</label>
-                                    <div class="col-sm-4">
+                                    <label for="competition-place" class="col-sm-4 col-form-label">
+                                        Võistluse koht
+                                    </label>
+                                    <div class="col-sm-8">
                                         <input type="text" class="form-control" id="competition-place" name="location"
                                                value="{{ $competition->location }}"
                                                placeholder="Sisesta võistluse koht" required/>
                                     </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="competition-place" class="col-sm-4 col-form-label">
+                                        Võistluse aeg
+                                    </label>
                                     <div class="col-sm-4">
                                         <div class="input-group">
                                             <input type="text" class="form-control" data-date-start-date="+1d"
                                                    name="datetime"
-                                                   value="{{ $competition->datetime }}"
+                                                   value="{{ $competition->date }}"
                                                    placeholder="Vali kuupäev" id="datepicker-autoclose">
                                             <div class="input-group-append bg-custom b-0"><span
                                                         class="input-group-text"><i
                                                             class="mdi mdi-calendar"></i></span></div>
                                         </div><!-- input-group -->
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                        <input class="form-control" type="time" name="time"
+                                               value="{{ $competition->time }}" id="example-time-input" required>
                                     </div>
                                 </div>
 
@@ -319,7 +331,7 @@
 
                         // Click all previously selected singles
                         for (var i = 0; i < types.length; i++)
-                            $('#doubles :input[value="' + types[i] + '"]').click();
+                            $('#singles :input[value="' + types[i] + '"]').click();
                     }
                 })
             </script>

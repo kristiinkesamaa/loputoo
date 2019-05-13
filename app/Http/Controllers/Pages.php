@@ -15,13 +15,13 @@ class Pages extends Controller
     public function index()
     {
         $competitions = Competition::all();
-        $past_competitions = Competition::getNumberOfPastCompetitions($competitions);
+        $past_competitions = Competition::get_number_of_past_competitions($competitions);
         $future_competitions = count($competitions) - $past_competitions;
-        $past_contestants = RegisteredContestant::getPastContestants();
-        $competitions = Competition::convertDatetimeForView($competitions);
+        $past_contestants = RegisteredContestant::get_past_contestants();
+        $competitions = Competition::convert_datetime_for_view($competitions);
 
         foreach ($competitions as $key => $competition) {
-            $competitions[$key]->leagues = CompetitionLeague::getNames($competition->id);
+            $competitions[$key]->leagues = CompetitionLeague::get_league_names($competition->id);
         }
 
         return view('index', [
@@ -36,6 +36,6 @@ class Pages extends Controller
     {
         auth()->logout();
 
-        return redirect('/');
+        return redirect()->back();
     }
 }

@@ -22,7 +22,7 @@ class LoginController extends Controller
 
     protected function authenticated()
     {
-        return redirect('/');
+        return redirect()->back();
     }
 
     /**

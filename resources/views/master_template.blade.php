@@ -100,7 +100,7 @@
                         <a href="/"><i class="ti-home"></i>Avaleht</a>
                     </li>
 
-                    <li class="has-submenu {{ Request::path() === "competitions" ? "active" : null }}">
+                    <li class="has-submenu {{ substr(Request::path(), 0, 12) === "competitions" ? "active" : null }}">
                         <a href="/competitions"><i class="ti-cup"></i>Võistlused</a>
                     </li>
                 </ul>

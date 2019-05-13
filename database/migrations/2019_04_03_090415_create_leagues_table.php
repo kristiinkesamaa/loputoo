@@ -28,15 +28,15 @@ class CreateLeaguesTable extends Migration
         ]);
 
         DB::table('leagues')->insert([
-            'name' => 'Ⅱ liiga'
+            'name' => '2. liiga'
         ]);
 
         DB::table('leagues')->insert([
-            'name' => 'Ⅲ liiga'
+            'name' => '3. liiga'
         ]);
 
         DB::table('leagues')->insert([
-            'name' => 'Ⅳ liiga'
+            'name' => '4. liiga'
         ]);
 
     }

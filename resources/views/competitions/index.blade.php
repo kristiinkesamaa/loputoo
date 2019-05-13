@@ -14,13 +14,15 @@
                 </div>
             </div>
 
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <strong>Hästi!</strong> Võistlus on kustutatud.
-            </div>
-            <!-- end page title end breadcrumb -->
+            @if ( session()->has('deleted') )
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <span><strong>Hästi!</strong> Võistlus on kustutatud.</span>
+                </div>
+        @endif
+        <!-- end page title end breadcrumb -->
 
             <div class="row">
                 <div class="col-md-12">
@@ -84,7 +86,8 @@
                                                 @else
                                                     <div class="p-1">
                                                         <button type="button" class="btn btn-add btn-block btn-width"
-                                                                data-toggle="modal" data-target=".register-modal">
+                                                                data-toggle="modal"
+                                                                data-target="#register-modal-{{ $competition->id }}">
                                                             Registreeru
                                                         </button>
                                                     </div>
@@ -103,86 +106,99 @@
             <!-- end row -->
         </div> <!-- end container -->
 
-        <!-- registreeru võistlusele Modal -->
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-             aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Registreeru võistlusele Jõgeva Sügis
-                            2018</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Naispaar või meespaar?</label>
-                                    <div class="col-sm-8">
-                                        <select class="custom-select form-control">
-                                            <option selected>Vali</option>
-                                            <option value="1">Naispaar</option>
-                                            <option value="2">Meespaar</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-sm-4 col-form-label">Vali liiga</label>
-                                    <div class="col-sm-8">
-                                        <select class="custom-select form-control">
-                                            <option selected>Vali</option>
-                                            <option value="1">Esiliiga</option>
-                                            <option value="2">2.liiga</option>
-                                            <option value="2">3.liiga</option>
-                                            <option value="2">4.liiga</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">1. mängija
-                                        nimi</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="contest-name"
-                                               placeholder="Sisesta mängija nimi" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">2. mängija
-                                        nimi</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="competition-name"
-                                               placeholder="Sisesta mängija nimi" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">1. mängija
-                                        meiliaadress</label>
-                                    <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="competition-name"
-                                               placeholder="Sisesta meiliaadress" required/>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">2. mängija
-                                        meiliaadress</label>
-                                    <div class="col-sm-8">
-                                        <input type="email" class="form-control" id="competition-name"
-                                               placeholder="Sisesta meiliaadress" required/>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="submit" class="btn btn-add" value="Registreeru">
-                                </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-                    </div><!-- end modal body -->
-                </div>
-            </div>
-        </div> <!-- end modal -->
+    @if(!$competitions->count() < 1)
+        @foreach($competitions as $competition)
+            <!-- registreeru võistlusele Modal -->
+                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel"
+                     aria-hidden="true" id="register-modal-{{ $competition->id }}">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">
+                                    Registreeru võistlusele {{ $competition->title }}
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-12">
 
-        <!-- kustuta võistlus modal -->
+                                        <form method="post" action="/competitions/{{ $competition->id }}/register">
+                                            @csrf
+
+                                            <div class="form-group row">
+                                                <label for="types" class="col-sm-4 col-form-label">Vali
+                                                    mänguliik</label>
+                                                <div class="col-sm-8">
+                                                    <select class="custom-select form-control" id="types" name="type">
+                                                        <option value="" selected>Vali</option>
+
+                                                        @foreach ($competition->types as $type)
+                                                            <option class="competition-type" value="{{ $type->id }}">
+                                                                {{ $type->name }}
+                                                            </option>
+                                                        @endforeach
+
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
+                                                <div class="col-sm-8">
+                                                    <select class="custom-select form-control" id="leagues">
+                                                        <option selected>Vali</option>
+                                                        <option value="1">Esiliiga</option>
+                                                        <option value="2">2.liiga</option>
+                                                        <option value="2">3.liiga</option>
+                                                        <option value="2">4.liiga</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="first-contestant-name" class="col-sm-4 col-form-label">
+                                                    {{ $competition->second_person ? "1. mängija nimi" : "Mängija nimi" }}
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="first-contestant-name"
+                                                           placeholder="Sisesta mängija nimi" name="person_1_name">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group row">
+                                                <label for="first-contestant-email" class="col-sm-4 col-form-label">
+                                                    {{ $competition->second_person ? "1. mängija meiliaadress" : "Mängija meiliaadress" }}
+                                                </label>
+                                                <div class="col-sm-8">
+                                                    <input type="email" class="form-control" id="first-contestant-email"
+                                                           placeholder="Sisesta meiliaadress" name="person_1_email">
+                                                </div>
+                                            </div>
+
+                                            @if(@$competition->second_person)
+                                                @include("partials/second_person")
+                                            @endif
+
+                                            <div class="modal-footer">
+                                                <input type="submit" class="btn btn-add" value="Registreeru">
+                                            </div>
+
+                                        </form>
+
+                                    </div> <!-- end col -->
+                                </div> <!-- end row -->
+                            </div><!-- end modal body -->
+                        </div>
+                    </div>
+                </div> <!-- end modal -->
+        @endforeach
+    @endif
+
+    <!-- kustuta võistlus modal -->
         <div class="modal fade delete-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
              aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
