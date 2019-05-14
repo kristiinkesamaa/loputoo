@@ -30,7 +30,7 @@
                         <div class="card-body">
 
                             @if($competitions->count() < 1)
-                                <span>Võistlusi pole</span>
+                                <span>Eesolevaid võistlusi pole.</span>
                             @else
                                 @foreach ($competitions as $competition)
                                     <div class="container">
@@ -61,7 +61,6 @@
                                                                   href="{{ asset('storage/competition_instructions/' . $competition->instructions) }}">
                                                             {{ $competition->instructions }}</a>
                                                     </li>
-                                                    <li>Mänguliigid:</li>
                                                 </ul>
                                             </div>
                                             <div class="col-lg-2">
@@ -94,11 +93,9 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        <hr>
                                     </div>
                                 @endforeach
                             @endif
-
                         </div>
                     </div>
                 </div>
@@ -133,8 +130,8 @@
                                                 <label for="types" class="col-sm-4 col-form-label">Vali
                                                     mänguliik</label>
                                                 <div class="col-sm-8">
-                                                    <select class="custom-select form-control" id="types" name="type">
-                                                        <option value="" selected>Vali</option>
+                                                    <select class="custom-select form-control" id="types" name="type" required>
+                                                        <option value="" selected>Vali liik</option>
 
                                                         @foreach ($competition->types as $type)
                                                             <option class="competition-type" value="{{ $type->id }}">
@@ -149,8 +146,8 @@
                                             <div class="form-group row">
                                                 <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
                                                 <div class="col-sm-8">
-                                                    <select class="custom-select form-control" id="leagues">
-                                                        <option selected>Vali</option>
+                                                    <select class="custom-select form-control" id="leagues" required>
+                                                        <option selected>Vali liiga</option>
                                                         <option value="1">Esiliiga</option>
                                                         <option value="2">2.liiga</option>
                                                         <option value="2">3.liiga</option>
@@ -165,7 +162,7 @@
                                                 </label>
                                                 <div class="col-sm-8">
                                                     <input type="text" class="form-control" id="first-contestant-name"
-                                                           placeholder="Sisesta mängija nimi" name="person_1_name">
+                                                           placeholder="Sisesta mängija nimi" name="person_1_name" required>
                                                 </div>
                                             </div>
 
@@ -175,7 +172,7 @@
                                                 </label>
                                                 <div class="col-sm-8">
                                                     <input type="email" class="form-control" id="first-contestant-email"
-                                                           placeholder="Sisesta meiliaadress" name="person_1_email">
+                                                           placeholder="Sisesta meiliaadress" name="person_1_email" required>
                                                 </div>
                                             </div>
 
@@ -183,7 +180,7 @@
                                                 @include("partials/second_person")
                                             @endif
 
-                                            <div class="modal-footer">
+                                            <div class="modal-footer no-border">
                                                 <input type="submit" class="btn btn-add" value="Registreeru">
                                             </div>
 

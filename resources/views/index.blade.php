@@ -109,7 +109,7 @@
                             <div class="competition">
                                 <ul>
                                     @if($competitions->count() < 1)
-                                        <span>Võistlusi pole</span>
+                                        <span>Eesolevaid võistlusi pole.</span>
                                     @else
                                         @foreach ($competitions as $competition)
 
@@ -137,7 +137,7 @@
         </div> <!-- end container -->
 
 
-        <!-- add new competition Modal -->
+        <!-- Lisa uus võistlus modal -->
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
              aria-hidden="true">
             <div class="modal-dialog modal-lg">
@@ -154,8 +154,12 @@
 
                                 <form id="add" method="post" action="/competitions" enctype="multipart/form-data">
                                     @csrf
-
-
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        Palun täida ära kõik väljad!
+                                    </div>
                                     <div class="form-group row">
                                         <label for="competition-name" class="col-sm-4 col-form-label">
                                             Võistluse nimi

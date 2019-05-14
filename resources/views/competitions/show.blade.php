@@ -38,11 +38,9 @@
                                                 <div class="container">
                                                     <div class="row justify-content-start text-center">
                                                         <div class="col-12">
-                                                            <p class="text-black-strong">
-                                                                <img src="{{ url('images/sulgpall.png') }}" width="40">
+                                                            <h2>
                                                                 {{ $competition->title }}
-                                                                <img src="{{ url('images/sulgpall2.png') }}" width="40">
-                                                            </p>
+                                                            </h2>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -54,7 +52,7 @@
                                                         <p class="text-black-strong">Võistluse kuupäev:</p>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <p class="text-black-light">{{ date('d/m/Y', $datetime) }}</p>
+                                                        <p class="text-black-light">{{ date('d.m.Y', $datetime) }}</p>
                                                     </div>
                                                 </div>
 
@@ -81,7 +79,7 @@
                                                         <p class="text-black-strong">Mänguliigid:</p>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <p class="text-black-light">
+                                                        <p class="text-black-light text-capitalize">
                                                             @foreach ($types as $type){{ $loop->first ? '' : ', ' }}{{ $type->name }}@endforeach
                                                         </p>
                                                     </div>
@@ -117,8 +115,8 @@
                                                         <p class="text-black-strong">Registreerimine:</p>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <p class="text-black-light">{{ date('d/m/Y',$registration_starts) }}
-                                                            - {{ date('d/m/Y',$registration_ends) }}</p>
+                                                        <p class="text-black-light">{{ date('d.m.Y',$registration_starts) }}
+                                                            - {{ date('d.m.Y',$registration_ends) }}</p>
                                                     </div>
                                                 </div>
 

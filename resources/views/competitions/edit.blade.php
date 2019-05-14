@@ -24,6 +24,12 @@
                                   enctype="multipart/form-data">
                                 @method("patch")
                                 @csrf
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    Palun täida ära kõik väljad!
+                                </div>
 
                                 <div class="form-group row">
                                     <label for="competition-name" class="col-sm-4 col-form-label">Võistluse nimi</label>
@@ -75,9 +81,9 @@
                                             <select name="leagues[]" class="selectpicker" multiple title="Vali liigad">
                                                 <option value="1">Meistriliiga</option>
                                                 <option value="2">Esiliiga</option>
-                                                <option value="3">Ⅱ liiga</option>
-                                                <option value="4">Ⅲ liiga</option>
-                                                <option value="5">Ⅳ liiga</option>
+                                                <option value="3">2. liiga</option>
+                                                <option value="4">3. liiga</option>
+                                                <option value="5">4. liiga</option>
                                             </select>
                                         </div><!-- input-group -->
                                     </div>
