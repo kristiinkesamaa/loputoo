@@ -21,4 +21,16 @@ class CompetitionTest extends TestCase
 
         $this->assertEquals("24.05.2019", $output->datetime);
     }
+
+    /**
+     * @throws Exception
+     */
+    public function testGetNumberOfPastCompetitions()
+    {
+        $competitions = factory(Competition::class, 3)->state("past")->make();
+
+        $output = Competition::get_number_of_past_competitions($competitions);
+
+        $this->assertEquals("3", $output);
+    }
 }
