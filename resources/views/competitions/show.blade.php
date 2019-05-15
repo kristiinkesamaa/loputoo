@@ -13,9 +13,13 @@
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-info-tab" data-toggle="tab" href="#nav-info"
                                role="tab" aria-controls="nav-info" aria-selected="true">Info</a>
-                            <a class="nav-item nav-link" id="nav-new-participants-tab" data-toggle="tab"
-                               href="#nav-new-participants" role="tab" aria-controls="nav-new-participants"
-                               aria-selected="false">Kinnitamata</a>
+
+                            @if(Auth::check())
+                                <a class="nav-item nav-link" id="nav-new-participants-tab" data-toggle="tab"
+                                   href="#nav-new-participants" role="tab" aria-controls="nav-new-participants"
+                                   aria-selected="false">Kinnitamata</a>
+                            @endif
+
                             <a class="nav-item nav-link" id="nav-participants-tab" data-toggle="tab"
                                href="#nav-participants" role="tab" aria-controls="nav-participants"
                                aria-selected="false">Osalejad</a>
@@ -34,6 +38,15 @@
                                     <div class="card m-b-30">
                                         <div class="card-body">
                                             <div class="container">
+
+                                                @if ( session()->has('registered') )
+                                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                        <span><strong>Hästi!</strong> Oled registreeritud.</span>
+                                                    </div>
+                                                @endif
 
                                                 <div class="container">
                                                     <div class="row justify-content-start text-center">
@@ -210,26 +223,30 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-new-participants" role="tabpanel"
-                             aria-labelledby="nav-new-participants-tab">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card m-b-30">
-                                        <div class="card-body">
-                                            <div class="container">
-                                                <div class="table-responsive-sm">
-                                                    @if($second_person)
-                                                        @include('partials/doubles_confirm_table')
-                                                    @else
-                                                        @include('partials/singles_confirm_table')
-                                                    @endif
+
+                        @if(Auth::check())
+                            <div class="tab-pane fade" id="nav-new-participants" role="tabpanel"
+                                 aria-labelledby="nav-new-participants-tab">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="card m-b-30">
+                                            <div class="card-body">
+                                                <div class="container">
+                                                    <div class="table-responsive-sm">
+                                                        @if($second_person)
+                                                            @include('partials/doubles_confirm_table')
+                                                        @else
+                                                            @include('partials/singles_confirm_table')
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        @endif
+
                         <div class="tab-pane fade" id="nav-subgroups" role="tabpanel"
                              aria-labelledby="nav-subgroups-tab">
                             <div class="row" id="customRow">

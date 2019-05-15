@@ -21,6 +21,22 @@
                     </button>
                     <span><strong>Hästi!</strong> Võistlus on kustutatud.</span>
                 </div>
+
+            @elseif ( session()->has('updated') )
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <span><strong>Hästi!</strong> Võistlus on muudetud.</span>
+                </div>
+
+            @elseif ( session()->has('registered') )
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <span><strong>Hästi!</strong> Oled registreeritud.</span>
+                </div>
         @endif
         <!-- end page title end breadcrumb -->
 

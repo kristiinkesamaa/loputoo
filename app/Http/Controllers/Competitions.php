@@ -30,7 +30,6 @@ class Competitions extends Controller
                     $competitions[$key]->second_person = true;
                 }
             }
-
         }
 
         return view('competitions/index', [
@@ -115,7 +114,7 @@ class Competitions extends Controller
         }
 
         // Redirect to homepage
-        return redirect("/");
+        return back()->with('stored', true);
     }
 
     /**
@@ -152,7 +151,7 @@ class Competitions extends Controller
             'registration_ends' => $registration_ends,
             'now' => $now,
             'contestants' => $contestants
-        ]);
+        ])->with('registered', true);
     }
 
     /**
@@ -253,7 +252,7 @@ class Competitions extends Controller
 
 
         // Redirect to competitions page
-        return redirect("/competitions");
+        return redirect("/competitions")->with('updated', true);
     }
 
     /**
@@ -268,8 +267,6 @@ class Competitions extends Controller
         // Delete competition
         $competition->delete();
 
-        $deleted = true;
-
-        return back()->with('deleted', $deleted);
+        return back()->with('deleted', true);
     }
 }

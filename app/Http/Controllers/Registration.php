@@ -53,7 +53,7 @@ class Registration extends Controller
             $contestant2->save();
         }
 
-        return redirect('/competitions/' . $request->id);
+        return back()->with('registered', true);
     }
 
     public function confirm(Request $request)

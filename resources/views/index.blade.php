@@ -2,6 +2,8 @@
 
 @section("content")
     <script src="{{ url('js/jquery.min.js') }}"></script>
+    <script src="{{ url('js/bootstrap.min.js') }}"></script>
+
     <div class="wrapper">
         <div class="container-fluid">
 
@@ -12,7 +14,16 @@
                     </div>
                 </div>
             </div>
-            <!-- end page title end breadcrumb -->
+
+            @if ( session()->has('stored') )
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <span><strong>Hästi!</strong> Võistlus on lisatud.</span>
+                </div>
+            @endif
+        <!-- end page title end breadcrumb -->
 
             @if(Auth::check())
                 <div class="row">
@@ -45,7 +56,7 @@
                     </div>
 
                     <div class="col-md-6 col-xl-3 add">
-                        <div class="mini-stat clearfix bg-add" data-toggle="modal" data-target=".bd-example-modal-lg">
+                        <div class="mini-stat clearfix bg-add" data-toggle="modal" data-target="#create-modal">
                             <span class="mini-stat-icon bg-light"><i class="fa fa-plus text-add"></i></span>
                             <div class="mini-stat-info text-right text-light">
                                 <h6 class="button-text">Lisa uus võistlus</h6>
@@ -90,17 +101,6 @@
                 </div>
             @endif
 
-         {{--   @if ($errors->any())
-                <div style="background: linear-gradient(135deg,blue, blue, red, orange, red, green, yellow, violet, violet)">
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif--}}
-
-
             <div class="row">
                 <div class="col-md-12">
                     <div class="card m-b-30">
@@ -139,7 +139,7 @@
 
         <!-- Lisa uus võistlus modal -->
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-             aria-hidden="true">
+             aria-hidden="true" id="create-modal">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -154,12 +154,16 @@
 
                                 <form id="add" method="post" action="/competitions" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                        Palun täida ära kõik väljad!
-                                    </div>
+
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            Palun täida ära kõik väljad!
+                                        </div>
+                                    @endif
+
                                     <div class="form-group row">
                                         <label for="competition-name" class="col-sm-4 col-form-label">
                                             Võistluse nimi
@@ -470,6 +474,10 @@
                 $(".btn-add").attr("disabled", "disabled");
             }
         });
+
+        @if ($errors->any())
+            $("#create-modal").modal("show");
+        @endif
     </script>
 
 
