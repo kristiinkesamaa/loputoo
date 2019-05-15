@@ -2,7 +2,6 @@
 
 @section("content")
     <script src="{{ url('js/jquery.min.js') }}"></script>
-    <script src="{{ url('js/bootstrap.min.js') }}"></script>
 
     <div class="wrapper">
         <div class="container-fluid">
@@ -230,11 +229,6 @@
                                             </div><!-- input-group -->
                                         </div>
                                     </div>
-                                    <script>
-                                        $(document).ready(function () {
-                                            $('.selectpicker').selectpicker();
-                                        });
-                                    </script>
 
                                     <div class="form-group row">
                                         <label for="customFile" class="col-sm-4 col-form-label">Võistluse juhend</label>
@@ -381,6 +375,14 @@
         var doubles = $("#doubles");
         var singles = $("#singles");
 
+        $(document).ready(function () {
+            $('.selectpicker').selectpicker();
+
+            @if ($errors->any())
+            $("#create-modal").modal("show");
+            @endif
+        });
+
         doublesCheckbox.on("click", function () {
 
             // Get the output text
@@ -465,7 +467,7 @@
         }
 
 
-        //Change Valmis! button color when checkboxes are checked
+        // Change Valmis! button color when checkboxes are checked
         $("input[class='form-check-input']").click(function () {
             if ($("input:checkbox:checked").length > 0) {
 
@@ -474,10 +476,6 @@
                 $(".btn-add").attr("disabled", "disabled");
             }
         });
-
-        @if ($errors->any())
-            $("#create-modal").modal("show");
-        @endif
     </script>
 
 
