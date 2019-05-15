@@ -20,7 +20,8 @@
     <link href="{{ url('plugins/bootstrap-touchspin/css/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet"/>
 
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
 
     <!-- App css -->
     <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
@@ -68,13 +69,15 @@
                     <li class="menu-item list-inline-item">
 
                         <!-- Mobile menu toggle-->
-                        <a class="navbar-toggle nav-link" data-toggle="collapse" data-target="#navigation">
+                        <button class="navbar-toggler navbar-toggle nav-link" type="button" data-toggle="collapse"
+                                data-target="#mobile-navigation" aria-controls="mobile-navigation"
+                                aria-expanded="false" aria-label="Toggle navigation">
                             <div class="lines">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
-                        </a>
+                        </button>
                         <!-- End mobile menu toggle-->
 
                     </li>
@@ -106,8 +109,27 @@
                 </ul>
                 <!-- End navigation menu -->
 
-            </div> <!-- end #navigation -->
+            </div><!-- end #navigation -->
         </div> <!-- end container -->
+    </div> <!-- end navbar-custom -->
+
+    <div class="navbar-custom">
+        <div class="pos-f-t">
+            <div class="collapse" id="mobile-navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+                    <li class="has-submenu">
+                        <a href="/"><i class="ti-home"></i>Avaleht</a>
+                    </li>
+
+                    <li class="has-submenu">
+                        <a href="/competitions"><i class="ti-cup"></i>Võistlused</a>
+                    </li>
+                </ul>
+                <!-- End navigation menu -->
+            </div>
+
+        </div>
     </div> <!-- end navbar-custom -->
 </header>
 <!-- End Navigation Bar-->

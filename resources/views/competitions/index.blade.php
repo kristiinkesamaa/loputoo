@@ -100,11 +100,18 @@
                                                     </div>
                                                 @else
                                                     <div class="p-1">
-                                                        <button type="button" class="btn btn-add btn-block btn-width"
-                                                                data-toggle="modal"
-                                                                data-target="#register-modal-{{ $competition->id }}">
-                                                            Registreeru
-                                                        </button>
+                                                        @if($now < $competition->registration_starts)
+                                                            <p>Registreerimine ei ole veel alanud.</p>
+                                                        @elseif($now > $competition->registration_ends)
+                                                            <p>Registreerimine on lõppenud.</p>
+                                                        @else
+                                                            <button type="button"
+                                                                    class="btn btn-add btn-block btn-width"
+                                                                    data-toggle="modal"
+                                                                    data-target="#register-modal-{{ $competition->id }}">
+                                                                Registreeru
+                                                            </button>
+                                                        @endif
                                                     </div>
                                                 @endif
                                             </div>

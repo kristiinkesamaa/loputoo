@@ -21,6 +21,7 @@ class Competitions extends Controller
     public function index()
     {
         $competitions = Competition::convert_datetime_for_view(Competition::all());
+        $now = date("Y-m-d", strtotime(Carbon::now()));
 
         foreach ($competitions as $key => $competition) {
             $competitions[$key]->types = CompetitionType::get_types($competition->id);
@@ -33,7 +34,8 @@ class Competitions extends Controller
         }
 
         return view('competitions/index', [
-            'competitions' => $competitions
+            'competitions' => $competitions,
+            'now' => $now
         ]);
     }
 
