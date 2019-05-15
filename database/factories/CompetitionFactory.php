@@ -18,3 +18,9 @@ $factory->define(Competition::class, function () {
         "updated_at" => "2019-05-11 00:00:00"
     ];
 });
+
+$factory->state(Competition::class, "past", function () {
+    return [
+        "datetime" => "1970-01-01 00:00:00",
+    ];
+});

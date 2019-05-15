@@ -6,10 +6,24 @@
     <div class="wrapper" id="page-wrap">
         <div class="container-fluid">
 
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="btn-group pull-right">
+                            <ol class="breadcrumb hide-phone p-0 m-0">
+                                <li class="breadcrumb-item text-grey-light"><i class="ti-location-pin pr-1"></i>{{ $competition->location }}</li>
+                                <li class="breadcrumb-item text-grey-light"><i class="ti-time pr-1"></i>{{ date('H:i', $datetime) }}</li>
+                            </ol>
+                        </div>
+                        <h6 class="page-title">{{ $competition->title }}</h6>
+                    </div>
+                </div>
+            </div>
+
             <!-- Page-Title -->
-            <div class="row mb-5 mt-3" id="changeRow">
+            <div class="row mb-5" id="changeRow">
                 <div class="col-sm-12 mb-2">
-                    <nav class="pt-3">
+                    <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-info-tab" data-toggle="tab" href="#nav-info"
                                role="tab" aria-controls="nav-info" aria-selected="true">Info</a>
@@ -51,9 +65,9 @@
                                                 <div class="container">
                                                     <div class="row justify-content-start text-center">
                                                         <div class="col-12">
-                                                            <h2>
+                                                            <h3>
                                                                 {{ $competition->title }}
-                                                            </h2>
+                                                            </h3>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -152,6 +166,9 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- OSALEJAD -->
+
                         <div class="tab-pane fade" id="nav-participants" role="tabpanel"
                              aria-labelledby="nav-participants-tab">
                             <div class="row">
@@ -224,6 +241,8 @@
                             </div>
                         </div>
 
+                        <!-- KINNITAMATA -->
+
                         @if(Auth::check())
                             <div class="tab-pane fade" id="nav-new-participants" role="tabpanel"
                                  aria-labelledby="nav-new-participants-tab">
@@ -245,7 +264,8 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                    @endif
+                        <!-- ALAGRUPID -->
 
                         <div class="tab-pane fade" id="nav-subgroups" role="tabpanel"
                              aria-labelledby="nav-subgroups-tab">
@@ -328,6 +348,9 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- JÄRJEKORD -->
+
                         <div class="tab-pane fade" id="nav-queue" role="tabpanel" aria-labelledby="nav-queue-tab">
                             <div class="row">
                                 <div class="col-md-12">
