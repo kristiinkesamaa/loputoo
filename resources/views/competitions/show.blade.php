@@ -11,8 +11,10 @@
                     <div class="page-title-box">
                         <div class="btn-group pull-right">
                             <ol class="breadcrumb hide-phone p-0 m-0">
-                                <li class="breadcrumb-item text-grey-light"><i class="ti-location-pin pr-1"></i>{{ $competition->location }}</li>
-                                <li class="breadcrumb-item text-grey-light"><i class="ti-time pr-1"></i>{{ date('H:i', $datetime) }}</li>
+                                <li class="breadcrumb-item text-grey-light"><i
+                                            class="ti-location-pin pr-1"></i>{{ $competition->location }}</li>
+                                <li class="breadcrumb-item text-grey-light"><i
+                                            class="ti-time pr-1"></i>{{ date('H:i', $datetime) }}</li>
                             </ol>
                         </div>
                         <h6 class="page-title">{{ $competition->title }}</h6>
@@ -54,8 +56,10 @@
                                             <div class="container">
 
                                                 @if ( session()->has('registered') )
-                                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <div class="alert alert-success alert-dismissible fade show"
+                                                         role="alert">
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
                                                             <span aria-hidden="true">×</span>
                                                         </button>
                                                         <span><strong>Hästi!</strong> Oled registreeritud.</span>
@@ -168,7 +172,6 @@
                         </div>
 
                         <!-- OSALEJAD -->
-
                         <div class="tab-pane fade" id="nav-participants" role="tabpanel"
                              aria-labelledby="nav-participants-tab">
                             <div class="row">
@@ -242,7 +245,6 @@
                         </div>
 
                         <!-- KINNITAMATA -->
-
                         @if(Auth::check())
                             <div class="tab-pane fade" id="nav-new-participants" role="tabpanel"
                                  aria-labelledby="nav-new-participants-tab">
@@ -265,7 +267,7 @@
                                 </div>
                             </div>
                     @endif
-                        <!-- ALAGRUPID -->
+                    <!-- ALAGRUPID -->
 
                         <div class="tab-pane fade" id="nav-subgroups" role="tabpanel"
                              aria-labelledby="nav-subgroups-tab">
@@ -350,7 +352,6 @@
                         </div>
 
                         <!-- JÄRJEKORD -->
-
                         <div class="tab-pane fade" id="nav-queue" role="tabpanel" aria-labelledby="nav-queue-tab">
                             <div class="row">
                                 <div class="col-md-12">

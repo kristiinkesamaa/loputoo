@@ -146,7 +146,8 @@
                                                 <label for="types" class="col-sm-4 col-form-label">Vali
                                                     mänguliik</label>
                                                 <div class="col-sm-8">
-                                                    <select class="custom-select form-control" id="types" name="type" required>
+                                                    <select class="custom-select form-control" id="types" name="type"
+                                                            required>
                                                         <option value="" selected>Vali liik</option>
 
                                                         @foreach ($competition->types as $type)
@@ -178,7 +179,8 @@
                                                 </label>
                                                 <div class="col-sm-8">
                                                     <input type="text" class="form-control" id="first-contestant-name"
-                                                           placeholder="Sisesta mängija nimi" name="person_1_name" required>
+                                                           placeholder="Sisesta mängija nimi" name="person_1_name"
+                                                           required>
                                                 </div>
                                             </div>
 
@@ -188,7 +190,8 @@
                                                 </label>
                                                 <div class="col-sm-8">
                                                     <input type="email" class="form-control" id="first-contestant-email"
-                                                           placeholder="Sisesta meiliaadress" name="person_1_email" required>
+                                                           placeholder="Sisesta meiliaadress" name="person_1_email"
+                                                           required>
                                                 </div>
                                             </div>
 
