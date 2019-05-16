@@ -14,18 +14,29 @@
         </thead>
         <tbody>
 
-        @foreach($contestants as $contestant)
+        @foreach($unconfirmed_contestants as $contestant)
             <tr>
                 <td>{{ $contestant->name }}</td>
                 <td>{{ $contestant->email }}</td>
                 <td>{{ $contestant->type_name }}</td>
                 <td>{{ $contestant->league_name }}</td>
-                <td><input name="confirmed[]" value="{{ $contestant->team_id }}" type="checkbox"></td>
+                <td><input class="confirm-checkbox" name="confirmed[]" value="{{ $contestant->team_id }}" type="checkbox"></td>
             </tr>
         @endforeach
 
         </tbody>
     </table>
+    <button id="btn-select-all" class="btn-change" type="button">Vali kõik</button>
     <button class="btn-change" type="submit">Kinnita valitud mängijad</button>
 
 </form>
+
+<script>
+    $(document).ready(function () {
+        $("#btn-select-all").on("click", function () {
+            $(".confirm-checkbox").each(function () {
+                $(this).click()
+            })
+        })
+    })
+</script>

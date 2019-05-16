@@ -64,6 +64,15 @@
                                                         </button>
                                                         <span><strong>Hästi!</strong> Oled registreeritud.</span>
                                                     </div>
+                                                @elseif ( session()->has('confirmed') )
+                                                    <div class="alert alert-success alert-dismissible fade show"
+                                                         role="alert">
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                        <span><strong>Hästi!</strong> Valitud tiimid on kinnitatud.</span>
+                                                    </div>
                                                 @endif
 
                                                 <div class="container">
@@ -110,7 +119,7 @@
                                                         <p class="text-black-strong">Mänguliigid:</p>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <p class="text-black-light text-capitalize">
+                                                        <p class="text-black-light">
                                                             @foreach ($types as $type){{ $loop->first ? '' : ', ' }}{{ $type->name }}@endforeach
                                                         </p>
                                                     </div>
@@ -171,78 +180,6 @@
                             </div>
                         </div>
 
-                        <!-- OSALEJAD -->
-                        <div class="tab-pane fade" id="nav-participants" role="tabpanel"
-                             aria-labelledby="nav-participants-tab">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card m-b-30">
-                                        <div class="card-body">
-                                            <div class="container">
-                                                <div class="table-responsive-sm">
-                                                    <table class="table table-sm table-bordered">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>Liiga</th>
-                                                            <th>Paare kokku</th>
-                                                            <th>Osalejaid kokku</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga MD</a></td>
-                                                            <td>18</td>
-                                                            <td>36</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga WD</a></td>
-                                                            <td>6</td>
-                                                            <td>12</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga XD</a></td>
-                                                            <td>8</td>
-                                                            <td>16</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Esiliiga MD</a></td>
-                                                            <td>15</td>
-                                                            <td>30</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Esiliiga WD</a></td>
-                                                            <td>13</td>
-                                                            <td>26</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Esiliiga XD</a></td>
-                                                            <td>5</td>
-                                                            <td>10</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">2.liiga MD</a></td>
-                                                            <td>5</td>
-                                                            <td>10</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">2.liiga WD</a></td>
-                                                            <td>6</td>
-                                                            <td>12</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">2.liiga XD</a></td>
-                                                            <td>5</td>
-                                                            <td>10</td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <!-- KINNITAMATA -->
                         @if(Auth::check())
@@ -267,8 +204,32 @@
                                 </div>
                             </div>
                     @endif
-                    <!-- ALAGRUPID -->
 
+
+                    <!-- OSALEJAD -->
+                        <div class="tab-pane fade" id="nav-participants" role="tabpanel"
+                             aria-labelledby="nav-participants-tab">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card m-b-30">
+                                        <div class="card-body">
+                                            <div class="container">
+                                                <div class="table-responsive-sm">
+                                                    @if($second_person)
+                                                        @include('partials/doubles_table')
+                                                    @else
+                                                        @include('partials/singles_table')
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- ALAGRUPID -->
                         <div class="tab-pane fade" id="nav-subgroups" role="tabpanel"
                              aria-labelledby="nav-subgroups-tab">
                             <div class="row" id="customRow">

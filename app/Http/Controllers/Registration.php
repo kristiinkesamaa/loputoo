@@ -60,13 +60,11 @@ class Registration extends Controller
     {
         // Make sure required fields are filled
         request()->validate([
-            "confirmed" => "required"
+            "confirm" => "required"
         ]);
 
-        dd($request);
+        RegisteredTeam::confirm($request);
 
-        DB::table('registered_teams')
-            ->whereIn('id', $request->get("confirmed"))
-            ->update(['confirmed' => 1]);
+        return back()->with('confirmed', true);
     }
 }

@@ -8,7 +8,6 @@ use App\CompetitionType;
 use App\RegisteredContestant;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class Competitions extends Controller
 {
@@ -129,14 +128,15 @@ class Competitions extends Controller
     {
         $competition_id = $request->competition->id;
         $types = CompetitionType::get_types($competition_id);
+        $types = CompetitionType::add_short_names($types);
         $registration_starts = strtotime($competition->registration_starts);
         $registration_ends = strtotime($competition->registration_ends);
         $now = strtotime(Carbon::now());
-        $contestants = RegisteredContestant::get_unconfirmed_by_competition_id($competition_id);
-
-        // Find if competition type is 1 or 2 people
+        $unconfirmed_contestants = RegisteredContestant::get_unconfirmed_by_competition_id($competition_id);
+        $contestants = RegisteredContestant::get_by_competition_id($competition_id);
         $second_person = false;
 
+        // Find if competition type is 1 or 2 people
         foreach ($types as $type) {
             if ($type->id > 2) {
                 $second_person = true;
@@ -152,6 +152,7 @@ class Competitions extends Controller
             'registration_starts' => $registration_starts,
             'registration_ends' => $registration_ends,
             'now' => $now,
+            'unconfirmed_contestants' => $unconfirmed_contestants,
             'contestants' => $contestants
         ])->with('registered', true);
     }

@@ -17,7 +17,7 @@
         <?php $a = 0 ?>
         <tbody>
 
-        @foreach($contestants as $contestant)
+        @foreach($unconfirmed_contestants as $contestant)
 
             @if($a % 2 === 0)
                 <tr>
@@ -30,7 +30,8 @@
 
                         <td>{{ $contestant->type_name }}</td>
                         <td>{{ $contestant->league_name }}</td>
-                        <td><input name="confirm[]" value="{{ $contestant->team_id }}" type="checkbox"></td>
+                        <td><input class="confirm-checkbox" name="confirm[]" value="{{ $contestant->team_id }}"
+                                   type="checkbox"></td>
                 </tr>
             @endif
 
@@ -39,6 +40,17 @@
 
         </tbody>
     </table>
+    <button id="btn-select-all" class="btn-change" type="button">Vali kõik</button>
     <button class="btn-change" type="submit">Kinnita valitud mängijad</button>
 
 </form>
+
+<script>
+    $(document).ready(function () {
+        $("#btn-select-all").on("click", function () {
+            $(".confirm-checkbox").each(function () {
+                $(this).click()
+            })
+        })
+    })
+</script>

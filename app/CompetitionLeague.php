@@ -66,6 +66,6 @@ class CompetitionLeague extends Model
             ->leftJoin('leagues', 'competition_leagues.league_id', '=', 'leagues.id')
             ->where('competition_id', '=', $competition_id)
             ->orderBy('leagues.id', 'asc')
-            ->get('name');
+            ->get(['leagues.id', 'name']);
     }
 }

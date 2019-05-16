@@ -68,4 +68,25 @@ class CompetitionType extends Model
             ->orderBy('types.id', 'asc')
             ->get();
     }
+
+    public static function add_short_names($types)
+    {
+        foreach ($types as $key => $type) {
+
+            // Add short names to types
+            if ($type->id === 1) {
+                $types[$key]->short_name = "NÜ";
+            } elseif ($type->id === 2) {
+                $types[$key]->short_name = "MÜ";
+            } elseif ($type->id === 3) {
+                $types[$key]->short_name = "NP";
+            } elseif ($type->id === 4) {
+                $types[$key]->short_name = "MP";
+            } elseif ($type->id === 5) {
+                $types[$key]->short_name = "SP";
+            }
+        }
+
+        return $types;
+    }
 }
