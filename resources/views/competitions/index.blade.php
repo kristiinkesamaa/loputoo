@@ -170,12 +170,13 @@
                                             <div class="form-group row">
                                                 <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
                                                 <div class="col-sm-8">
-                                                    <select class="custom-select form-control" id="leagues" name="league" required>
-                                                        <option selected>Vali liiga</option>
-                                                        <option value="1">Esiliiga</option>
-                                                        <option value="2">2.liiga</option>
-                                                        <option value="2">3.liiga</option>
-                                                        <option value="2">4.liiga</option>
+                                                    <select class="custom-select form-control" id="leagues" name="league">
+                                                        <option selected>Vali</option>
+
+                                                        @foreach($competition->leagues as $league)
+                                                            <option class="competition-league"
+                                                                    value="{{ $league->id }}">{{ $league->name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>

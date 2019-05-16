@@ -24,6 +24,7 @@ class Competitions extends Controller
 
         foreach ($competitions as $key => $competition) {
             $competitions[$key]->types = CompetitionType::get_types($competition->id);
+            $competitions[$key]->leagues = CompetitionLeague::get_league_names($competition->id);
 
             foreach ($competitions[$key]->types as $type) {
                 if ($type->id > 2) {

@@ -155,16 +155,22 @@
                                                 </div>
 
                                                 <div class="row justify-content-center">
-                                                    @if($now < $registration_starts)
-                                                        <p>Registreerimine ei ole veel alanud.</p>
-                                                    @elseif($now > $registration_ends)
-                                                        <p>Registreerimine on lõppenud.</p>
-                                                    @else
-                                                        <button type="button" class="btn btn-add" data-toggle="modal"
-                                                                data-target=".bd-example-modal-lg" id="register-btn">
-                                                            Registreeru
-                                                        </button>
+
+                                                    @if(!Auth::check())
+                                                        @if($now < $registration_starts)
+                                                            <p>Registreerimine ei ole veel alanud.</p>
+                                                        @elseif($now > $registration_ends)
+                                                            <p>Registreerimine on lõppenud.</p>
+                                                        @else
+                                                            <button type="button" class="btn btn-add"
+                                                                    data-toggle="modal"
+                                                                    data-target=".bd-example-modal-lg"
+                                                                    id="register-btn">
+                                                                Registreeru
+                                                            </button>
+                                                        @endif
                                                     @endif
+
                                                 </div>
 
                                             </div>
@@ -340,7 +346,7 @@
                                                 <tr role="row" class="odd">
                                                     <td>10:00</td>
                                                     <td>MÜ 3. liiga - A alagrupp</td>
-                                                    <td>Margus Kask - Marek Jõgi </td>
+                                                    <td>Margus Kask - Marek Jõgi</td>
                                                     <td>21:10 11:21 22:20</td>
                                                 </tr>
                                                 <tr role="row" class="even">
@@ -486,7 +492,7 @@
                                 <div class="form-group row">
                                     <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
                                     <div class="col-sm-8">
-                                        <select class="custom-select form-control" id="leagues">
+                                        <select class="custom-select form-control" id="leagues" name="league">
                                             <option selected>Vali</option>
 
                                             @foreach($leagues as $league)
