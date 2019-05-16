@@ -28,7 +28,7 @@ class Registration extends Controller
         $team = new RegisteredTeam();
 
         $team->competition_id = $request->id;
-        $team->league = $request->$request->get("league");
+        $team->league_id = $request->get("league");
         $team->type_id = $type_id;
 
         $team->save();
@@ -45,8 +45,6 @@ class Registration extends Controller
         // If competition type is 2 people then save other contestant
         if ($type_id > 2) {
             $contestant2 = new RegisteredContestant();
-
-            $contestant2->competition_id = $request->id;
             $contestant2->team_id = $team->id;
             $contestant2->name = $request->get("person_2_name");
             $contestant2->email = $request->get("person_2_email");

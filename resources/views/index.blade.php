@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-md-6 col-xl-3">
                         <div class="mini-stat clearfix bg-white border-pink">
-                            <span class="mini-stat-icon bg-light"><i class="fa fa-trophy text-pink"></i></span>
+                            <span class="mini-stat-icon bg-light"><i class="fa fa-calendar-o text-pink"></i></span>
                             <div class="mini-stat-info text-right text-muted">
                                 <span class="counter text-pink">{{ $future_competitions }}</span>
                                 Võistlust tulemas

@@ -49,7 +49,7 @@
                                 <span>Eesolevaid võistlusi pole.</span>
                             @else
                                 @foreach ($competitions as $competition)
-                                    <div class="container">
+                                    <div class="container pt-1 pb-1">
                                         <div class="row align-items-center">
                                             <div class="col-md-4">
                                                 <img class="myImg"
@@ -170,7 +170,7 @@
                                             <div class="form-group row">
                                                 <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
                                                 <div class="col-sm-8">
-                                                    <select class="custom-select form-control" id="leagues" required>
+                                                    <select class="custom-select form-control" id="leagues" name="league" required>
                                                         <option selected>Vali liiga</option>
                                                         <option value="1">Esiliiga</option>
                                                         <option value="2">2.liiga</option>

@@ -12,9 +12,9 @@
                         <div class="btn-group pull-right">
                             <ol class="breadcrumb hide-phone p-0 m-0">
                                 <li class="breadcrumb-item text-grey-light"><i
-                                            class="ti-location-pin pr-1"></i>{{ $competition->location }}</li>
+                                            class="fa fa-map-marker pr-1"></i>{{ $competition->location }}</li>
                                 <li class="breadcrumb-item text-grey-light"><i
-                                            class="ti-time pr-1"></i>{{ date('H:i', $datetime) }}</li>
+                                            class="fa fa-clock-o pr-1"></i>{{ date('H:i', $datetime) }}</li>
                             </ol>
                         </div>
                         <h6 class="page-title">{{ $competition->title }}</h6>
@@ -44,6 +44,9 @@
                             <a class="nav-item nav-link" id="nav-queue-tab" data-toggle="tab" href="#nav-queue"
                                role="tab"
                                aria-controls="nav-queue" aria-selected="false">Järjekord</a>
+                            <a class="nav-item nav-link" id="nav-results-tab" data-toggle="tab" href="#nav-results"
+                               role="tab"
+                               aria-controls="nav-results" aria-selected="false">Tulemused</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -184,14 +187,14 @@
                                                     <div class="table-responsive-sm">
 
                                                         @if ( session()->has('confirmed') )
-                                                        <div class="alert alert-success alert-dismissible fade show"
-                                                             role="alert">
-                                                            <button type="button" class="close" data-dismiss="alert"
-                                                                    aria-label="Close">
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                            <span><strong>Hästi!</strong> Valitud tiimid on kinnitatud.</span>
-                                                        </div>
+                                                            <div class="alert alert-success alert-dismissible fade show"
+                                                                 role="alert">
+                                                                <button type="button" class="close" data-dismiss="alert"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                                <span><strong>Hästi!</strong> Valitud tiimid on kinnitatud.</span>
+                                                            </div>
                                                         @endif
 
                                                         @if($second_person)
@@ -242,7 +245,7 @@
                                             <div class="container">
                                                 <div class="table-responsive-sm">
                                                     <table class="table table-sm table-bordered">
-                                                        <thead>
+                                                        <thead class="thead-default">
                                                         <tr>
                                                             <th>Liiga</th>
                                                             <th>Alagrupp</th>
@@ -318,105 +321,119 @@
                         <!-- JÄRJEKORD -->
                         <div class="tab-pane fade" id="nav-queue" role="tabpanel" aria-labelledby="nav-queue-tab">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-12">
                                     <div class="card m-b-30">
-                                        <div class="card-body">
+                                        <div class="card-body pr-0 pl-0">
+                                            <table id="datatable-buttons"
+                                                   class="table dataTable no-footer w-100 dt-width"
+                                                   cellspacing="0" width="100%"
+                                                   aria-describedby="datatable-buttons_info">
+                                                <thead class="thead-default">
+                                                <tr role="row">
+                                                    <th>Kellaaeg</th>
+                                                    <th>Liiga</th>
+                                                    <th>Mängijad</th>
+                                                    <th>Tulemused</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr role="row" class="odd">
+                                                    <td>10:00</td>
+                                                    <td>MÜ 3. liiga - A alagrupp</td>
+                                                    <td>Margus Kask - Marek Jõgi </td>
+                                                    <td>21:10 11:21 22:20</td>
+                                                </tr>
+                                                <tr role="row" class="even">
+                                                    <td>10:00</td>
+                                                    <td>MÜ 3. liiga - A alagrupp</td>
+                                                    <td>Margus Kask - Janek Kasemägi</td>
+                                                    <td>21:10 11:21 22:20</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td>10:00</td>
+                                                    <td>NÜ 2. liiga - A alagrupp</td>
+                                                    <td>Mari Kuusk - Marika Pärn</td>
+                                                    <td>21:10 11:21</td>
+                                                </tr>
+                                                <tr role="row" class="odd">
+                                                    <td>10:00</td>
+                                                    <td>NÜ 2. liiga - A alagrupp</td>
+                                                    <td>Mari Kuusk - Liis Puu</td>
+                                                    <td>21:10 11:21 22:20</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- TULEMUSED -->
+
+                        <div class="tab-pane fade" id="nav-results" role="tabpanel" aria-labelledby="nav-results-tab">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card m-b-30">
+                                        <div class="card-body pr-0 pl-0">
                                             <div class="container">
-                                                <div class="table-responsive">
-                                                    <table class="table table-sm table-bordered">
-                                                        <thead>
-                                                        <tr>
-                                                            <th class="width">Järjekord</th>
-                                                            <th>Liiga</th>
-                                                            <th>Alagrupp</th>
-                                                            <th>Mängijad</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td class="width">1</td>
-                                                            <td><a class="text-grey" href="">Meistriliiga MD - A
-                                                                    alagrupp</a></td>
-                                                            <td>A</td>
-                                                            <td>Jüri Kask<br>
-                                                                Koit Kuusk
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="width">2</td>
-                                                            <td><a class="text-grey" href="">Meistriliiga MD - B
-                                                                    alagrupp</a></td>
-                                                            <td>B</td>
-                                                            <td>Jüri Kask<br>
-                                                                Koit Kuusk
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="width">3</td>
-                                                            <td><a class="text-grey" href="">Meistriliiga WD - A
-                                                                    alagrupp</a></td>
-                                                            <td>A</td>
-                                                            <td>Marta Kask<br>
-                                                                Laura Kuusk
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="width">4</td>
-                                                            <td><a class="text-grey" href="">Meistriliiga WD - B
-                                                                    alagrupp</a></td>
-                                                            <td>B</td>
-                                                            <td>Marta Kask<br>
-                                                                Laura Kuusk
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="width">5</td>
-                                                            <td><a class="text-grey" href="">Meistriliiga WD - C
-                                                                    alagrupp</a></td>
-                                                            <td>C</td>
-                                                            <td>Marta Kask<br>
-                                                                Laura Kuusk
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="width">5</td>
-                                                            <td><a class="text-grey" href="">Esiliiga XD - A
-                                                                    alagrupp</a>
-                                                            </td>
-                                                            <td>A</td>
-                                                            <td>Jüri Kask<br>
-                                                                Laura Kuusk
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="width">6</td>
-                                                            <td><a class="text-grey" href="">2.liiga MD - A alagrupp</a>
-                                                            </td>
-                                                            <td>A</td>
-                                                            <td>Jüri Kask<br>
-                                                                Laura Kuusk
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="width">7</td>
-                                                            <td><a class="text-grey" href="">2.liiga WD - A alagrupp</a>
-                                                            </td>
-                                                            <td>A</td>
-                                                            <td>Marta Kask<br>
-                                                                Laura Kuusk
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="width">8</td>
-                                                            <td><a class="text-grey" href="">2.liiga XD - A alagrupp</a>
-                                                            </td>
-                                                            <td>A</td>
-                                                            <td>Jüri Kask<br>
-                                                                Laura Kuusk
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <h6>2. liiga meesüksik</h6>
+                                                        <table class="table">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <th>Margus Kask</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <th>Marek Jõgi</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <th>Jaanus Kasemägi</th>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h6>3. liiga meesüksik</h6>
+                                                        <table class="table">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <th>Margus Kask</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <th>Marek Jõgi</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <th>Jaanus Kasemägi</th>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h6>4. liiga meesüksik</h6>
+                                                        <table class="table">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <th>Margus Kask</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <th>Marek Jõgi</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <th>Jaanus Kasemägi</th>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -424,120 +441,98 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="nav-results" role="tabpanel" aria-labelledby="nav-results-tab">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="card m-b-30">
-                                        <div class="card-body">
-                                            <div class="container">
-                                                tulemused
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- registreeru võistlusele Modal -->
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-             aria-hidden="true" id="register-modal">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">
-                            Registreeru võistlusele {{ $competition->title }}
-                        </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-12">
-
-                                <form method="post" action="/competitions/{{ $competition->id }}/register">
-                                    @csrf
-
-                                    <div class="form-group row">
-                                        <label for="types" class="col-sm-4 col-form-label">Vali mänguliik</label>
-                                        <div class="col-sm-8">
-                                            <select class="custom-select form-control" id="types" name="type">
-                                                <option value="" selected>Vali</option>
-
-                                                @foreach ($types as $type)
-                                                    <option class="competition-type"
-                                                            value="{{ $type->id }}">{{ $type->name }}</option>
-                                                @endforeach
-
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
-                                        <div class="col-sm-8">
-                                            <select class="custom-select form-control" id="leagues">
-                                                <option selected>Vali</option>
-
-                                                @foreach($leagues as $league)
-                                                    <option class="competition-league"
-                                                            value="{{ $league->id }}">{{ $league->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="first-contestant-name" class="col-sm-4 col-form-label">
-                                            {{ $second_person ? "1. mängija nimi" : "Mängija nimi" }}
-                                        </label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="first-contestant-name"
-                                                   placeholder="Sisesta mängija nimi" name="person_1_name">
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label for="first-contestant-email" class="col-sm-4 col-form-label">
-                                            {{ $second_person ? "1. mängija meiliaadress" : "Mängija meiliaadress" }}
-                                        </label>
-                                        <div class="col-sm-8">
-                                            <input type="email" class="form-control" id="first-contestant-email"
-                                                   placeholder="Sisesta meiliaadress" name="person_1_email">
-                                        </div>
-                                    </div>
-
-                                    @if($second_person)
-                                        @include("partials/second_person")
-                                    @endif
-
-                                    <div class="modal-footer">
-                                        <input type="submit" class="btn btn-add" value="Registreeru">
-                                    </div>
-
-                                </form>
-
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-                    </div><!-- end modal body -->
-                </div>
-            </div>
-        </div> <!-- end modal -->
     </div>
 
-    @if ($errors->any())
-        <div style="background: red">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    <!-- registreeru võistlusele Modal -->
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+         aria-hidden="true" id="register-modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">
+                        Registreeru võistlusele {{ $competition->title }}
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <form method="post" action="/competitions/{{ $competition->id }}/register">
+                                @csrf
+
+                                <div class="form-group row">
+                                    <label for="types" class="col-sm-4 col-form-label">Vali mänguliik</label>
+                                    <div class="col-sm-8">
+                                        <select class="custom-select form-control" id="types" name="type">
+                                            <option value="" selected>Vali</option>
+
+                                            @foreach ($types as $type)
+                                                <option class="competition-type"
+                                                        value="{{ $type->id }}">{{ $type->name }}</option>
+                                            @endforeach
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
+                                    <div class="col-sm-8">
+                                        <select class="custom-select form-control" id="leagues">
+                                            <option selected>Vali</option>
+
+                                            @foreach($leagues as $league)
+                                                <option class="competition-league"
+                                                        value="{{ $league->id }}">{{ $league->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="first-contestant-name" class="col-sm-4 col-form-label">
+                                        {{ $second_person ? "1. mängija nimi" : "Mängija nimi" }}
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="first-contestant-name"
+                                               placeholder="Sisesta mängija nimi" name="person_1_name">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="first-contestant-email" class="col-sm-4 col-form-label">
+                                        {{ $second_person ? "1. mängija meiliaadress" : "Mängija meiliaadress" }}
+                                    </label>
+                                    <div class="col-sm-8">
+                                        <input type="email" class="form-control" id="first-contestant-email"
+                                               placeholder="Sisesta meiliaadress" name="person_1_email">
+                                    </div>
+                                </div>
+
+                                @if($second_person)
+                                    @include("partials/second_person")
+                                @endif
+
+                                <div class="modal-footer">
+                                    <input type="submit" class="btn btn-add" value="Registreeru">
+                                </div>
+
+                            </form>
+
+                        </div> <!-- end col -->
+                    </div> <!-- end row -->
+                </div><!-- end modal body -->
+            </div>
         </div>
-    @endif
+    </div> <!-- end modal -->
 
     <script>
         $(document).ready(function () {

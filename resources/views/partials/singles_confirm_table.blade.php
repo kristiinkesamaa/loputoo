@@ -2,14 +2,16 @@
     @method("patch")
     @csrf
 
+
+
     <table class="table table-sm table-bordered">
-        <thead>
-        <tr>
+        <thead class="thead-default">
+        <tr class="text-center">
             <th>Mängija nimi</th>
             <th>Mängija email</th>
             <th>Mänguliik</th>
             <th>Liiga</th>
-            <th>Kinnita</th>
+            <th>Kinnita<input class="ml-2" type="checkbox" name="confirm" id="confirm"></th>
         </tr>
         </thead>
         <tbody>
@@ -26,14 +28,16 @@
 
         </tbody>
     </table>
-    <button id="btn-select-all" class="btn-change" type="button">Vali kõik</button>
-    <button class="btn-change" type="submit">Kinnita valitud mängijad</button>
-
+    <row>
+        <div class="col-3 float-left p-0">
+            <button class="btn btn-change text-white" type="submit">Kinnita valitud mängijad</button>
+        </div>
+    </row>
 </form>
 
 <script>
     $(document).ready(function () {
-        $("#btn-select-all").on("click", function () {
+        $("#confirm").on("click", function () {
             $(".confirm-checkbox").each(function () {
                 $(this).click()
             })

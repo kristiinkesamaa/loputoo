@@ -1,17 +1,16 @@
 <form method="post" action="/competitions/{{ $competition->id }}/confirm">
     @method("patch")
     @csrf
-
     <table class="table table-sm table-bordered">
-        <thead>
-        <tr>
+        <thead class="thead-default">
+        <tr class="text-center">
             <th>1. mängija nimi</th>
             <th>1. mängija email</th>
             <th>2. mängija nimi</th>
             <th>2. mängija email</th>
             <th>Mänguliik</th>
             <th>Liiga</th>
-            <th>Kinnita</th>
+            <th>Kinnita<input class="ml-2" type="checkbox" name="confirm" id="confirm"></th>
         </tr>
         </thead>
         <?php $a = 0 ?>
@@ -30,8 +29,9 @@
 
                         <td>{{ $contestant->type_name }}</td>
                         <td>{{ $contestant->league_name }}</td>
-                        <td><input class="confirm-checkbox" name="confirm[]" value="{{ $contestant->team_id }}"
-                                   type="checkbox"></td>
+                        <td class="text-center"><input class="confirm-checkbox" name="confirm[]"
+                                                       value="{{ $contestant->team_id }}"
+                                                       type="checkbox"></td>
                 </tr>
             @endif
 
@@ -40,14 +40,16 @@
 
         </tbody>
     </table>
-    <button id="btn-select-all" class="btn-change" type="button">Vali kõik</button>
-    <button class="btn-change" type="submit">Kinnita valitud mängijad</button>
-
+    <row>
+        <div class="col-3 float-left p-0">
+            <button class="btn btn-change text-white" type="submit">Kinnita valitud mängijad</button>
+        </div>
+    </row>
 </form>
 
 <script>
     $(document).ready(function () {
-        $("#btn-select-all").on("click", function () {
+        $("#confirm").on("click", function () {
             $(".confirm-checkbox").each(function () {
                 $(this).click()
             })

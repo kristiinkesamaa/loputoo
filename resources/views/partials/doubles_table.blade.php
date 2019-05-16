@@ -1,5 +1,5 @@
 <table class="table table-sm table-bordered">
-    <thead>
+    <thead class="thead-default">
     <tr>
         <th>Liiga</th>
         <th>Paare kokku</th>
