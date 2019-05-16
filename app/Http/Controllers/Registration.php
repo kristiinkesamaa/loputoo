@@ -15,6 +15,7 @@ class Registration extends Controller
         // Make sure required fields are filled
         request()->validate([
             "type" => "required",
+            "league" => "required",
             "person_1_name" => "required",
             "person_1_email" => "required",
             "person_2_name" => "required_if:type,>,2",
@@ -27,6 +28,7 @@ class Registration extends Controller
         $team = new RegisteredTeam();
 
         $team->competition_id = $request->id;
+        $team->league = $request->$request->get("league");
         $team->type_id = $type_id;
 
         $team->save();
@@ -34,7 +36,6 @@ class Registration extends Controller
         // Save new registered contestant
         $contestant1 = new RegisteredContestant();
 
-        $contestant1->competition_id = $request->id;
         $contestant1->team_id = $team->id;
         $contestant1->name = $request->get("person_1_name");
         $contestant1->email = $request->get("person_1_email");

@@ -64,15 +64,6 @@
                                                         </button>
                                                         <span><strong>Hästi!</strong> Oled registreeritud.</span>
                                                     </div>
-                                                @elseif ( session()->has('confirmed') )
-                                                    <div class="alert alert-success alert-dismissible fade show"
-                                                         role="alert">
-                                                        <button type="button" class="close" data-dismiss="alert"
-                                                                aria-label="Close">
-                                                            <span aria-hidden="true">×</span>
-                                                        </button>
-                                                        <span><strong>Hästi!</strong> Valitud tiimid on kinnitatud.</span>
-                                                    </div>
                                                 @endif
 
                                                 <div class="container">
@@ -191,6 +182,18 @@
                                             <div class="card-body">
                                                 <div class="container">
                                                     <div class="table-responsive-sm">
+
+                                                        @if ( session()->has('confirmed') )
+                                                        <div class="alert alert-success alert-dismissible fade show"
+                                                             role="alert">
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                            <span><strong>Hästi!</strong> Valitud tiimid on kinnitatud.</span>
+                                                        </div>
+                                                        @endif
+
                                                         @if($second_person)
                                                             @include('partials/doubles_confirm_table')
                                                         @else
@@ -428,7 +431,6 @@
                                         <div class="card-body">
                                             <div class="container">
                                                 tulemused
-
                                             </div>
                                         </div>
                                     </div>
@@ -480,10 +482,11 @@
                                         <div class="col-sm-8">
                                             <select class="custom-select form-control" id="leagues">
                                                 <option selected>Vali</option>
-                                                <option value="1">Esiliiga</option>
-                                                <option value="2">2.liiga</option>
-                                                <option value="2">3.liiga</option>
-                                                <option value="2">4.liiga</option>
+
+                                                @foreach($leagues as $league)
+                                                    <option class="competition-league"
+                                                            value="{{ $league->id }}">{{ $league->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                     </div>
@@ -536,5 +539,18 @@
         </div>
     @endif
 
+    <script>
+        $(document).ready(function () {
+            $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+                localStorage.setItem('activeTab', $(e.target).attr('href'));
+            });
+
+            var activeTab = localStorage.getItem('activeTab');
+
+            if (activeTab) {
+                $('a[href="' + activeTab + '"]').tab('show');
+            }
+        });
+    </script>
 
 @endsection

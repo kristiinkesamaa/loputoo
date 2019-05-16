@@ -17,7 +17,7 @@ class CreateRegisteredTeams extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('competition_id');
             $table->unsignedBigInteger('type_id');
-            $table->unsignedBigInteger('league_id')->default(1);
+            $table->unsignedBigInteger('league_id');
             $table->boolean('confirmed')->default(false);
             $table->timestamps();
             $table->foreign('competition_id')->references('id')->on('competitions')->onDelete("cascade");

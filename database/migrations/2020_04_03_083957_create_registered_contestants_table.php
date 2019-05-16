@@ -15,7 +15,6 @@ class CreateRegisteredContestantsTable extends Migration
     {
         Schema::create('registered_contestants', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('competition_id');
             $table->unsignedBigInteger('team_id');
             $table->string('name');
             $table->string('email');

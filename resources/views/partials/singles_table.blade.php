@@ -9,7 +9,8 @@
     @foreach($leagues as $league)
         @foreach($types as $type)
             <tr>
-                <td><a class="text-grey" href="">{{ $league->name }} {{ $type->short_name }}</a>
+                <td><a class="text-grey"
+                       href="/competitions/{{ $competition->id }}/{{ $league->name }}/{{ $type->short_name }}">{{ $league->name }} {{ $type->short_name }}</a>
                 </td>
                 <td>
                     <?php $number_of_teams = 0; ?>

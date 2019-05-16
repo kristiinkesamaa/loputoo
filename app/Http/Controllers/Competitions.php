@@ -154,7 +154,7 @@ class Competitions extends Controller
             'now' => $now,
             'unconfirmed_contestants' => $unconfirmed_contestants,
             'contestants' => $contestants
-        ])->with('registered', true);
+        ]);
     }
 
     /**

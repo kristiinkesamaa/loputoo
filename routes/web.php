@@ -15,6 +15,14 @@ Route::get('/', "Pages@index");
 
 Route::resource('competitions', "Competitions");
 
+Route::get('/competitions/{id}/{league}/{type}', "Groups@show");
+
+Route::get('/competitions/{id}/{league}/{type}/{team_id}/edit', "Groups@edit");
+
+Route::patch('/competitions/{id}/{league}/{type}/{team_id}', "Groups@update");
+
+Route::delete('/competitions/{id}/{league}/{type}/{team_id}', "Groups@destroy");
+
 Route::post('/competitions/{id}/register', 'Registration@register');
 
 Route::patch('/competitions/{id}/confirm', 'Registration@confirm');

@@ -20,7 +20,7 @@
                 <td>{{ $contestant->email }}</td>
                 <td>{{ $contestant->type_name }}</td>
                 <td>{{ $contestant->league_name }}</td>
-                <td><input class="confirm-checkbox" name="confirmed[]" value="{{ $contestant->team_id }}" type="checkbox"></td>
+                <td><input class="confirm-checkbox" name="confirm[]" value="{{ $contestant->team_id }}" type="checkbox"></td>
             </tr>
         @endforeach
 
