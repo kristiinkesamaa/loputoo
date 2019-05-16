@@ -6,10 +6,24 @@
     <div class="wrapper" id="page-wrap">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
                     <div class="card m-b-30">
                         <div class="card-body">
                             <div class="container">
+
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                    <span><strong>Hästi!</strong> Andmed on muudetud.</span>
+                                </div>
+
                                 <div class="table-responsive-sm">
                                     <form method="post" action="/competitions/{{ $address }}/{{ $team_id }}">
                                         @method('patch')
@@ -70,7 +84,7 @@
                                             @include("partials/second_person_edit")
                                         @endif
 
-                                        <div class="modal-footer">
+                                        <div class="modal-footer no-border">
                                             <input type="submit" class="btn btn-add" value="Muuda">
                                         </div>
                                     </form>

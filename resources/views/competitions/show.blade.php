@@ -199,7 +199,7 @@
                                                                         aria-label="Close">
                                                                     <span aria-hidden="true">×</span>
                                                                 </button>
-                                                                <span><strong>Hästi!</strong> Valitud tiimid on kinnitatud.</span>
+                                                                <span><strong>Hästi!</strong> Valitud võistlejad on kinnitatud.</span>
                                                             </div>
                                                         @endif
 
@@ -260,56 +260,56 @@
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga MD - A
+                                                            <td><a class="text-grey" href="">Meistriliiga MP - A
                                                                     alagrupp</a></td>
                                                             <td>A</td>
                                                             <td>4</td>
                                                         </tr>
                                                         <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga MD - B
+                                                            <td><a class="text-grey" href="">Meistriliiga MP - B
                                                                     alagrupp</a></td>
                                                             <td>B</td>
                                                             <td>4</td>
                                                         </tr>
                                                         <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga WD - A
+                                                            <td><a class="text-grey" href="">Meistriliiga NP - A
                                                                     alagrupp</a></td>
                                                             <td>A</td>
                                                             <td>3</td>
                                                         </tr>
                                                         <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga WD - B
+                                                            <td><a class="text-grey" href="">Meistriliiga NP - B
                                                                     alagrupp</a></td>
                                                             <td>B</td>
                                                             <td>3</td>
                                                         </tr>
                                                         <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga WD - C
+                                                            <td><a class="text-grey" href="">Meistriliiga NP - C
                                                                     alagrupp</a></td>
                                                             <td>C</td>
                                                             <td>3</td>
                                                         </tr>
                                                         <tr>
-                                                            <td><a class="text-grey" href="">Esiliiga XD - A
+                                                            <td><a class="text-grey" href="">Esiliiga SP - A
                                                                     alagrupp</a>
                                                             </td>
                                                             <td>A</td>
                                                             <td>10</td>
                                                         </tr>
                                                         <tr>
-                                                            <td><a class="text-grey" href="">2.liiga MD - A alagrupp</a>
+                                                            <td><a class="text-grey" href="">2.liiga MP - A alagrupp</a>
                                                             </td>
                                                             <td>A</td>
                                                             <td>10</td>
                                                         </tr>
                                                         <tr>
-                                                            <td><a class="text-grey" href="">2.liiga WD - A alagrupp</a>
+                                                            <td><a class="text-grey" href="">2.liiga NP - A alagrupp</a>
                                                             </td>
                                                             <td>A</td>
                                                             <td>12</td>
                                                         </tr>
                                                         <tr>
-                                                            <td><a class="text-grey" href="">2.liiga XD - A alagrupp</a>
+                                                            <td><a class="text-grey" href="">2.liiga SP - A alagrupp</a>
                                                             </td>
                                                             <td>A</td>
                                                             <td>10</td>
@@ -330,45 +330,47 @@
                                 <div class="col-12">
                                     <div class="card m-b-30">
                                         <div class="card-body pr-0 pl-0">
-                                            <table id="datatable-buttons"
-                                                   class="table dataTable no-footer w-100 dt-width"
-                                                   cellspacing="0" width="100%"
-                                                   aria-describedby="datatable-buttons_info">
-                                                <thead class="thead-default">
-                                                <tr role="row">
-                                                    <th>Kellaaeg</th>
-                                                    <th>Liiga</th>
-                                                    <th>Mängijad</th>
-                                                    <th>Tulemused</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr role="row" class="odd">
-                                                    <td>10:00</td>
-                                                    <td>MÜ 3. liiga - A alagrupp</td>
-                                                    <td>Margus Kask - Marek Jõgi</td>
-                                                    <td>21:10 11:21 22:20</td>
-                                                </tr>
-                                                <tr role="row" class="even">
-                                                    <td>10:00</td>
-                                                    <td>MÜ 3. liiga - A alagrupp</td>
-                                                    <td>Margus Kask - Janek Kasemägi</td>
-                                                    <td>21:10 11:21 22:20</td>
-                                                </tr>
-                                                <tr role="row" class="odd">
-                                                    <td>10:00</td>
-                                                    <td>NÜ 2. liiga - A alagrupp</td>
-                                                    <td>Mari Kuusk - Marika Pärn</td>
-                                                    <td>21:10 11:21</td>
-                                                </tr>
-                                                <tr role="row" class="odd">
-                                                    <td>10:00</td>
-                                                    <td>NÜ 2. liiga - A alagrupp</td>
-                                                    <td>Mari Kuusk - Liis Puu</td>
-                                                    <td>21:10 11:21 22:20</td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                            <div class="table-responsive-sm">
+                                                <table id="datatable-buttons"
+                                                       class="table dataTable no-footer"
+                                                       cellspacing="0" width="100%"
+                                                       aria-describedby="datatable-buttons_info">
+                                                    <thead class="thead-default">
+                                                    <tr role="row">
+                                                        <th>Kellaaeg</th>
+                                                        <th>Liiga</th>
+                                                        <th>Mängijad</th>
+                                                        <th>Tulemused</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr role="row" class="odd">
+                                                        <td>10:00</td>
+                                                        <td>MÜ 3. liiga - A alagrupp</td>
+                                                        <td>Margus Kask - Marek Jõgi</td>
+                                                        <td>21:10 11:21 22:20</td>
+                                                    </tr>
+                                                    <tr role="row" class="even">
+                                                        <td>10:00</td>
+                                                        <td>MÜ 3. liiga - A alagrupp</td>
+                                                        <td>Margus Kask - Janek Kasemägi</td>
+                                                        <td>21:10 11:21 22:20</td>
+                                                    </tr>
+                                                    <tr role="row" class="odd">
+                                                        <td>10:00</td>
+                                                        <td>NÜ 2. liiga - A alagrupp</td>
+                                                        <td>Mari Kuusk - Marika Pärn</td>
+                                                        <td>21:10 11:21</td>
+                                                    </tr>
+                                                    <tr role="row" class="odd">
+                                                        <td>10:00</td>
+                                                        <td>NÜ 2. liiga - A alagrupp</td>
+                                                        <td>Mari Kuusk - Liis Puu</td>
+                                                        <td>21:10 11:21 22:20</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -383,7 +385,7 @@
                                         <div class="card-body pr-0 pl-0">
                                             <div class="container">
                                                 <div class="row">
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-2">
                                                         <h6>2. liiga meesüksik</h6>
                                                         <table class="table">
                                                             <tbody>
@@ -397,12 +399,12 @@
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">3</th>
-                                                                <th>Jaanus Kasemägi</th>
+                                                                <th>Jan Kasemägi</th>
                                                             </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-2">
                                                         <h6>3. liiga meesüksik</h6>
                                                         <table class="table">
                                                             <tbody>
@@ -416,12 +418,12 @@
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">3</th>
-                                                                <th>Jaanus Kasemägi</th>
+                                                                <th>Jan Kasemägi</th>
                                                             </tr>
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-2">
                                                         <h6>4. liiga meesüksik</h6>
                                                         <table class="table">
                                                             <tbody>
@@ -435,7 +437,74 @@
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">3</th>
-                                                                <th>Jaanus Kasemägi</th>
+                                                                <th>Jan Kasemägi</th>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <h6>4. liiga meesüksik</h6>
+                                                        <table class="table">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <th>Margus Kask</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <th>Marek Jõgi</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <th>Jan Kasemägi</th>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <h6>4. liiga meespaarid</h6>
+                                                        <table class="table">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <th>Margus Kask
+                                                                Marek Kuusk
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <th>Marek Jõgi
+                                                                Mardo Mölder</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <th>Jan Kasemägi
+                                                                Raul Milber
+                                                                </th>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="col-sm-2">
+                                                        <h6>4. liiga meespaarid</h6>
+                                                        <table class="table">
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <th>Margus Kask
+                                                                    Marek Kuusk
+                                                                </th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <th>Marek Jõgi
+                                                                    Mardo Mölder</th>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <th>Jan Kasemägi
+                                                                    Raul Milber
+                                                                </th>
                                                             </tr>
                                                             </tbody>
                                                         </table>

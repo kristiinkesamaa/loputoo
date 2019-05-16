@@ -4,6 +4,18 @@
     <div class="wrapper" id="page-wrap">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <div class="btn-group pull-right">
+                            <ol class="breadcrumb hide-phone p-0 m-0">
+                                <li class="breadcrumb-item text-grey-light"><a href="/competitions">Tagasi osalejate lehele</a></li>
+                            </ol>
+                        </div>
+                        <h6 class="page-title">Jõgeva Kevad</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-12">
                     <div class="card m-b-30">
                         <div class="card-body">
@@ -18,14 +30,14 @@
                                                     aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
-                                            <span><strong>Hästi!</strong> tiim kustutatud.</span>
+                                            <span><strong>Hästi!</strong>Osaleja on kustutatud.</span>
                                         </div>
                                     @endif
 
                                     @if(Auth::check())
                                         <table class="table table-sm table-bordered">
                                             @if($second_person)
-                                                <thead>
+                                                <thead class="thead-default">
                                                 <tr>
                                                     <th>1. mängija nimi</th>
                                                     <th>1. mängija email</th>
@@ -33,7 +45,7 @@
                                                     <th>2. mängija email</th>
                                                     <th>Mänguliik</th>
                                                     <th>Liiga</th>
-                                                    <th></th>
+                                                    <th style="width: 92px;"></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -51,13 +63,14 @@
                                                                 <td>{{ $contestant->type_name }}</td>
                                                                 <td>{{ $contestant->league_name }}</td>
                                                                 <td>
-                                                                    <a class="btn btn-change"
-                                                                       href="/competitions/{{ $address }}/{{ $contestant->team_id }}/edit">Muuda</a>
                                                                     <form action="/competitions/{{ $address }}/{{ $contestant->team_id }}">
                                                                         @method('delete')
                                                                         @csrf
-
-                                                                        <button class="btn btn-delete">Kustuta</button>
+                                                                        <a class="btn btn-change text-white edit"
+                                                                           href="/competitions/{{ $address }}/{{ $contestant->team_id }}/edit"><i
+                                                                                    class="fa fa-pencil-square-o"></i></a>
+                                                                        <button class="btn btn-delete"><i
+                                                                                    class="fa fa-trash"></i></button>
                                                                     </form>
                                                                 </td>
                                                         </tr>

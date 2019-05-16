@@ -314,6 +314,11 @@ hr.margin {
 
 /* Custom nupud */
 
+.edit {
+    width: 38px;
+
+}
+
 .btn-width {
     width: 100%;
     max-width: 10em;
@@ -457,3 +462,19 @@ td {
 .dt-width {
     width:100%!important;
 }
+
+/* Tabelid */
+
+table#datatable-buttons {
+    border-top: none !important;
+
+}
+
+.thead-height {
+    height: 20px;
+}
+
+th.sorting_disabled {
+    padding: 4px;
+}
+
