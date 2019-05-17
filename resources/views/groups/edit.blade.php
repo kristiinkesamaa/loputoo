@@ -16,14 +16,6 @@
                     <div class="card m-b-30">
                         <div class="card-body">
                             <div class="container">
-
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                    <span><strong>Hästi!</strong> Andmed on muudetud.</span>
-                                </div>
-
                                 <div class="table-responsive-sm">
                                     <form method="post" action="/competitions/{{ $address }}/{{ $team_id }}">
                                         @method('patch')

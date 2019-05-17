@@ -201,5 +201,12 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 
+<script>
+    $(document).ready(function () {
+        $(".alert").delay(4000).slideUp(200, function () {
+            $(this).alert('close');
+        })
+    });
+</script>
 
 </html>

@@ -60,17 +60,7 @@ class RegisteredContestant extends Model
     public static function get_group($competition_id, $league_name, $short_type_name)
     {
         // Find long type name
-        if ($short_type_name === "NÜ") {
-            $type_name = "naisüksik";
-        } elseif ($short_type_name === "MÜ") {
-            $type_name = "meesüksik";
-        } elseif ($short_type_name === "NP") {
-            $type_name = "naispaar";
-        } elseif ($short_type_name === "MP") {
-            $type_name = "meespaar";
-        } elseif ($short_type_name === "SP") {
-            $type_name = "segapaar";
-        }
+        $type_name = RegisteredTeam::get_long_name($short_type_name);
 
         // Get all contestants by competition_id, league name and type name who have been confirmed by admin
         return DB::table('registered_contestants')

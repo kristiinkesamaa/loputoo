@@ -7,8 +7,9 @@
                 <div class="col-sm-12">
                     <div class="page-title-box">
                         <div class="btn-group pull-right">
+                            <h1>{{ Auth::check() ? 'Osalejate info muutmine: ' . $title : $title }}</h1>
                             <ol class="breadcrumb hide-phone p-0 m-0">
-                                <li class="breadcrumb-item text-grey-light"><a href="/competitions">Tagasi osalejate lehele</a></li>
+                                <li class="breadcrumb-item text-grey-light"><a href="/competitions/{{ $competition_id }}">Tagasi osalejate lehele</a></li>
                             </ol>
                         </div>
                         <h6 class="page-title">Jõgeva Kevad</h6>
@@ -23,6 +24,12 @@
                                 <div class="table-responsive-sm">
 
                                     @if ( session()->has('updated') )
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <span><strong>Hästi!</strong> Andmed on muudetud.</span>
+                                        </div>
                                     @elseif ( session()->has('deleted') )
                                         <div class="alert alert-success alert-dismissible fade show"
                                              role="alert">
@@ -30,7 +37,7 @@
                                                     aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
-                                            <span><strong>Hästi!</strong>Osaleja on kustutatud.</span>
+                                            <span><strong>Hästi!</strong> Osaleja on kustutatud.</span>
                                         </div>
                                     @endif
 
@@ -63,9 +70,10 @@
                                                                 <td>{{ $contestant->type_name }}</td>
                                                                 <td>{{ $contestant->league_name }}</td>
                                                                 <td>
-                                                                    <form action="/competitions/{{ $address }}/{{ $contestant->team_id }}">
+                                                                    <form method="post" action="/competitions/{{ $address }}/{{ $contestant->team_id }}">
                                                                         @method('delete')
                                                                         @csrf
+
                                                                         <a class="btn btn-change text-white edit"
                                                                            href="/competitions/{{ $address }}/{{ $contestant->team_id }}/edit"><i
                                                                                     class="fa fa-pencil-square-o"></i></a>

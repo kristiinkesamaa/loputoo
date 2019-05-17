@@ -54,4 +54,23 @@ class RegisteredTeam extends Model
                 ->update(['name' => $contestant['name'], 'email' => $contestant['email']]);
         }
     }
+
+    public static function get_long_name($short_type_name)
+    {
+        if ($short_type_name === "NÜ") {
+            $type_name = "naisüksik";
+        } elseif ($short_type_name === "MÜ") {
+            $type_name = "meesüksik";
+        } elseif ($short_type_name === "NP") {
+            $type_name = "naispaar";
+        } elseif ($short_type_name === "MP") {
+            $type_name = "meespaar";
+        } elseif ($short_type_name === "SP") {
+            $type_name = "segapaar";
+        }
+
+        return $type_name;
+    }
+
+
 }

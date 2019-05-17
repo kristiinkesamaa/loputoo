@@ -11,6 +11,7 @@
 
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
+
                             @if ($errors->has('email'))
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">

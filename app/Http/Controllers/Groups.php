@@ -17,15 +17,20 @@ class Groups extends Controller
         $address = $id . '/' . $league . '/' . $type;
         $second_person = false;
 
-        foreach ($types as $type) {
-            if ($type->type_id > 2) {
+        foreach ($types as $one_type) {
+            if ($one_type->type_id > 2) {
                 $second_person = true;
             }
         }
 
+        $type_name = RegisteredTeam::get_long_name($type);
+        $title = $league . " " . $type_name;
+
         return view('groups/show_group', [
             'contestants' => $contestants,
             'second_person' => $second_person,
+            'competition_id' => $id,
+            'title' => $title,
             'address' => $address
         ]);
     }
