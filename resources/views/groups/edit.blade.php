@@ -16,7 +16,7 @@
                     <div class="card m-b-30">
                         <div class="card-body">
                             <div class="container">
-                                <div class="table-responsive-sm">
+                                <div class="table-responsive">
                                     <form method="post" action="/competitions/{{ $address }}/{{ $team_id }}">
                                         @method('patch')
                                         @csrf

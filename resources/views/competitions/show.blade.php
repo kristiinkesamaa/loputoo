@@ -190,7 +190,7 @@
                                         <div class="card m-b-30">
                                             <div class="card-body">
                                                 <div class="container">
-                                                    <div class="table-responsive-sm">
+                                                    <div class="table-responsive">
 
                                                         @if ( session()->has('confirmed') )
                                                             <div class="alert alert-success alert-dismissible fade show"
@@ -226,7 +226,7 @@
                                     <div class="card m-b-30">
                                         <div class="card-body">
                                             <div class="container">
-                                                <div class="table-responsive-sm">
+                                                <div class="table-responsive">
                                                     @if($second_person)
                                                         @include('partials/doubles_table')
                                                     @else
@@ -249,7 +249,7 @@
                                     <div class="card m-b-30">
                                         <div class="card-body">
                                             <div class="container">
-                                                <div class="table-responsive-sm">
+                                                <div class="table-responsive">
                                                     <table class="table table-sm table-bordered">
                                                         <thead class="thead-default">
                                                         <tr>
@@ -330,7 +330,7 @@
                                 <div class="col-12">
                                     <div class="card m-b-30">
                                         <div class="card-body pr-0 pl-0">
-                                            <div class="table-responsive-sm">
+                                            <div class="table-responsive">
                                                 <table id="datatable-buttons"
                                                        class="table dataTable table-bordered no-footer"
                                                        cellspacing="0" width="100%"
@@ -390,16 +390,16 @@
                                                         <table class="table">
                                                             <tbody>
                                                             <tr>
-                                                                <th scope="row">1</th>
+                                                                <th scope="row">1.</th>
                                                                 <th>Margus Kask</th>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">2</th>
+                                                                <th scope="row">2.</th>
                                                                 <th>Marek Jõgi</th>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">3</th>
-                                                                <th>Jan Kasemägi</th>
+                                                                <th>Jan Kasemägi.</th>
                                                             </tr>
                                                             </tbody>
                                                         </table>
@@ -409,15 +409,15 @@
                                                         <table class="table">
                                                             <tbody>
                                                             <tr>
-                                                                <th scope="row">1</th>
+                                                                <th scope="row">1.</th>
                                                                 <th>Margus Kask</th>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">2</th>
+                                                                <th scope="row">2.</th>
                                                                 <th>Marek Jõgi</th>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">3</th>
+                                                                <th scope="row">3.</th>
                                                                 <th>Jan Kasemägi</th>
                                                             </tr>
                                                             </tbody>
@@ -428,15 +428,15 @@
                                                         <table class="table">
                                                             <tbody>
                                                             <tr>
-                                                                <th scope="row">1</th>
+                                                                <th scope="row">1.</th>
                                                                 <th>Margus Kask</th>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">2</th>
+                                                                <th scope="row">2.</th>
                                                                 <th>Marek Jõgi</th>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">3</th>
+                                                                <th scope="row">3.</th>
                                                                 <th>Jan Kasemägi</th>
                                                             </tr>
                                                             </tbody>
@@ -447,15 +447,15 @@
                                                         <table class="table">
                                                             <tbody>
                                                             <tr>
-                                                                <th scope="row">1</th>
+                                                                <th scope="row">1.</th>
                                                                 <th>Margus Kask</th>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">2</th>
+                                                                <th scope="row">2.</th>
                                                                 <th>Marek Jõgi</th>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">3</th>
+                                                                <th scope="row">3.</th>
                                                                 <th>Jan Kasemägi</th>
                                                             </tr>
                                                             </tbody>
@@ -466,18 +466,18 @@
                                                         <table class="table">
                                                             <tbody>
                                                             <tr>
-                                                                <th scope="row">1</th>
+                                                                <th scope="row">1.</th>
                                                                 <th>Margus Kask
                                                                 Marek Kuusk
                                                                 </th>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">2</th>
+                                                                <th scope="row">2.</th>
                                                                 <th>Marek Jõgi
                                                                 Mardo Mölder</th>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">3</th>
+                                                                <th scope="row">3.</th>
                                                                 <th>Jan Kasemägi
                                                                 Raul Milber
                                                                 </th>
@@ -490,18 +490,18 @@
                                                         <table class="table">
                                                             <tbody>
                                                             <tr>
-                                                                <th scope="row">1</th>
+                                                                <th scope="row">1.</th>
                                                                 <th>Margus Kask
                                                                     Marek Kuusk
                                                                 </th>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">2</th>
+                                                                <th scope="row">2.</th>
                                                                 <th>Marek Jõgi
                                                                     Mardo Mölder</th>
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">3</th>
+                                                                <th scope="row">3.</th>
                                                                 <th>Jan Kasemägi
                                                                     Raul Milber
                                                                 </th>

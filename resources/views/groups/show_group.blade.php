@@ -22,7 +22,7 @@
                     <div class="card m-b-30">
                         <div class="card-body">
                             <div class="container">
-                                <div class="table-responsive-sm">
+                                <div class="table-responsive">
 
                                     @if ( session()->has('updated') )
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
