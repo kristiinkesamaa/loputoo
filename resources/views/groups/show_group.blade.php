@@ -7,12 +7,13 @@
                 <div class="col-sm-12">
                     <div class="page-title-box">
                         <div class="btn-group pull-right">
-                            <h1>{{ Auth::check() ? 'Osalejate info muutmine: ' . $title : $title }}</h1>
                             <ol class="breadcrumb hide-phone p-0 m-0">
                                 <li class="breadcrumb-item text-grey-light"><a href="/competitions/{{ $competition_id }}">Tagasi osalejate lehele</a></li>
                             </ol>
                         </div>
                         <h6 class="page-title">Jõgeva Kevad</h6>
+                        <h6>{{ Auth::check() ? 'Osalejate info muutmine: ' . $title : $title }}</h6>
+
                     </div>
                 </div>
             </div>
@@ -95,7 +96,7 @@
                                                     <th>Mängija email</th>
                                                     <th>Mänguliik</th>
                                                     <th>Liiga</th>
-                                                    <th></th>
+                                                    <th style="width: 92px;"></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -107,17 +108,15 @@
                                                         <td>{{ $contestant->type_name }}</td>
                                                         <td>{{ $contestant->league_name }}</td>
                                                         <td>
-                                                            <a class="btn btn-change"
-                                                               href="/competitions/{{ $address }}/{{ $contestant->team_id }}/edit">
-                                                                Muuda
-                                                            </a>
-
                                                             <form action="/competitions/{{ $address }}/{{ $contestant->team_id }}"
                                                                   method="post">
                                                                 @method('delete')
                                                                 @csrf
-
-                                                                <button class="btn btn-delete">Kustuta</button>
+                                                                <a class="btn btn-change text-white edit"
+                                                                   href="/competitions/{{ $address }}/{{ $contestant->team_id }}/edit"><i
+                                                                            class="fa fa-pencil-square-o"></i></a>
+                                                                <button class="btn btn-delete"><i
+                                                                            class="fa fa-trash"></i></button>
                                                             </form>
                                                         </td>
                                                     </tr>

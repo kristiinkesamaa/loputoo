@@ -205,11 +205,10 @@
                                             </div><!-- input-group -->
                                         </div>
 
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-4 time">
                                             <input class="form-control" type="time" name="time"
                                                    value="{{ old("time") }}" id="example-time-input" required>
                                         </div>
-
                                     </div>
 
                                     <div class="form-group row">

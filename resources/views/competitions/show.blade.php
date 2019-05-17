@@ -332,7 +332,7 @@
                                         <div class="card-body pr-0 pl-0">
                                             <div class="table-responsive-sm">
                                                 <table id="datatable-buttons"
-                                                       class="table dataTable no-footer"
+                                                       class="table dataTable table-bordered no-footer"
                                                        cellspacing="0" width="100%"
                                                        aria-describedby="datatable-buttons_info">
                                                     <thead class="thead-default">
@@ -348,25 +348,25 @@
                                                         <td>10:00</td>
                                                         <td>MÜ 3. liiga - A alagrupp</td>
                                                         <td>Margus Kask - Marek Jõgi</td>
-                                                        <td>21:10 11:21 22:20</td>
+                                                        <td class="text-blue">21:10 11:21 22:20</td>
                                                     </tr>
                                                     <tr role="row" class="even">
                                                         <td>10:00</td>
                                                         <td>MÜ 3. liiga - A alagrupp</td>
                                                         <td>Margus Kask - Janek Kasemägi</td>
-                                                        <td>21:10 11:21 22:20</td>
+                                                        <td class="text-blue">21:10 11:21 22:20</td>
                                                     </tr>
                                                     <tr role="row" class="odd">
                                                         <td>10:00</td>
                                                         <td>NÜ 2. liiga - A alagrupp</td>
                                                         <td>Mari Kuusk - Marika Pärn</td>
-                                                        <td>21:10 11:21</td>
+                                                        <td class="text-blue">21:10 11:21</td>
                                                     </tr>
                                                     <tr role="row" class="odd">
                                                         <td>10:00</td>
                                                         <td>NÜ 2. liiga - A alagrupp</td>
                                                         <td>Mari Kuusk - Liis Puu</td>
-                                                        <td>21:10 11:21 22:20</td>
+                                                        <td class="text-blue">21:10 11:21 22:20</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>

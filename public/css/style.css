@@ -3440,6 +3440,10 @@ File: Responsive
         float: left;
         margin: 10px 0;
     }
+
+    .time {
+        margin-top: 10px;
+    }
 }
 
 @media (max-width: 620px) {
