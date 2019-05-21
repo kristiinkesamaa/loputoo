@@ -1,6 +1,8 @@
 @extends("master_template")
 
 @section("content")
+    <script src="{{ url('js/jquery.min.js') }}"></script>
+
     <div class="wrapper" id="page-wrap">
         <div class="container-fluid">
             <div class="row">
@@ -8,7 +10,8 @@
                     <div class="page-title-box">
                         <div class="btn-group pull-right">
                             <ol class="breadcrumb hide-phone p-0 m-0">
-                                <li class="breadcrumb-item text-grey-light"><a href="/competitions/{{ $competition_id }}">Tagasi osalejate lehele</a></li>
+                                <li class="breadcrumb-item text-grey-light"><a
+                                            href="/competitions/{{ $competition_id }}">Tagasi osalejate lehele</a></li>
                             </ol>
                         </div>
                         <h6 class="page-title">Jõgeva Kevad</h6>
@@ -38,7 +41,7 @@
                                                     aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
-                                            <span><strong>Hästi!</strong> Osaleja on kustutatud.</span>
+                                            <span><strong>Hästi!</strong> Tiim on kustutatud.</span>
                                         </div>
                                     @endif
 
@@ -71,16 +74,14 @@
                                                                 <td>{{ $contestant->type_name }}</td>
                                                                 <td>{{ $contestant->league_name }}</td>
                                                                 <td>
-                                                                    <form method="post" action="/competitions/{{ $address }}/{{ $contestant->team_id }}">
-                                                                        @method('delete')
-                                                                        @csrf
-
-                                                                        <a class="btn btn-change text-white edit"
-                                                                           href="/competitions/{{ $address }}/{{ $contestant->team_id }}/edit"><i
-                                                                                    class="fa fa-pencil-square-o"></i></a>
-                                                                        <button class="btn btn-delete"><i
-                                                                                    class="fa fa-trash"></i></button>
-                                                                    </form>
+                                                                    <a class="btn btn-change text-white edit"
+                                                                       href="/competitions/{{ $address }}/{{ $contestant->team_id }}/edit">
+                                                                        <i class="fa fa-pencil-square-o"></i>
+                                                                    </a>
+                                                                    <button class="btn btn-delete"
+                                                                            data-team_id="{{ $contestant->team_id }}">
+                                                                        <i class="fa fa-trash"></i>
+                                                                    </button>
                                                                 </td>
                                                         </tr>
                                                     @endif
@@ -108,16 +109,14 @@
                                                         <td>{{ $contestant->type_name }}</td>
                                                         <td>{{ $contestant->league_name }}</td>
                                                         <td>
-                                                            <form action="/competitions/{{ $address }}/{{ $contestant->team_id }}"
-                                                                  method="post">
-                                                                @method('delete')
-                                                                @csrf
-                                                                <a class="btn btn-change text-white edit"
-                                                                   href="/competitions/{{ $address }}/{{ $contestant->team_id }}/edit"><i
-                                                                            class="fa fa-pencil-square-o"></i></a>
-                                                                <button class="btn btn-delete"><i
-                                                                            class="fa fa-trash"></i></button>
-                                                            </form>
+                                                            <a class="btn btn-change text-white edit"
+                                                               href="/competitions/{{ $address }}/{{ $contestant->team_id }}/edit">
+                                                                <i class="fa fa-pencil-square-o"></i>
+                                                            </a>
+                                                            <button class="btn btn-delete"
+                                                                    data-team_id="{{ $contestant->team_id }}">
+                                                                <i class="fa fa-trash"></i>
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -149,4 +148,48 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade delete-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <h5 class="modal-title text-center pt-5" id="exampleModalLongTitle">
+                        Kas sa soovid tiimi kustutada?
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body  pl-5 pr-5 pt-5 pb-5">
+                </div>
+                <div class="modal-footer no-border">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Tühista</button>
+                    <form method="post" id="delete-form">
+                        @method("delete")
+                        @csrf
+
+                        <button class="btn btn-delete btn-ok" type="submit">Kustuta</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            // When delete button next to competition is clicked
+            $(".btn-delete").on("click", function () {
+                var team_id = $(".btn-delete").data("team_id");
+                var address = '{{ $address }}';
+
+                // Give the delete form the correct action attribute
+                $("#delete-form").attr("action", "/competitions/" + address + '/' + team_id);
+
+                // And show modal
+                $(".delete-modal").modal("show")
+            });
+        });
+    </script>
 @endsection

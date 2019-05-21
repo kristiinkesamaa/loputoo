@@ -92,7 +92,7 @@
                                                         </a>
                                                     </div>
                                                     <div class="p-1">
-                                                        <button type="button"
+                                                        <button type="button" id="btn-delete"
                                                                 class="btn btn-block btn-delete btn-width"
                                                                 data-competition_id="{{ $competition->id }}">
                                                             Kustuta
@@ -170,7 +170,8 @@
                                             <div class="form-group row">
                                                 <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
                                                 <div class="col-sm-8">
-                                                    <select class="custom-select form-control" id="leagues" name="league">
+                                                    <select class="custom-select form-control" id="leagues"
+                                                            name="league">
                                                         <option selected>Vali</option>
 
                                                         @foreach($competition->leagues as $league)
@@ -228,8 +229,9 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header no-border">
-                        <h5 class="modal-title text-center pt-5" id="exampleModalLongTitle">Kas sa soovid selle
-                            võistluse kustutada?</h5>
+                        <h5 class="modal-title text-center pt-5" id="exampleModalLongTitle">
+                            Kas sa soovid selle võistluse kustutada?
+                        </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -248,6 +250,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <script>
@@ -262,7 +265,7 @@
         });
 
         // When delete button next to competition is clicked
-        $(".btn-delete").on("click", function () {
+        $("#btn-delete").on("click", function () {
             var competition_id = $(".btn-delete").data("competition_id");
 
             // Give the delete form the correct action attribute

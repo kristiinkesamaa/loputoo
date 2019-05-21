@@ -10,7 +10,7 @@
             <th>2. mängija email</th>
             <th>Mänguliik</th>
             <th>Liiga</th>
-            <th>Kinnita<input class="ml-2" type="checkbox" name="confirm" id="confirm"></th>
+            <th><input class="ml-2" type="checkbox" id="confirm"></th>
         </tr>
         </thead>
         <?php $a = 0 ?>
@@ -29,9 +29,10 @@
 
                         <td>{{ $contestant->type_name }}</td>
                         <td>{{ $contestant->league_name }}</td>
-                        <td class="text-center"><input class="confirm-checkbox" name="confirm[]"
-                                                       value="{{ $contestant->team_id }}"
-                                                       type="checkbox"></td>
+                        <td class="text-center">
+                            <input class="confirm-checkbox" name="confirm[]" value="{{ $contestant->team_id }}"
+                                   type="checkbox">
+                        </td>
                 </tr>
             @endif
 
@@ -43,9 +44,19 @@
     <row>
         <div class="col-3 float-left p-0">
             <button class="btn btn-change text-white" type="submit">Kinnita valitud mängijad</button>
+
+            <button class="btn btn-delete text-white" type="button" data-toggle="modal" data-target=".delete-modal">
+                Kustuta valitud mängijad
+            </button>
+
+            {{-- Invisible button that sends delete request --}}
+            <button type="submit" style="display: none;" id="btn-delete-contestants"
+                    formaction="/competitions/{{ $competition->id }}/destroy">
+            </button>
         </div>
     </row>
 </form>
+
 
 <script>
     $(document).ready(function () {

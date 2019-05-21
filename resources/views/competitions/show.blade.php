@@ -192,7 +192,7 @@
                                                 <div class="container">
                                                     <div class="table-responsive">
 
-                                                        @if ( session()->has('confirmed') )
+                                                        @if (session()->has('confirmed'))
                                                             <div class="alert alert-success alert-dismissible fade show"
                                                                  role="alert">
                                                                 <button type="button" class="close" data-dismiss="alert"
@@ -200,6 +200,15 @@
                                                                     <span aria-hidden="true">×</span>
                                                                 </button>
                                                                 <span><strong>Hästi!</strong> Valitud võistlejad on kinnitatud.</span>
+                                                            </div>
+                                                        @elseif (session()->has('deleted'))
+                                                            <div class="alert alert-success alert-dismissible fade show"
+                                                                 role="alert">
+                                                                <button type="button" class="close" data-dismiss="alert"
+                                                                        aria-label="Close">
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                                <span><strong>Hästi!</strong> Valitud võistlejad on kustutatud.</span>
                                                             </div>
                                                         @endif
 
@@ -468,18 +477,19 @@
                                                             <tr>
                                                                 <th scope="row">1.</th>
                                                                 <th>Margus Kask
-                                                                Marek Kuusk
+                                                                    Marek Kuusk
                                                                 </th>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">2.</th>
                                                                 <th>Marek Jõgi
-                                                                Mardo Mölder</th>
+                                                                    Mardo Mölder
+                                                                </th>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">3.</th>
                                                                 <th>Jan Kasemägi
-                                                                Raul Milber
+                                                                    Raul Milber
                                                                 </th>
                                                             </tr>
                                                             </tbody>
@@ -498,7 +508,8 @@
                                                             <tr>
                                                                 <th scope="row">2.</th>
                                                                 <th>Marek Jõgi
-                                                                    Mardo Mölder</th>
+                                                                    Mardo Mölder
+                                                                </th>
                                                             </tr>
                                                             <tr>
                                                                 <th scope="row">3.</th>
@@ -609,18 +620,52 @@
         </div>
     </div> <!-- end modal -->
 
+    <!-- Kinnitamata mängijate kustutamise modal -->
+    <div class="modal fade delete-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header no-border">
+                    <h5 class="modal-title text-center pt-5" id="exampleModalLongTitle">
+                        Kas sa soovid valitud kinnitamata mängijad kustutada?
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body  pl-5 pr-5 pt-5 pb-5">
+                </div>
+                <div class="modal-footer no-border">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Tühista</button>
+
+                    <button type="button" class="btn btn-delete btn-ok" id="btn-confirm-delete">Kustuta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function () {
+
+            // Add selected tab to local storage
             $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
                 localStorage.setItem('activeTab', $(e.target).attr('href'));
             });
 
             var activeTab = localStorage.getItem('activeTab');
 
+            // When user navigates back to this page, the stored tab is shown
             if (activeTab) {
                 $('a[href="' + activeTab + '"]').tab('show');
             }
-        });
+
+            // When delete button in competitor delete modal is clicked
+            $("#btn-confirm-delete").on('click', function () {
+
+                // Click the button that deletes
+                $("#btn-delete-contestants").click()
+            })
+        })
     </script>
 
 @endsection

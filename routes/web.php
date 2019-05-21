@@ -13,7 +13,9 @@
 
 Route::get('/', "Pages@index");
 
+
 Route::resource('competitions', "Competitions");
+
 
 Route::get('/competitions/{id}/{league}/{type}', "Groups@show");
 
@@ -23,9 +25,13 @@ Route::patch('/competitions/{id}/{league}/{type}/{team_id}', "Groups@update");
 
 Route::delete('/competitions/{id}/{league}/{type}/{team_id}', "Groups@destroy");
 
+
 Route::post('/competitions/{id}/register', 'Registration@register');
 
 Route::patch('/competitions/{id}/confirm', 'Registration@confirm');
+
+Route::patch('/competitions/{id}/destroy', 'Registration@destroy');
+
 
 Auth::routes();
 

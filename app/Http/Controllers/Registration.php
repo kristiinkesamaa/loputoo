@@ -65,4 +65,23 @@ class Registration extends Controller
 
         return back()->with('confirmed', true);
     }
+
+    public function destroy(Request $request)
+    {
+        // Make sure required fields are filled
+        request()->validate([
+            "confirm" => "required"
+        ]);
+
+        $ids_to_delete = [];
+
+        // Get ids of teams to delete from request
+        foreach ($request->get('confirm') as $id) {
+            $ids_to_delete[] = $id;
+        }
+
+        RegisteredTeam::destroy($ids_to_delete);
+
+        return back()->with('deleted', true);
+    }
 }

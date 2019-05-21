@@ -468,7 +468,7 @@
 
         // Change Valmis! button color when checkboxes are checked
         $("input[class='form-check-input']").click(function () {
-            if ($("input:checkbox:checked").length > 0) {
+            if ($("input:checkbox:checked").length > 1) {
 
                 $(".btn-add").removeAttr("disabled");
             } else {
