@@ -124,9 +124,160 @@
                                                 </tbody>
                                             @endif
                                         </table>
+                                        <button class="btn btn-change text-white" type="submit">Lisa alagrupp
+                                        </button>
+                                            <!-- kolmene alagrupp -->
+                                            <table class="table table-sm table-bordered subgroup-3">
+                                                <h3>A alagrupp</h3>
+                                                <thead>
+                                                <tr class="text-center">
+                                                    <th></th>
+                                                    <th>Mängijad</th>
+                                                    <th>1</th>
+                                                    <th>2</th>
+                                                    <th>3</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row" class="text-center">1</th>
+                                                    <th></th>
+                                                    <td class="bg-dark dt-height"></td>
+                                                    <td class="dt-height"></td>
+                                                    <td class="dt-height"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="text-center">2</th>
+                                                    <th></th>
+                                                    <td class="dt-height"></td>
+                                                    <td class="bg-dark dt-height"></td>
+                                                    <td class="dt-height"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="text-center">3</th>
+                                                    <th></th>
+                                                    <td class="dt-height"></td>
+                                                    <td class="dt-height"></td>
+                                                    <td class="bg-dark dt-height"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <!-- neljane alagrupp -->
+                                            <table class="table table-sm table-bordered subgroup-4">
+                                                <thead>
+                                                <h3>A alagrupp</h3>
+                                                <tr class="text-center">
+                                                    <th></th>
+                                                    <th>Mängijad</th>
+                                                    <th>1</th>
+                                                    <th>2</th>
+                                                    <th>3</th>
+                                                    <th>4</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row" class="text-center">1</th>
+                                                    <th></th>
+                                                    <td class="bg-dark dt-height-4"></td>
+                                                    <td class="dt-height"></td>
+                                                    <td class="dt-height"></td>
+                                                    <td class="dt-height"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="text-center">2</th>
+                                                    <th></th>
+                                                    <td class="dt-height-4"></td>
+                                                    <td class="bg-dark dt-height-4"></td>
+                                                    <td class="dt-height-4"></td>
+                                                    <td class="dt-height-4"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="text-center">3</th>
+                                                    <th></th>
+                                                    <td class="dt-height-4"></td>
+                                                    <td class="dt-height-4"></td>
+                                                    <td class="bg-dark dt-height-4"></td>
+                                                    <td class="dt-height-4"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="text-center">4</th>
+                                                    <th></th>
+                                                    <td class="dt-height-4"></td>
+                                                    <td class="dt-height-4"></td>
+                                                    <td class="dt-height-4"></td>
+                                                    <td class="bg-dark dt-height-4"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <!-- viiene alagrupp -->
+                                            <table class="table table-sm table-bordered subgroup-5">
+                                                <h3>A alagrupp</h3>
+                                                <thead>
+                                                <tr class="text-center">
+                                                    <th></th>
+                                                    <th>Mängijad</th>
+                                                    <th>1</th>
+                                                    <th>2</th>
+                                                    <th>3</th>
+                                                    <th>4</th>
+                                                    <th>5</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <th scope="row" class="text-center">1</th>
+                                                    <th></th>
+                                                    <td class="bg-dark dt-height-5"></td>
+                                                    <td class="dt-height"></td>
+                                                    <td class="dt-height"></td>
+                                                    <td class="dt-height"></td>
+                                                    <td class="dt-height"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="text-center">2</th>
+                                                    <th></th>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="bg-dark dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="text-center">3</th>
+                                                    <th></th>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="bg-dark dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="text-center">4</th>
+                                                    <th></th>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="bg-dark dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row" class="text-center">5</th>
+                                                    <th></th>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="dt-height-5"></td>
+                                                    <td class="bg-dark dt-height-5"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
                                     @else
                                         <table class="table table-sm table-bordered">
-                                            <thead>
+                                            <thead class="thead-default">
                                             <tr>
                                                 <th>Osaleja nimi</th>
                                             </tr>
@@ -141,6 +292,7 @@
                                         </table>
                                     @endif
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -155,7 +307,7 @@
             <div class="modal-content">
                 <div class="modal-header no-border">
                     <h5 class="modal-title text-center pt-5" id="exampleModalLongTitle">
-                        Kas sa soovid tiimi kustutada?
+                        Kas sa soovid võistleja(d) kustutada?
                     </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>

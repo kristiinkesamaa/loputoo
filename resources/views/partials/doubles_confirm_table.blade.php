@@ -42,10 +42,10 @@
         </tbody>
     </table>
     <row>
-        <div class="col-3 float-left p-0">
-            <button class="btn btn-change text-white" type="submit">Kinnita valitud mängijad</button>
+        <div class="col-12 float-left p-0">
+            <button class="btn btn-change text-white float-right" type="submit">Kinnita valitud mängijad</button>
 
-            <button class="btn btn-delete text-white" type="button" data-toggle="modal" data-target=".delete-modal">
+            <button class="btn btn-delete text-white float-left" type="button" data-toggle="modal" data-target=".delete-modal">
                 Kustuta valitud mängijad
             </button>
 
