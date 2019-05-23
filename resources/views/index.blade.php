@@ -292,19 +292,19 @@
 
                                             <div class="col-sm-8">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input-2" type="checkbox" id="checkbox1"
+                                                    <input class="form-check-input" type="checkbox" id="checkbox1"
                                                            value="3" name="types[]">
                                                     <label class="form-check-label"
                                                            for="checkbox1">Meespaar</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input-2" type="checkbox" id="checkbox2"
+                                                    <input class="form-check-input" type="checkbox" id="checkbox2"
                                                            value="4" name="types[]">
                                                     <label class="form-check-label"
                                                            for="checkbox2">Naispaar</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input-2" type="checkbox" id="checkbox3"
+                                                    <input class="form-check-input" type="checkbox" id="checkbox3"
                                                            value="5" name="types[]">
                                                     <label class="form-check-label"
                                                            for="checkbox3">Segapaar</label>
@@ -319,13 +319,13 @@
 
                                             <div class="col-sm-8">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input-2" type="checkbox" id="CheckboxMen1"
+                                                    <input class="form-check-input" type="checkbox" id="CheckboxMen1"
                                                            value="1" name="types[]">
                                                     <label class="form-check-label"
                                                            for="inlineCheckbox1">Meesüksik</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input-2" type="checkbox" id="CheckboxWomen2"
+                                                    <input class="form-check-input" type="checkbox" id="CheckboxWomen2"
                                                            value="2" name="types[]">
                                                     <label class="form-check-label"
                                                            for="inlineCheckbox2">Naisüksik</label>

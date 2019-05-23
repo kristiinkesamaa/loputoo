@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Competition;
 use App\CompetitionLeague;
 use App\RegisteredContestant;
+use App\RegisteredTeam;
+use App\Subgroup;
+use Illuminate\Http\Request;
 
 class Pages extends Controller
 {
@@ -37,5 +40,29 @@ class Pages extends Controller
         auth()->logout();
 
         return redirect()->back();
+    }
+
+    public function add_subgroup($id, $league, $type, Request $request)
+    {
+        // Make sure required fields are filled
+        request()->validate([
+            "title" => "required",
+            "teams" => "required"
+        ]);
+
+        $team_ids = $request->get("teams");
+
+        // Create new subgroup
+        $subgroup = new Subgroup();
+
+        $subgroup->title = $request->get("title");
+        $subgroup->number_of_teams = count($team_ids);
+
+        $subgroup->save();
+
+        // Update subgroup ids in teams that belong to it
+        RegisteredTeam::update_subgroup_id($subgroup->id, $team_ids);
+
+        return back()->with("subgroup_added", true);
     }
 }

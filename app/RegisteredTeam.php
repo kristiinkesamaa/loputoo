@@ -72,5 +72,11 @@ class RegisteredTeam extends Model
         return $type_name;
     }
 
+    public static function update_subgroup_id($id, $team_ids)
+    {
+        DB::table('registered_teams')
+            ->whereIn('id', $team_ids)
+            ->update(['subgroup_id' => $id]);
+    }
 
 }

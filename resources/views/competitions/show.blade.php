@@ -263,66 +263,19 @@
                                                         <thead class="thead-default">
                                                         <tr>
                                                             <th>Liiga</th>
-                                                            <th>Alagrupp</th>
-                                                            <th>Paare alagrupis</th>
+                                                            <th>
+                                                                {{ $second_person ? "Paare alagrupis" : "Mängijaid alagrupis" }}
+                                                            </th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga MP - A
-                                                                    alagrupp</a></td>
-                                                            <td>A</td>
-                                                            <td>4</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga MP - B
-                                                                    alagrupp</a></td>
-                                                            <td>B</td>
-                                                            <td>4</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga NP - A
-                                                                    alagrupp</a></td>
-                                                            <td>A</td>
-                                                            <td>3</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga NP - B
-                                                                    alagrupp</a></td>
-                                                            <td>B</td>
-                                                            <td>3</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Meistriliiga NP - C
-                                                                    alagrupp</a></td>
-                                                            <td>C</td>
-                                                            <td>3</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">Esiliiga SP - A
-                                                                    alagrupp</a>
-                                                            </td>
-                                                            <td>A</td>
-                                                            <td>10</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">2.liiga MP - A alagrupp</a>
-                                                            </td>
-                                                            <td>A</td>
-                                                            <td>10</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">2.liiga NP - A alagrupp</a>
-                                                            </td>
-                                                            <td>A</td>
-                                                            <td>12</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><a class="text-grey" href="">2.liiga SP - A alagrupp</a>
-                                                            </td>
-                                                            <td>A</td>
-                                                            <td>10</td>
-                                                        </tr>
+                                                        @foreach($subgroups as $subgroup)
+                                                            <tr>
+                                                                <td>{{ $subgroup->league_name }} {{ $subgroup->short_name }}
+                                                                    - {{ $subgroup->title }}</td>
+                                                                <td>{{ $subgroup->number_of_teams }}</td>
+                                                            </tr>
+                                                        @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>

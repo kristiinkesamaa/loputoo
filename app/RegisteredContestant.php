@@ -71,6 +71,7 @@ class RegisteredContestant extends Model
             ->where('leagues.name', '=', $league_name)
             ->where('types.name', '=', $type_name)
             ->where('confirmed', '=', 1)
+            ->orderBy('registered_contestants.id')
             ->get([
                 'registered_contestants.*',
                 'registered_teams.*',

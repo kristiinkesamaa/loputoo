@@ -26,6 +26,9 @@ Route::patch('/competitions/{id}/{league}/{type}/{team_id}', "Groups@update");
 Route::delete('/competitions/{id}/{league}/{type}/{team_id}', "Groups@destroy");
 
 
+Route::post('/competitions/{id}/{league}/{type}/subgroup', "Pages@add_subgroup");
+
+
 Route::post('/competitions/{id}/register', 'Registration@register');
 
 Route::patch('/competitions/{id}/confirm', 'Registration@confirm');

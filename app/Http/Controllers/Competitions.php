@@ -6,6 +6,7 @@ use App\Competition;
 use App\CompetitionLeague;
 use App\CompetitionType;
 use App\RegisteredContestant;
+use App\Subgroup;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -136,6 +137,7 @@ class Competitions extends Controller
         $unconfirmed_contestants = RegisteredContestant::get_unconfirmed_by_competition_id($competition_id);
         $contestants = RegisteredContestant::get_by_competition_id($competition_id);
         $second_person = false;
+        $subgroups = CompetitionType::add_short_names(Subgroup::get());
 
         // Find if competition type is 1 or 2 people
         foreach ($types as $type) {
@@ -154,7 +156,8 @@ class Competitions extends Controller
             'registration_ends' => $registration_ends,
             'now' => $now,
             'unconfirmed_contestants' => $unconfirmed_contestants,
-            'contestants' => $contestants
+            'contestants' => $contestants,
+            'subgroups' => $subgroups
         ]);
     }
 
