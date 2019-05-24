@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Competition;
 use App\CompetitionLeague;
+use App\CompetitionType;
 use App\RegisteredContestant;
 use App\RegisteredTeam;
 use App\Subgroup;
@@ -42,7 +43,7 @@ class Pages extends Controller
         return redirect()->back();
     }
 
-    public function add_subgroup($id, $league, $type, Request $request)
+    public function add_subgroup(Request $request)
     {
         // Make sure required fields are filled
         request()->validate([
@@ -61,8 +62,34 @@ class Pages extends Controller
         $subgroup->save();
 
         // Update subgroup ids in teams that belong to it
-        RegisteredTeam::update_subgroup_id($subgroup->id, $team_ids);
+        $number = 1;
+        foreach ($team_ids as $team_id) {
+            RegisteredTeam::update_subgroup_id($team_id, $subgroup->id, $number);
+            $number++;
+        }
 
         return back()->with("subgroup_added", true);
+    }
+
+    public function show_subgroup($id, $subgroup_id)
+    {
+        $subgroup = Subgroup::get_by_id($subgroup_id)[0];
+        $subgroup_contestants = CompetitionType::add_short_names(Subgroup::get_all_by_id($subgroup_id));
+        $second_person = false;
+
+        // Find if competition type is 1 or 2 people
+        foreach ($subgroup_contestants as $contestant) {
+            if ($contestant->type_id > 2) {
+                $second_person = true;
+            }
+        }
+
+        return view('competitions/subgroup', [
+            'subgroup' => $subgroup,
+            'subgroup_contestants' => $subgroup_contestants,
+            'title' => $subgroup_contestants[0]->league_name . ' ' . $subgroup_contestants[0]->short_name . ' - ' . $subgroup->title,
+            'competition_id' => $id,
+            'second_person' => $second_person
+        ]);
     }
 }

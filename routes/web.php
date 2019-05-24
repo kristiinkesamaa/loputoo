@@ -14,6 +14,9 @@
 Route::get('/', "Pages@index");
 
 
+Route::get('/competitions/{id}/subgroups/{subgroup_id}', 'Pages@show_subgroup');
+
+
 Route::resource('competitions', "Competitions");
 
 

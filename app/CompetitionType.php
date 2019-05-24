@@ -74,15 +74,15 @@ class CompetitionType extends Model
         foreach ($types as $key => $type) {
 
             // Add short names to types
-            if ($type->id === 1) {
+            if ($type->type_id === 1) {
                 $types[$key]->short_name = "NÜ";
-            } elseif ($type->id === 2) {
+            } elseif ($type->type_id === 2) {
                 $types[$key]->short_name = "MÜ";
-            } elseif ($type->id === 3) {
+            } elseif ($type->type_id === 3) {
                 $types[$key]->short_name = "NP";
-            } elseif ($type->id === 4) {
+            } elseif ($type->type_id === 4) {
                 $types[$key]->short_name = "MP";
-            } elseif ($type->id === 5) {
+            } elseif ($type->type_id === 5) {
                 $types[$key]->short_name = "SP";
             }
         }

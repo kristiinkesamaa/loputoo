@@ -13,19 +13,18 @@
             <th><input class="ml-2" type="checkbox" id="confirm"></th>
         </tr>
         </thead>
-        <?php $a = 0 ?>
         <tbody>
 
         @foreach($unconfirmed_contestants as $contestant)
 
-            @if($a % 2 === 0)
+            @if($loop->even)
                 <tr>
                     @endif
 
                     <td>{{ $contestant->name }}</td>
                     <td>{{ $contestant->email }}</td>
 
-                    @if($a % 2 === 1)
+                    @if($loop->odd)
 
                         <td>{{ $contestant->type_name }}</td>
                         <td>{{ $contestant->league_name }}</td>
@@ -35,8 +34,6 @@
                         </td>
                 </tr>
             @endif
-
-            <?php $a++ ?>
         @endforeach
 
         </tbody>
@@ -45,7 +42,8 @@
         <div class="col-12 float-left p-0">
             <button class="btn btn-change text-white float-right" type="submit">Kinnita valitud mängijad</button>
 
-            <button class="btn btn-delete text-white float-left" type="button" data-toggle="modal" data-target=".delete-modal">
+            <button class="btn btn-delete text-white float-left" type="button" data-toggle="modal"
+                    data-target=".delete-modal">
                 Kustuta valitud mängijad
             </button>
 

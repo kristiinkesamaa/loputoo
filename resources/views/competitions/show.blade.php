@@ -271,8 +271,13 @@
                                                         <tbody>
                                                         @foreach($subgroups as $subgroup)
                                                             <tr>
-                                                                <td>{{ $subgroup->league_name }} {{ $subgroup->short_name }}
-                                                                    - {{ $subgroup->title }}</td>
+                                                                <td>
+                                                                    <a href="/competitions/{{ $competition->id }}/subgroups/{{ $subgroup->id }}"
+                                                                       class="text-grey">
+                                                                        {{ $subgroup->league_name }} {{ $subgroup->short_name }}
+                                                                        - {{ $subgroup->title }}
+                                                                    </a>
+                                                                </td>
                                                                 <td>{{ $subgroup->number_of_teams }}</td>
                                                             </tr>
                                                         @endforeach
@@ -510,7 +515,7 @@
                                 <div class="form-group row">
                                     <label for="types" class="col-sm-4 col-form-label">Vali mänguliik</label>
                                     <div class="col-sm-8">
-                                        <select class="custom-select form-control" id="types" name="type">
+                                        <select class="custom-select form-control" id="types" name="type" required>
                                             <option value="" selected>Vali</option>
 
                                             @foreach ($types as $type)
@@ -525,8 +530,8 @@
                                 <div class="form-group row">
                                     <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
                                     <div class="col-sm-8">
-                                        <select class="custom-select form-control" id="leagues" name="league">
-                                            <option selected>Vali</option>
+                                        <select class="custom-select form-control" id="leagues" name="league" required>
+                                            <option value="" selected>Vali</option>
 
                                             @foreach($leagues as $league)
                                                 <option class="competition-league"

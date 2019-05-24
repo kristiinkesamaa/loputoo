@@ -13,12 +13,11 @@
                        href="/competitions/{{ $competition->id }}/{{ $league->name }}/{{ $type->short_name }}">{{ $league->name }} {{ $type->short_name }}</a>
                 </td>
                 <td>
-                    <?php $number_of_teams = 0; $a = 0; ?>
+                    <?php $number_of_teams = 0 ?>
                     @foreach($contestants as $contestant)
-                        @if($contestant->league_id === $league->id && $contestant->type_id === $type->id && $a % 2 === 0)
+                        @if($contestant->league_id === $league->id && $contestant->type_id === $type->id && $loop->even)
                             <?php $number_of_teams++; ?>
                         @endif
-                        <?php $a++ ?>
                     @endforeach
                     {{ $number_of_teams }}
                 </td>

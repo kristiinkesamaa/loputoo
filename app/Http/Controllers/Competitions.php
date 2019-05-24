@@ -129,15 +129,14 @@ class Competitions extends Controller
     public function show(Request $request, Competition $competition)
     {
         $competition_id = $request->competition->id;
-        $types = CompetitionType::get_types($competition_id);
-        $types = CompetitionType::add_short_names($types);
+        $types = CompetitionType::add_short_names(CompetitionType::get_types($competition_id));
         $registration_starts = strtotime($competition->registration_starts);
         $registration_ends = strtotime($competition->registration_ends);
         $now = strtotime(Carbon::now());
         $unconfirmed_contestants = RegisteredContestant::get_unconfirmed_by_competition_id($competition_id);
         $contestants = RegisteredContestant::get_by_competition_id($competition_id);
+        $subgroups = CompetitionType::add_short_names(Subgroup::get($competition_id));
         $second_person = false;
-        $subgroups = CompetitionType::add_short_names(Subgroup::get());
 
         // Find if competition type is 1 or 2 people
         foreach ($types as $type) {

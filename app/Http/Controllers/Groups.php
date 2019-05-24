@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Competition;
 use App\CompetitionLeague;
 use App\CompetitionType;
 use App\RegisteredContestant;
@@ -13,8 +14,6 @@ class Groups extends Controller
     public function show($id, $league, $type)
     {
         $types = CompetitionType::get_by_competition_id($id);
-        $contestants = RegisteredContestant::get_group($id, $league, $type);
-        $address = $id . '/' . $league . '/' . $type;
         $second_person = false;
 
         foreach ($types as $one_type) {
@@ -24,14 +23,14 @@ class Groups extends Controller
         }
 
         $type_name = RegisteredTeam::get_long_name($type);
-        $title = $league . " " . $type_name;
 
         return view('groups/show_group', [
-            'contestants' => $contestants,
+            'contestants' => RegisteredContestant::get_group($id, $league, $type),
             'second_person' => $second_person,
             'competition_id' => $id,
-            'title' => $title,
-            'address' => $address
+            'title' => $league . " " . $type_name,
+            'address' => $id . '/' . $league . '/' . $type,
+            'competition_title' => Competition::get_title_by_id($id)[0]->title
         ]);
     }
 

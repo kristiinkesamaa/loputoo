@@ -10,11 +10,12 @@
                     <div class="page-title-box">
                         <div class="btn-group pull-right">
                             <ol class="breadcrumb hide-phone p-0 m-0">
-                                <li class="breadcrumb-item text-grey-light"><a
-                                            href="/competitions/{{ $competition_id }}">Tagasi osalejate lehele</a></li>
+                                <li class="breadcrumb-item text-grey-light">
+                                    <a href="/competitions/{{ $competition_id }}">Tagasi osalejate lehele</a>
+                                </li>
                             </ol>
                         </div>
-                        <h6 class="page-title">Jõgeva Kevad</h6>
+                        <h6 class="page-title">{{ $competition_title }}</h6>
                         <h6>{{ Auth::check() ? 'Osalejate info muutmine: ' . $title : $title }}</h6>
 
                     </div>
@@ -73,7 +74,7 @@
                                                 <?php $a = 0 ?>
                                                 @foreach($contestants as $contestant)
                                                     @if($a % 2 === 0)
-                                                        <tr>
+                                                        <tr style="{{ $contestant->subgroup_id === 0 ? "" : "background: #99ff99" }}">
                                                             @endif
 
                                                             <td>{{ $contestant->name }}</td>
@@ -112,7 +113,7 @@
                                                 <tbody>
 
                                                 @foreach($contestants as $contestant)
-                                                    <tr>
+                                                    <tr style="{{ $contestant->subgroup_id === 0 ? "" : "background: #99ff99" }}">
                                                         <td>{{ $contestant->name }}</td>
                                                         <td>{{ $contestant->email }}</td>
                                                         <td>{{ $contestant->type_name }}</td>
@@ -174,30 +175,7 @@
                                                                     id="select-3-1" required>
                                                                 <option selected value="">Vali mängija(d)</option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
@@ -214,30 +192,7 @@
                                                                     Vali mängija(d)
                                                                 </option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
@@ -254,30 +209,7 @@
                                                                     Vali mängija(d)
                                                                 </option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
@@ -322,30 +254,7 @@
                                                                     id="select-4-1" required>
                                                                 <option selected value="">Vali mängija(d)</option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
@@ -361,30 +270,7 @@
                                                                     id="select-4-2" required>
                                                                 <option selected value="">Vali mängija(d)</option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
@@ -400,30 +286,7 @@
                                                                     id="select-4-3" required>
                                                                 <option selected value="">Vali mängija(d)</option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
@@ -439,30 +302,7 @@
                                                                     id="select-4-4" required>
                                                                 <option selected value="">Vali mängija(d)</option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
@@ -511,30 +351,7 @@
                                                                     id="select-5-1" required>
                                                                 <option selected value="">Vali mängija(d)</option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
@@ -551,30 +368,7 @@
                                                                     id="select-5-2" required>
                                                                 <option selected value="">Vali mängija(d)</option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
@@ -591,30 +385,7 @@
                                                                     id="select-5-3" required>
                                                                 <option selected value="">Vali mängija(d)</option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
@@ -631,30 +402,7 @@
                                                                     id="select-5-4" required>
                                                                 <option selected value="">Vali mängija(d)</option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
@@ -671,30 +419,7 @@
                                                                     id="select-5-5" required>
                                                                 <option selected value="">Vali mängija(d)</option>
 
-                                                                @if($second_person)
-
-                                                                    <?php $a = 0 ?>
-                                                                    @foreach($contestants as $contestant)
-                                                                        @if($a % 2 === 0)
-                                                                            <?php $contestant_1_name = $contestant->name ?>
-                                                                        @endif
-
-                                                                        @if($a % 2 === 1)
-                                                                            <option value="{{ $contestant->team_id }}">
-                                                                                {{ $contestant_1_name }}
-                                                                                & {{ $contestant->name }}
-                                                                            </option>
-                                                                        @endif
-
-                                                                        <?php $a++ ?>
-                                                                    @endforeach
-                                                                @else
-                                                                    @foreach($contestants as $contestant)
-                                                                        <option value="{{ $contestant->team_id }}">
-                                                                            {{ $contestant->name }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                @endif
+                                                                @include("partials/subgroup_team_select")
 
                                                             </select>
                                                         </th>
