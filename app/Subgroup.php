@@ -46,4 +46,16 @@ class Subgroup extends Model
             ->where('subgroups.id', '=', $subgroup_id)
             ->get();
     }
+
+    public static function get_by_competition_id($id)
+    {
+        return DB::table('subgroups')
+            ->leftJoin('registered_teams', 'subgroup_id', '=', 'subgroups.id')
+            ->where('competition_id', '=', $id)
+            ->groupBy('subgroups.id')
+            ->get([
+                'subgroups.id as id',
+                'subgroups.title as title',
+            ]);
+    }
 }

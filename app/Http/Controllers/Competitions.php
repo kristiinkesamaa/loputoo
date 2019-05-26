@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Competition;
 use App\CompetitionLeague;
 use App\CompetitionType;
+use App\Queue;
 use App\RegisteredContestant;
 use App\Subgroup;
 use Carbon\Carbon;
@@ -145,6 +146,8 @@ class Competitions extends Controller
             }
         }
 
+        $queues = Queue::get_data_for_queue_table($competition_id, $second_person);
+
         return view('competitions/show', [
             'competition' => $competition,
             'datetime' => strtotime($competition->datetime),
@@ -156,7 +159,8 @@ class Competitions extends Controller
             'now' => $now,
             'unconfirmed_contestants' => $unconfirmed_contestants,
             'contestants' => $contestants,
-            'subgroups' => $subgroups
+            'subgroups' => $subgroups,
+            'queues' => $queues
         ]);
     }
 

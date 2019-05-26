@@ -30,7 +30,7 @@ class Groups extends Controller
             'competition_id' => $id,
             'title' => $league . " " . $type_name,
             'address' => $id . '/' . $league . '/' . $type,
-            'competition_title' => Competition::get_title_by_id($id)[0]->title
+            'competition_title' => Competition::get_item_by_id($id, 'title')[0]->title
         ]);
     }
 

@@ -79,4 +79,56 @@ class RegisteredTeam extends Model
             ->update(['subgroup_id' => $id, 'subgroup_order' => $number]);
     }
 
+    public static function find_team_ids_for_queue($subgroup_contestants, $number_of_teams)
+    {
+        if ($number_of_teams === 3) {
+
+            $team_ids = [0, 0, 0];
+            foreach ($subgroup_contestants as $contestant) {
+                if ($contestant->subgroup_order === 1) {
+                    $team_ids[1] = $contestant->team_id;
+                } elseif ($contestant->subgroup_order === 2) {
+                    $team_ids[2] = $contestant->team_id;
+                } elseif ($contestant->subgroup_order === 3) {
+                    $team_ids[3] = $contestant->team_id;
+                }
+            }
+
+        } elseif ($number_of_teams === 4) {
+
+            $team_ids = [0, 0, 0, 0];
+            foreach ($subgroup_contestants as $contestant) {
+                if ($contestant->subgroup_order === 1) {
+                    $team_ids[1] = $contestant->team_id;
+                } elseif ($contestant->subgroup_order === 2) {
+                    $team_ids[2] = $contestant->team_id;
+                } elseif ($contestant->subgroup_order === 3) {
+                    $team_ids[3] = $contestant->team_id;
+                } elseif ($contestant->subgroup_order === 4) {
+                    $team_ids[4] = $contestant->team_id;
+                }
+            }
+
+        } elseif ($number_of_teams === 5) {
+
+            $team_ids = [0, 0, 0, 0, 0];
+            foreach ($subgroup_contestants as $contestant) {
+                if ($contestant->subgroup_order === 1) {
+                    $team_ids[1] = $contestant->team_id;
+                } elseif ($contestant->subgroup_order === 2) {
+                    $team_ids[2] = $contestant->team_id;
+                } elseif ($contestant->subgroup_order === 3) {
+                    $team_ids[3] = $contestant->team_id;
+                } elseif ($contestant->subgroup_order === 4) {
+                    $team_ids[4] = $contestant->team_id;
+                } elseif ($contestant->subgroup_order === 5) {
+                    $team_ids[5] = $contestant->team_id;
+                }
+            }
+
+        }
+
+        return $team_ids;
+    }
+
 }

@@ -49,10 +49,10 @@ class Competition extends Model
         return $number;
     }
 
-    public static function get_title_by_id($id)
+    public static function get_item_by_id($id, $item)
     {
         return DB::table('competitions')
             ->where('id', '=', $id)
-            ->get('title');
+            ->get($item);
     }
 }

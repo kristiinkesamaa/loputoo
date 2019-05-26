@@ -297,6 +297,25 @@
                                 <div class="col-12">
                                     <div class="card m-b-30">
                                         <div class="card-body pr-0 pl-0">
+
+                                            @if ( session()->has('queue_added') )
+                                                <div class="alert alert-success alert-dismissible fade show"
+                                                     role="alert">
+                                                    <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                    <span><strong>Hästi!</strong> Oled registreeritud.</span>
+                                                </div>
+                                            @endif
+
+                                            @if(Auth::check())
+                                                <button type="button" data-toggle="modal"
+                                                        data-target="#add-queue-modal">
+                                                    Lisa uus mäng järjekorda
+                                                </button>
+                                            @endif
+
                                             <div class="table-responsive">
                                                 <table id="datatable-buttons"
                                                        class="table dataTable table-bordered no-footer"
@@ -307,34 +326,61 @@
                                                         <th>Kellaaeg</th>
                                                         <th>Liiga</th>
                                                         <th>Mängijad</th>
+                                                        @if($second_person)
+                                                            <th></th>
+                                                            <th></th>
+                                                        @endif
                                                         <th>Tulemused</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-                                                    <tr role="row" class="odd">
-                                                        <td>10:00</td>
-                                                        <td>MÜ 3. liiga - A alagrupp</td>
-                                                        <td>Margus Kask - Marek Jõgi</td>
-                                                        <td class="text-blue">21:10 11:21 22:20</td>
-                                                    </tr>
-                                                    <tr role="row" class="even">
-                                                        <td>10:00</td>
-                                                        <td>MÜ 3. liiga - A alagrupp</td>
-                                                        <td>Margus Kask - Janek Kasemägi</td>
-                                                        <td class="text-blue">21:10 11:21 22:20</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td>10:00</td>
-                                                        <td>NÜ 2. liiga - A alagrupp</td>
-                                                        <td>Mari Kuusk - Marika Pärn</td>
-                                                        <td class="text-blue">21:10 11:21</td>
-                                                    </tr>
-                                                    <tr role="row" class="odd">
-                                                        <td>10:00</td>
-                                                        <td>NÜ 2. liiga - A alagrupp</td>
-                                                        <td>Mari Kuusk - Liis Puu</td>
-                                                        <td class="text-blue">21:10 11:21 22:20</td>
-                                                    </tr>
+                                                    <?php $i = 1; ?>
+                                                    @foreach($queues as $queue)
+                                                        <tr>
+                                                            <td>{{ $queue->time }}</td>
+                                                            <td>
+                                                                {{ $queue->league_name }} {{ $queue->short_name }}{{ !empty($queue->subgroup_title) ? ' - ' . $queue->subgroup_title : '' }}
+                                                            </td>
+                                                            @if($second_person)
+                                                                <td>
+                                                                    <table>
+                                                                        <tr>
+                                                                            <td>
+                                                                                {{ $queue->team_1_first_contestant_name }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                {{ $queue->team_1_second_contestant_name }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                                <td> -</td>
+                                                                <td>
+                                                                    <table>
+                                                                        <tr>
+                                                                            <td>
+                                                                                {{ $queue->team_2_first_contestant_name }}
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>
+                                                                                {{ $queue->team_2_second_contestant_name }}
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            @else
+                                                                <td>
+                                                                    {{ $queue->team_1_name }}
+                                                                    - {{ $queue->team_2_name }}
+                                                                </td>
+                                                            @endif
+                                                            <td></td>
+                                                        </tr>
+                                                        <?php $i++; ?>
+                                                    @endforeach
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -578,29 +624,145 @@
         </div>
     </div> <!-- end modal -->
 
-    <!-- Kinnitamata mängijate kustutamise modal -->
-    <div class="modal fade delete-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header no-border">
-                    <h5 class="modal-title text-center pt-5" id="exampleModalLongTitle">
-                        Kas sa soovid valitud kinnitamata mängijad kustutada?
-                    </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body  pl-5 pr-5 pt-5 pb-5">
-                </div>
-                <div class="modal-footer no-border">
-                    <button type="button" class="btn btn-dark" data-dismiss="modal">Tühista</button>
 
-                    <button type="button" class="btn btn-delete btn-ok" id="btn-confirm-delete">Kustuta</button>
+    @if(Auth::check())
+
+        <!-- Kinnitamata mängijate kustutamise modal -->
+        <div class="modal fade delete-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header no-border">
+                        <h5 class="modal-title text-center pt-5" id="exampleModalLongTitle">
+                            Kas sa soovid valitud kinnitamata mängijad kustutada?
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body  pl-5 pr-5 pt-5 pb-5">
+                    </div>
+                    <div class="modal-footer no-border">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">Tühista</button>
+
+                        <button type="button" class="btn btn-delete btn-ok" id="btn-confirm-delete">Kustuta</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        {{-- Uue mängu järjekorda lisamise modal --}}
+        <div class="modal fade delete-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+             aria-hidden="true" id="add-queue-modal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header no-border">
+                        <h5 class="modal-title text-center pt-5" id="exampleModalLongTitle">
+                            Lisa uus mäng järjekorda
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body  pl-5 pr-5 pt-5 pb-5">
+                    </div>
+                    <div class="modal-footer no-border">
+
+                        <label for="type">Mänguliik</label>
+                        <select name="type" id="type" required>
+                            <option value="" selected>Vali mänguliik</option>
+
+                            @foreach($types as $type)
+                                <option value="{{ $type->id }}">
+                                    {{ $type->name }}
+                                </option>
+                            @endforeach
+                        </select>
+
+                        <label for="league">Liiga</label>
+                        <select name="league" id="league" required>
+                            <option value="" selected>Vali liiga</option>
+
+                            @foreach($leagues as $league)
+                                <option value="{{ $league->id }}">
+                                    {{ $league->name }}
+                                </option>
+                            @endforeach
+
+                        </select>
+
+                        <div style="display: none" id="team-selects">
+                            <form method="post" action="/competitions/{{ $competition->id }}/queue">
+                                @csrf
+
+                                @if ($second_person)
+                                    <label for="team_1_id">Vali esimene tiim</label>
+
+                                    <select name="team_1_id" id="team_1_id" required>
+                                        <option value="" selected>Vali tiim</option>
+
+                                        @foreach($contestants as $contestant)
+                                            @if($loop->odd)
+                                                <option value="{{ $contestant->team_id }}"
+                                                        data-type_id="{{ $contestant->type_id }}"
+                                                        data-league_id="{{ $contestant->league_id }}">
+                                                    {{ $contestant->name }} &
+                                                    @else
+                                                        {{ $contestant->name }}
+                                                </option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+
+                                    <label for="team_2_id">Vali teine tiim</label>
+
+                                    <select name="team_2_id" id="team_2_id" required>
+                                        <option value="" selected>Vali tiim</option>
+
+                                        @foreach($contestants as $contestant)
+                                            @if($loop->odd)
+                                                <option value="{{ $contestant->team_id }}">
+                                                    {{ $contestant->name }} &
+                                                    @else
+                                                        {{ $contestant->name }}
+                                                </option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                @else
+                                    <label for="team_1_id">Vali esimene tiim</label>
+
+                                    <select name="team_1_id" id="team_1_id" required>
+                                        <option value="" selected>Vali tiim</option>
+
+                                        @foreach($contestants as $contestant)
+                                            <option value="{{ $contestant->team_id }}">
+                                                {{ $contestant->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+
+                                    <label for="team_2_id">Vali teine tiim</label>
+
+                                    <select name="team_2_id" id="team_2_id" required>
+                                        <option value="" selected>Vali tiim</option>
+
+                                        @foreach($contestants as $contestant)
+                                            <option value="{{ $contestant->team_id }}">
+                                                {{ $contestant->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                @endif
+
+                                <button type="submit">Lisa</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 
     <script>
         $(document).ready(function () {
@@ -623,7 +785,42 @@
                 // Click the button that deletes
                 $("#btn-delete-contestants").click()
             })
-        })
+        });
+
+        var select_values = [0, 0];
+
+
+        $("#type, #league").on("change", function () {
+            if ($("#type").val() !== "" && $("#league").val() !== "") {
+                $("#team-selects").slideDown();
+            } else {
+                $("#team-selects").slideUp();
+
+            }
+        });
+
+
+        $("#team_1_id").on("change", function () {
+            var this_value = $(this).val();
+
+            $('#team_2_id option[value="' + select_values[0] + '"]').show();
+            if (this_value !== "") {
+                $('#team_2_id option[value="' + this_value + '"]').hide();
+            }
+
+            select_values[0] = this_value;
+        });
+
+        $("#team_2_id").on("change", function () {
+            var this_value = $(this).val();
+
+            $('#team_1_id option[value="' + select_values[1] + '"]').show();
+            if (this_value !== "") {
+                $('#team_1_id option[value="' + this_value + '"]').hide();
+            }
+
+            select_values[1] = this_value;
+        });
     </script>
 
 @endsection

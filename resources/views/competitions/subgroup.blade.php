@@ -25,6 +25,17 @@
                         <div class="card-body">
                             <div class="container">
 
+                                @if ( session()->has('queue_added') )
+                                    <div class="alert alert-success alert-dismissible fade show"
+                                         role="alert">
+                                        <button type="button" class="close" data-dismiss="alert"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                        <span><strong>Hästi!</strong> Järjekorda lisatud.</span>
+                                    </div>
+                                @endif
+
                                 @if($subgroup->number_of_teams === 3)
 
                                     <h3>{{ $subgroup->title }}</h3>
@@ -92,7 +103,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[1] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[3] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -104,7 +127,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[2] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[3] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -116,7 +151,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[1] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[2] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         </table>
@@ -206,7 +253,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[1] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[4] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -218,7 +277,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[2] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[3] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -230,7 +301,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[1] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[3] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -242,7 +325,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[2] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[4] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -254,7 +349,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[1] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[2] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -266,7 +373,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[3] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[4] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         </table>
@@ -377,7 +496,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[2] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[5] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -389,7 +520,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[3] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[4] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -401,7 +544,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[1] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[5] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -413,7 +568,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[2] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[3] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -425,7 +592,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[1] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[4] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -437,7 +616,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[3] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[5] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -449,7 +640,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[1] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[3] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -461,7 +664,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[2] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[4] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -473,7 +688,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[1] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[2] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
 
@@ -485,7 +712,19 @@
                                                 @include('partials/subgroup_td')
 
                                                 <td>
-                                                    <button>Lisa</button>
+                                                    <form action="/competitions/{{ $competition_id }}/queue"
+                                                          method="post">
+                                                        @csrf
+
+                                                        <div style="display: none">
+                                                            <input type="number" name="team_1_id"
+                                                                   value="{{ $team_ids[4] }}">
+                                                            <input type="number" name="team_2_id"
+                                                                   value="{{ $team_ids[5] }}">
+
+                                                        </div>
+                                                        <button type="submit">Lisa</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         </table>

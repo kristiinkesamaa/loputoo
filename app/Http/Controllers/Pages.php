@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Competition;
 use App\CompetitionLeague;
 use App\CompetitionType;
+use App\Queue;
 use App\RegisteredContestant;
 use App\RegisteredTeam;
 use App\Subgroup;
@@ -84,12 +85,38 @@ class Pages extends Controller
             }
         }
 
+        $team_ids = RegisteredTeam::find_team_ids_for_queue($subgroup_contestants, $subgroup->number_of_teams);
+
         return view('competitions/subgroup', [
             'subgroup' => $subgroup,
             'subgroup_contestants' => $subgroup_contestants,
             'title' => $subgroup_contestants[0]->league_name . ' ' . $subgroup_contestants[0]->short_name . ' - ' . $subgroup->title,
             'competition_id' => $id,
-            'second_person' => $second_person
+            'second_person' => $second_person,
+            'team_ids' => $team_ids
         ]);
     }
+
+    public function queue($id, Request $request)
+    {
+        $queue_number = Queue::get_highest_queue_number_by_competition_id($id);
+
+        if (empty($queue_number)) {
+            $queue_number = 1;
+        } else {
+            $queue_number++;
+        }
+
+        $queue = new Queue();
+
+        $queue->team_1_id = $request->get('team_1_id');
+        $queue->team_2_id = $request->get('team_2_id');
+        $queue->queue_number = $queue_number;
+
+        $queue->save();
+
+        return back()->with("queue_added", true);
+    }
+
+
 }

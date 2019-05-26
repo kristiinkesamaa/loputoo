@@ -17,14 +17,14 @@
 
         @foreach($unconfirmed_contestants as $contestant)
 
-            @if($loop->even)
+            @if($loop->odd)
                 <tr>
                     @endif
 
                     <td>{{ $contestant->name }}</td>
                     <td>{{ $contestant->email }}</td>
 
-                    @if($loop->odd)
+                    @if($loop->even)
 
                         <td>{{ $contestant->type_name }}</td>
                         <td>{{ $contestant->league_name }}</td>

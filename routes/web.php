@@ -19,6 +19,8 @@ Route::get('/competitions/{id}/subgroups/{subgroup_id}', 'Pages@show_subgroup');
 
 Route::resource('competitions', "Competitions");
 
+Route::post('/competitions/{id}/queue', "Pages@queue");
+
 
 Route::get('/competitions/{id}/{league}/{type}', "Groups@show");
 
