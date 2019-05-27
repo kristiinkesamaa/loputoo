@@ -13,7 +13,7 @@ class CreateQueuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('queue', function (Blueprint $table) {
+        Schema::create('queues', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('team_1_id');
             $table->unsignedBigInteger('team_2_id');
@@ -31,6 +31,6 @@ class CreateQueuesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('queue');
+        Schema::dropIfExists('queues');
     }
 }

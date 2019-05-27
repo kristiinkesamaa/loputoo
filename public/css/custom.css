@@ -467,7 +467,6 @@ td {
 
 table#datatable-buttons {
     border-top: none !important;
-
 }
 
 .thead-height {
@@ -483,11 +482,11 @@ table.subgroup-3 {
 }
 
 table.subgroup-4 {
-    width: 70% ;
+    width: 100% ;
 }
 
 table.subgroup-5 {
-    width: 100% ;
+    width: 99% ;
 }
 
 td.bg-dark.dt-height {
@@ -501,11 +500,15 @@ td.bg-dark.dt-height-4 {
 }
 
 td.bg-dark.dt-height-5 {
-    width: 15% ;
+    width: 13% ;
     height: 100px;
 }
 
 th.text-center {
     vertical-align: middle;
     width: 3%;
+}
+
+.sub-3 {
+    width: 5% !important;
 }

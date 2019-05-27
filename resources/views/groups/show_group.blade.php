@@ -56,6 +56,20 @@
                                     @endif
 
                                     @if(Auth::check())
+                                        <div class="dropdown float-right mb-3">
+                                            <button class="btn btn-change text-white dropdown-toggle" type="button"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fa fa-plus pr-2"></i>lisa uus alagrupp
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                                 x-placement="bottom-start"
+                                                 style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                                <a class="dropdown-item" id="subgroup-3">Kolmene alagrupp</a>
+                                                <a class="dropdown-item" id="subgroup-4">Neljane alagrupp</a>
+                                                <a class="dropdown-item" id="subgroup-5">Viiene alagrupp</a>
+                                            </div>
+                                        </div>
+
                                         <table class="table table-sm table-bordered">
                                             @if($second_person)
                                                 <thead class="thead-default">
@@ -134,308 +148,310 @@
                                                 </tbody>
                                             @endif
                                         </table>
+                                </div>
 
-                                        <div class="dropdown">
-                                            <button class="btn btn-change text-white dropdown-toggle" type="button"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                Lisa alagrupp
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item" id="subgroup-3">Kolmene alagrupp</a>
-                                                <a class="dropdown-item" id="subgroup-4">Neljane alagrupp</a>
-                                                <a class="dropdown-item" id="subgroup-5">Viiene alagrupp</a>
+                                <!-- kolmene alagrupp -->
+                                <div id="div-subgroup-3" style="display: none">
+                                    <form method="post" action="/competitions/{{ $address }}/subgroup">
+                                        @csrf
+
+                                        <div class="form-group row">
+                                            <label for="subgroup-title" class="col-sm-2 col-form-label">
+                                                Alagrupi nimi
+                                            </label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="subgroup-title"
+                                                       name="title" placeholder="Sisesta alagrupi nimi"
+                                                       autocomplete="off" required>
+                                            </div>
+                                        </div>
+                                        <table class="table table-sm table-bordered subgroup-3">
+                                            <thead>
+                                            <tr class="text-center">
+                                                <th></th>
+                                                <th>Mängijad</th>
+                                                <th>1</th>
+                                                <th>2</th>
+                                                <th>3</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row" class="text-center sub-3">1</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-3-1" required>
+                                                        <option selected value="">Vali mängija(d)</option>
+
+                                                                @include("partials/subgroup_team_select")
+
+                                                    </select>
+                                                </th>
+                                                <td class="bg-dark dt-height"></td>
+                                                <td class="dt-height"></td>
+                                                <td class="dt-height"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-center sub-3">2</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-3-2" required>
+                                                        <option selected value="">
+                                                            Vali mängija(d)
+                                                        </option>
+
+                                                                @include("partials/subgroup_team_select")
+
+                                                    </select>
+                                                </th>
+                                                <td class="dt-height"></td>
+                                                <td class="bg-dark dt-height"></td>
+                                                <td class="dt-height"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-center sub-3">3</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-3-3" required>
+                                                        <option selected value="">
+                                                            Vali mängija(d)
+                                                        </option>
+
+                                                                @include("partials/subgroup_team_select")
+
+                                                    </select>
+                                                </th>
+                                                <td class="dt-height"></td>
+                                                <td class="dt-height"></td>
+                                                <td class="bg-dark dt-height"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <button class="btn btn-add mt-2 mb-2" type="submit">Lisa</button>
+                                    </form>
+                                </div>
+
+
+                                <!-- neljane alagrupp -->
+                                <div id="div-subgroup-4" style="display: none">
+                                    <form method="post" action="/competitions/{{ $address }}/subgroup">
+                                        @csrf
+
+                                        <div class="form-group row">
+                                            <label for="subgroup-title"
+                                                   class="col-sm-2 col-form-label pr-0">
+                                                Alagrupi nimi
+                                            </label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="subgroup-title"
+                                                       name="title" placeholder="Sisesta alagrupi nimi"
+                                                       autocomplete="off" required>
                                             </div>
                                         </div>
 
-
-                                        <!-- kolmene alagrupp -->
-                                        <div id="div-subgroup-3" style="display: none">
-
-                                            <form method="post" action="/competitions/{{ $address }}/subgroup">
-                                                @csrf
-
-                                                <label for="subgroup-title">Alagrupi pealkiri</label>
-                                                <input type="text" id="subgroup-title" name="title" required>
-
-                                                <table class="table table-sm table-bordered subgroup-3">
-                                                    <thead>
-                                                    <tr class="text-center">
-                                                        <th></th>
-                                                        <th>Mängijad</th>
-                                                        <th>1</th>
-                                                        <th>2</th>
-                                                        <th>3</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">1</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-3-1" required>
-                                                                <option selected value="">Vali mängija(d)</option>
+                                        <table class="table table-sm table-bordered subgroup-4">
+                                            <thead>
+                                            <tr class="text-center">
+                                                <th></th>
+                                                <th>Mängijad</th>
+                                                <th>1</th>
+                                                <th>2</th>
+                                                <th>3</th>
+                                                <th>4</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row" class="text-center">1</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-4-1" required>
+                                                        <option selected value="">Vali mängija(d)</option>
 
                                                                 @include("partials/subgroup_team_select")
 
-                                                            </select>
-                                                        </th>
-                                                        <td class="bg-dark dt-height"></td>
-                                                        <td class="dt-height"></td>
-                                                        <td class="dt-height"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">2</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-3-2" required>
-                                                                <option selected value="">
-                                                                    Vali mängija(d)
-                                                                </option>
+                                                    </select>
+                                                </th>
+                                                <td class="bg-dark dt-height-4"></td>
+                                                <td class="dt-height"></td>
+                                                <td class="dt-height"></td>
+                                                <td class="dt-height"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-center">2</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-4-2" required>
+                                                        <option selected value="">Vali mängija(d)</option>
 
                                                                 @include("partials/subgroup_team_select")
 
-                                                            </select>
-                                                        </th>
-                                                        <td class="dt-height"></td>
-                                                        <td class="bg-dark dt-height"></td>
-                                                        <td class="dt-height"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">3</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-3-3" required>
-                                                                <option selected value="">
-                                                                    Vali mängija(d)
-                                                                </option>
+                                                    </select>
+                                                </th>
+                                                <td class="dt-height-4"></td>
+                                                <td class="bg-dark dt-height-4"></td>
+                                                <td class="dt-height-4"></td>
+                                                <td class="dt-height-4"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-center">3</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-4-3" required>
+                                                        <option selected value="">Vali mängija(d)</option>
 
                                                                 @include("partials/subgroup_team_select")
 
-                                                            </select>
-                                                        </th>
-                                                        <td class="dt-height"></td>
-                                                        <td class="dt-height"></td>
-                                                        <td class="bg-dark dt-height"></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
+                                                    </select>
+                                                </th>
+                                                <td class="dt-height-4"></td>
+                                                <td class="dt-height-4"></td>
+                                                <td class="bg-dark dt-height-4"></td>
+                                                <td class="dt-height-4"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-center">4</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-4-4" required>
+                                                        <option selected value="">Vali mängija(d)</option>
 
-                                                <button type="submit">Lisa alagrupp</button>
-                                            </form>
+                                                                @include("partials/subgroup_team_select")
 
+                                                    </select>
+                                                </th>
+                                                <td class="dt-height-4"></td>
+                                                <td class="dt-height-4"></td>
+                                                <td class="dt-height-4"></td>
+                                                <td class="bg-dark dt-height-4"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <button class="btn btn-add mt-2 mb-2" type="submit">Lisa</button>
+                                    </form>
+                                </div>
+
+
+                                <!-- viiene alagrupp -->
+                                <div id="div-subgroup-5" style="display: none">
+                                    <form method="post" action="/competitions/{{ $address }}/subgroup">
+                                        @csrf
+
+                                        <div class="form-group row">
+                                            <label for="subgroup-title" class="col-sm-2 col-form-label">
+                                                Alagrupi nimi
+                                            </label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="subgroup-title"
+                                                       name="title" placeholder="Sisesta alagrupi nimi"
+                                                       autocomplete="off" required>
+                                            </div>
                                         </div>
 
-
-                                        <!-- neljane alagrupp -->
-                                        <div id="div-subgroup-4" style="display: none">
-
-                                            <form method="post" action="/competitions/{{ $address }}/subgroup">
-                                                @csrf
-
-                                                <label for="subgroup-title">Alagrupi pealkiri</label>
-                                                <input type="text" id="subgroup-title" name="title" required>
-
-                                                <table class="table table-sm table-bordered subgroup-3">
-                                                    <thead>
-                                                    <tr class="text-center">
-                                                        <th></th>
-                                                        <th>Mängijad</th>
-                                                        <th>1</th>
-                                                        <th>2</th>
-                                                        <th>3</th>
-                                                        <th>4</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">1</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-4-1" required>
-                                                                <option selected value="">Vali mängija(d)</option>
+                                        <table class="table table-sm table-bordered subgroup-5">
+                                            <thead>
+                                            <tr class="text-center">
+                                                <th></th>
+                                                <th>Mängijad</th>
+                                                <th>1</th>
+                                                <th>2</th>
+                                                <th>3</th>
+                                                <th>4</th>
+                                                <th>5</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row" class="text-center">1</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-5-1" required>
+                                                        <option selected value="">Vali mängija(d)</option>
 
                                                                 @include("partials/subgroup_team_select")
 
-                                                            </select>
-                                                        </th>
-                                                        <td class="bg-dark dt-height-4"></td>
-                                                        <td class="dt-height"></td>
-                                                        <td class="dt-height"></td>
-                                                        <td class="dt-height"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">2</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-4-2" required>
-                                                                <option selected value="">Vali mängija(d)</option>
+                                                    </select>
+                                                </th>
+                                                <td class="bg-dark dt-height-5"></td>
+                                                <td class="dt-height"></td>
+                                                <td class="dt-height"></td>
+                                                <td class="dt-height"></td>
+                                                <td class="dt-height"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-center">2</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-5-2" required>
+                                                        <option selected value="">Vali mängija(d)</option>
 
                                                                 @include("partials/subgroup_team_select")
 
-                                                            </select>
-                                                        </th>
-                                                        <td class="dt-height-4"></td>
-                                                        <td class="bg-dark dt-height-4"></td>
-                                                        <td class="dt-height-4"></td>
-                                                        <td class="dt-height-4"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">3</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-4-3" required>
-                                                                <option selected value="">Vali mängija(d)</option>
+                                                    </select>
+                                                </th>
+                                                <td class="dt-height-5"></td>
+                                                <td class="bg-dark dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-center">3</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-5-3" required>
+                                                        <option selected value="">Vali mängija(d)</option>
 
                                                                 @include("partials/subgroup_team_select")
 
-                                                            </select>
-                                                        </th>
-                                                        <td class="dt-height-4"></td>
-                                                        <td class="dt-height-4"></td>
-                                                        <td class="bg-dark dt-height-4"></td>
-                                                        <td class="dt-height-4"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">4</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-4-4" required>
-                                                                <option selected value="">Vali mängija(d)</option>
+                                                    </select>
+                                                </th>
+                                                <td class="dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                                <td class="bg-dark dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-center">4</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-5-4" required>
+                                                        <option selected value="">Vali mängija(d)</option>
 
                                                                 @include("partials/subgroup_team_select")
 
-                                                            </select>
-                                                        </th>
-                                                        <td class="dt-height-4"></td>
-                                                        <td class="dt-height-4"></td>
-                                                        <td class="dt-height-4"></td>
-                                                        <td class="bg-dark dt-height-4"></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-
-                                                <button type="submit">Lisa alagrupp</button>
-                                            </form>
-
-                                        </div>
-
-
-
-
-                                        <!-- viiene alagrupp -->
-                                        <div id="div-subgroup-5" style="display: none">
-
-                                            <form method="post" action="/competitions/{{ $address }}/subgroup">
-                                                @csrf
-
-                                                <label for="subgroup-title">Alagrupi pealkiri</label>
-                                                <input type="text" id="subgroup-title" name="title" required>
-
-                                                <table class="table table-sm table-bordered subgroup-3">
-                                                    <thead>
-                                                    <tr class="text-center">
-                                                        <th></th>
-                                                        <th>Mängijad</th>
-                                                        <th>1</th>
-                                                        <th>2</th>
-                                                        <th>3</th>
-                                                        <th>4</th>
-                                                        <th>5</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">1</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-5-1" required>
-                                                                <option selected value="">Vali mängija(d)</option>
+                                                    </select>
+                                                </th>
+                                                <td class="dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                                <td class="bg-dark dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-center">5</th>
+                                                <th>
+                                                    <select name="teams[]" class="form-control"
+                                                            id="select-5-5" required>
+                                                        <option selected value="">Vali mängija(d)</option>
 
                                                                 @include("partials/subgroup_team_select")
 
-                                                            </select>
-                                                        </th>
-                                                        <td class="bg-dark dt-height-5"></td>
-                                                        <td class="dt-height"></td>
-                                                        <td class="dt-height"></td>
-                                                        <td class="dt-height"></td>
-                                                        <td class="dt-height"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">2</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-5-2" required>
-                                                                <option selected value="">Vali mängija(d)</option>
-
-                                                                @include("partials/subgroup_team_select")
-
-                                                            </select>
-                                                        </th>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="bg-dark dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">3</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-5-3" required>
-                                                                <option selected value="">Vali mängija(d)</option>
-
-                                                                @include("partials/subgroup_team_select")
-
-                                                            </select>
-                                                        </th>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="bg-dark dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">4</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-5-4" required>
-                                                                <option selected value="">Vali mängija(d)</option>
-
-                                                                @include("partials/subgroup_team_select")
-
-                                                            </select>
-                                                        </th>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="bg-dark dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row" class="text-center">5</th>
-                                                        <th>
-                                                            <select name="teams[]" class="form-control"
-                                                                    id="select-5-5" required>
-                                                                <option selected value="">Vali mängija(d)</option>
-
-                                                                @include("partials/subgroup_team_select")
-
-                                                            </select>
-                                                        </th>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="dt-height-5"></td>
-                                                        <td class="bg-dark dt-height-5"></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-
-                                                <button type="submit">Lisa alagrupp</button>
-                                            </form>
-
-                                        </div>
+                                                    </select>
+                                                </th>
+                                                <td class="dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                                <td class="dt-height-5"></td>
+                                                <td class="bg-dark dt-height-5"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <button class="btn btn-add mt-2 mb-5" type="submit">Lisa</button>
+                                    </form>
+                                </div>
 
                                     @else
                                         <table class="table table-sm table-bordered">

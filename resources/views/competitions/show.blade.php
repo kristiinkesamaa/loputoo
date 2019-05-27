@@ -310,7 +310,7 @@
                                             @endif
 
                                             @if(Auth::check())
-                                                <button type="button" data-toggle="modal"
+                                                <button class="btn btn-change text-white float-right" type="button" data-toggle="modal"
                                                         data-target="#add-queue-modal">
                                                     Lisa uus mäng järjekorda
                                                 </button>
@@ -321,6 +321,7 @@
                                                        class="table dataTable table-bordered no-footer"
                                                        cellspacing="0" width="100%"
                                                        aria-describedby="datatable-buttons_info">
+
                                                     <thead class="thead-default">
                                                     <tr role="row">
                                                         <th>Kellaaeg</th>
