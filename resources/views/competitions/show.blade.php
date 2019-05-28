@@ -156,7 +156,11 @@
 
                                                 <div class="row justify-content-center">
 
-                                                    @if(!Auth::check())
+                                                    @if(Auth::check())
+                                                        <a class="btn btn-change" href="/competitions/{{ $competition->id }}/edit">
+                                                            Muuda
+                                                        </a>
+                                                    @else
                                                         @if($now < $registration_starts)
                                                             <p>Registreerimine ei ole veel alanud.</p>
                                                         @elseif($now > $registration_ends)
