@@ -34,8 +34,6 @@
                         </td>
                 </tr>
             @endif
-
-            <?php $a++ ?>
         @endforeach
 
         </tbody>

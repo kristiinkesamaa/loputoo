@@ -102,7 +102,7 @@
                                                                        href="/competitions/{{ $address }}/{{ $contestant->team_id }}/edit">
                                                                         <i class="fa fa-pencil-square-o"></i>
                                                                     </a>
-                                                                    <button class="btn btn-delete"
+                                                                    <button class="btn btn-delete btn-delete-modal"
                                                                             data-team_id="{{ $contestant->team_id }}">
                                                                         <i class="fa fa-trash"></i>
                                                                     </button>
@@ -137,7 +137,7 @@
                                                                href="/competitions/{{ $address }}/{{ $contestant->team_id }}/edit">
                                                                 <i class="fa fa-pencil-square-o"></i>
                                                             </a>
-                                                            <button class="btn btn-delete"
+                                                            <button class="btn btn-delete btn-delete-modal"
                                                                     data-team_id="{{ $contestant->team_id }}">
                                                                 <i class="fa fa-trash"></i>
                                                             </button>
@@ -506,7 +506,6 @@
             </div>
         </div>
     </div>
-    <div style="margin-top: 999px">
 
     </div>
 
@@ -518,8 +517,8 @@
             var select_values = [null, null, null, null, null, null, null, null, null, null, null, null];
 
             // When delete button next to competition is clicked
-            $(".btn-delete").on("click", function () {
-                var team_id = $(".btn-delete").data("team_id");
+            $(".btn-delete-form").on("click", function () {
+                var team_id = $(".btn-delete-form").data("team_id");
                 var address = '{{ $address }}';
 
                 // Give the delete form the correct action attribute
@@ -557,43 +556,43 @@
             $("#select-3-1").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
                     $('#select-3-2 option[value="' + select_values[0] + '"]').show();
-                    $('#select-3-3 option[value="' + select_values[0] + '"]').show()
-                } else {
+                    $('#select-3-3 option[value="' + select_values[0] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-3-2 option[value="' + this_value + '"]').hide();
                     $('#select-3-3 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[0] = $(this).val();
+                select_values[0] = this_value;
             });
 
             $("#select-3-2").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
                     $('#select-3-1 option[value="' + select_values[1] + '"]').show();
-                    $('#select-3-3 option[value="' + select_values[1] + '"]').show()
-                } else {
+                    $('#select-3-3 option[value="' + select_values[1] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-3-1 option[value="' + this_value + '"]').hide();
                     $('#select-3-3 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[1] = $(this).val();
+                select_values[1] = this_value;
             });
 
             $("#select-3-3").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
                     $('#select-3-1 option[value="' + select_values[2] + '"]').show();
-                    $('#select-3-2 option[value="' + select_values[2] + '"]').show()
-                } else {
+                    $('#select-3-2 option[value="' + select_values[2] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-3-1 option[value="' + this_value + '"]').hide();
                     $('#select-3-2 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[2] = $(this).val();
+                select_values[2] = this_value;
             });
             //  ===== size 3 subgroup =====
 
@@ -602,65 +601,65 @@
             $("#select-4-1").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
-                    $('#select-4-2 option[value="' + select_values[34] + '"]').show();
-                    $('#select-4-3 option[value="' + select_values[34] + '"]').show();
-                    $('#select-4-4 option[value="' + select_values[34] + '"]').show()
-                } else {
+                    $('#select-4-2 option[value="' + select_values[3] + '"]').show();
+                    $('#select-4-3 option[value="' + select_values[3] + '"]').show();
+                    $('#select-4-4 option[value="' + select_values[3] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-4-2 option[value="' + this_value + '"]').hide();
                     $('#select-4-3 option[value="' + this_value + '"]').hide();
                     $('#select-4-4 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[34] = $(this).val();
+                select_values[34] = this_value;
             });
 
             $("#select-4-2").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
                     $('#select-4-1 option[value="' + select_values[4] + '"]').show();
                     $('#select-4-3 option[value="' + select_values[4] + '"]').show();
-                    $('#select-4-4 option[value="' + select_values[4] + '"]').show()
-                } else {
+                    $('#select-4-4 option[value="' + select_values[4] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-4-1 option[value="' + this_value + '"]').hide();
                     $('#select-4-3 option[value="' + this_value + '"]').hide();
                     $('#select-4-4 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[4] = $(this).val();
+                select_values[4] = this_value;
             });
 
             $("#select-4-3").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
                     $('#select-4-1 option[value="' + select_values[5] + '"]').show();
                     $('#select-4-2 option[value="' + select_values[5] + '"]').show();
-                    $('#select-4-4 option[value="' + select_values[5] + '"]').show()
-                } else {
+                    $('#select-4-4 option[value="' + select_values[5] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-4-1 option[value="' + this_value + '"]').hide();
                     $('#select-4-2 option[value="' + this_value + '"]').hide();
                     $('#select-4-4 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[5] = $(this).val();
+                select_values[5] = this_value;
             });
 
             $("#select-4-4").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
                     $('#select-4-1 option[value="' + select_values[6] + '"]').show();
                     $('#select-4-2 option[value="' + select_values[6] + '"]').show();
-                    $('#select-4-3 option[value="' + select_values[6] + '"]').show()
-                } else {
+                    $('#select-4-3 option[value="' + select_values[6] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-4-1 option[value="' + this_value + '"]').hide();
                     $('#select-4-2 option[value="' + this_value + '"]').hide();
                     $('#select-4-3 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[6] = $(this).val();
+                select_values[6] = this_value;
             });
             //  ===== size 4 subgroup =====
 
@@ -669,91 +668,91 @@
             $("#select-5-1").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
                     $('#select-5-2 option[value="' + select_values[7] + '"]').show();
                     $('#select-5-3 option[value="' + select_values[7] + '"]').show();
                     $('#select-5-4 option[value="' + select_values[7] + '"]').show();
-                    $('#select-5-5 option[value="' + select_values[7] + '"]').show()
-                } else {
+                    $('#select-5-5 option[value="' + select_values[7] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-5-2 option[value="' + this_value + '"]').hide();
                     $('#select-5-3 option[value="' + this_value + '"]').hide();
                     $('#select-5-4 option[value="' + this_value + '"]').hide();
                     $('#select-5-5 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[7] = $(this).val();
+                select_values[7] = this_value;
             });
 
             $("#select-5-2").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
                     $('#select-5-1 option[value="' + select_values[8] + '"]').show();
                     $('#select-5-3 option[value="' + select_values[8] + '"]').show();
                     $('#select-5-4 option[value="' + select_values[8] + '"]').show();
-                    $('#select-5-5 option[value="' + select_values[8] + '"]').show()
-                } else {
+                    $('#select-5-5 option[value="' + select_values[8] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-5-1 option[value="' + this_value + '"]').hide();
                     $('#select-5-3 option[value="' + this_value + '"]').hide();
                     $('#select-5-4 option[value="' + this_value + '"]').hide();
                     $('#select-5-5 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[8] = $(this).val();
+                select_values[8] = this_value;
             });
 
             $("#select-5-3").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
                     $('#select-5-1 option[value="' + select_values[9] + '"]').show();
                     $('#select-5-2 option[value="' + select_values[9] + '"]').show();
                     $('#select-5-4 option[value="' + select_values[9] + '"]').show();
-                    $('#select-5-5 option[value="' + select_values[9] + '"]').show()
-                } else {
+                    $('#select-5-5 option[value="' + select_values[9] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-5-1 option[value="' + this_value + '"]').hide();
                     $('#select-5-2 option[value="' + this_value + '"]').hide();
                     $('#select-5-4 option[value="' + this_value + '"]').hide();
                     $('#select-5-5 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[9] = $(this).val();
+                select_values[9] = this_value;
             });
 
             $("#select-5-4").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
                     $('#select-5-1 option[value="' + select_values[10] + '"]').show();
                     $('#select-5-2 option[value="' + select_values[10] + '"]').show();
                     $('#select-5-3 option[value="' + select_values[10] + '"]').show();
-                    $('#select-5-5 option[value="' + select_values[10] + '"]').show()
-                } else {
+                    $('#select-5-5 option[value="' + select_values[10] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-5-1 option[value="' + this_value + '"]').hide();
                     $('#select-5-2 option[value="' + this_value + '"]').hide();
                     $('#select-5-3 option[value="' + this_value + '"]').hide();
                     $('#select-5-5 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[10] = $(this).val();
+                select_values[10] = this_valuethis_value;
             });
 
             $("#select-5-5").on("change", function () {
                 var this_value = $(this).val();
 
-                if (this_value === "") {
                     $('#select-5-1 option[value="' + select_values[11] + '"]').show();
                     $('#select-5-2 option[value="' + select_values[11] + '"]').show();
                     $('#select-5-3 option[value="' + select_values[11] + '"]').show();
-                    $('#select-5-4 option[value="' + select_values[11] + '"]').show()
-                } else {
+                    $('#select-5-4 option[value="' + select_values[11] + '"]').show();
+
+                if (this_value !== "") {
                     $('#select-5-1 option[value="' + this_value + '"]').hide();
                     $('#select-5-2 option[value="' + this_value + '"]').hide();
                     $('#select-5-3 option[value="' + this_value + '"]').hide();
                     $('#select-5-4 option[value="' + this_value + '"]').hide()
                 }
 
-                select_values[11] = $(this).val();
+                select_values[11] = this_value;
             })
             //  ===== size 5 subgroup =====
 

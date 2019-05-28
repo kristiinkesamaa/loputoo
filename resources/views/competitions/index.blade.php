@@ -92,8 +92,8 @@
                                                         </a>
                                                     </div>
                                                     <div class="p-1">
-                                                        <button type="button" id="btn-delete"
-                                                                class="btn btn-block btn-delete btn-width"
+                                                        <button type="button"
+                                                                class="btn btn-block btn-delete btn-width btn-delete-modal"
                                                                 data-competition_id="{{ $competition->id }}">
                                                             Kustuta
                                                         </button>
@@ -119,6 +119,81 @@
                                     </div>
                                 @endforeach
                             @endif
+
+                            @if(!$past_competitions->isEmpty())
+                                <h1>Toimunud võistlused</h1>
+                                @foreach ($past_competitions as $competition)
+                                    <div class="container pt-1 pb-1">
+                                        <div class="row align-items-center">
+                                            <div class="col-md-4">
+                                                <img class="myImg"
+                                                     src="{{ asset('storage/competition_images/' . $competition->image) }}"
+                                                     alt="Võistluse pilt" style="width: 100%; max-width: 250em;">
+                                                <div id="image-show-modal" class="modal">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span class="close-modal">&times;</span>
+                                                    </button>
+                                                    <img class="modal-content">
+                                                </div>
+                                            </div>
+                                            <div class="col-md">
+                                                <h5>
+                                                    <a class="text-grey-dark"
+                                                       href="/competitions/{{ $competition->id }}">
+                                                        {{ $competition->title }}
+                                                    </a>
+                                                </h5>
+                                                <ul>
+                                                    <li>Koht: {{ $competition->location }}</li>
+                                                    <li>Aeg: {{ $competition->datetime }}</li>
+                                                    <li>Juhend:<a class="text-grey"
+                                                                  href="{{ asset('storage/competition_instructions/' . $competition->instructions) }}">
+                                                            {{ $competition->instructions }}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-lg-2">
+                                                <div class="p-1">
+                                                    <a class="btn btn-change btn-block text-white btn-width"
+                                                       href="/competitions/{{ $competition->id }}">Vaata infot</a>
+                                                </div>
+                                                @if(Auth::check())
+                                                    <div class="p-1">
+                                                        <a href="/competitions/{{ $competition->id }}/edit"
+                                                           class="btn btn-add btn-block btn-width">
+                                                            Muuda
+                                                        </a>
+                                                    </div>
+                                                    <div class="p-1">
+                                                        <button type="button"
+                                                                class="btn btn-block btn-delete btn-width btn-delete-modal"
+                                                                data-competition_id="{{ $competition->id }}">
+                                                            Kustuta
+                                                        </button>
+                                                    </div>
+                                                @else
+                                                    <div class="p-1">
+                                                        @if($now < $competition->registration_starts)
+                                                            <p>Registreerimine ei ole veel alanud.</p>
+                                                        @elseif($now > $competition->registration_ends)
+                                                            <p>Registreerimine on lõppenud.</p>
+                                                        @else
+                                                            <button type="button"
+                                                                    class="btn btn-add btn-block btn-width"
+                                                                    data-toggle="modal"
+                                                                    data-target="#register-modal-{{ $competition->id }}">
+                                                                Registreeru
+                                                            </button>
+                                                        @endif
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -265,8 +340,8 @@
         });
 
         // When delete button next to competition is clicked
-        $("#btn-delete").on("click", function () {
-            var competition_id = $(".btn-delete").data("competition_id");
+        $(".btn-delete-modal").on("click", function () {
+            var competition_id = $(this).data("competition_id");
 
             // Give the delete form the correct action attribute
             $("#delete-form").attr("action", "/competitions/" + competition_id);

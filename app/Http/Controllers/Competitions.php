@@ -21,7 +21,8 @@ class Competitions extends Controller
      */
     public function index()
     {
-        $competitions = Competition::convert_datetime_for_view(Competition::all());
+        $competitions = Competition::convert_datetime_for_view(Competition::get_all_future());
+        $past_competitions = Competition::convert_datetime_for_view(Competition::get_all_past());
         $now = date("Y-m-d", strtotime(Carbon::now()));
 
         foreach ($competitions as $key => $competition) {
@@ -31,12 +32,15 @@ class Competitions extends Controller
             foreach ($competitions[$key]->types as $type) {
                 if ($type->id > 2) {
                     $competitions[$key]->second_person = true;
+                } else {
+                    $competitions[$key]->second_person = false;
                 }
             }
         }
 
         return view('competitions/index', [
             'competitions' => $competitions,
+            'past_competitions' => $past_competitions,
             'now' => $now
         ]);
     }

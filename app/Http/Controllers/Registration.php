@@ -17,8 +17,8 @@ class Registration extends Controller
             "league" => "required",
             "person_1_name" => "required",
             "person_1_email" => "required",
-            "person_2_name" => "required_if:type,>,2",
-            "person_2_email" => "required_if:type,>,2"
+            "person_2_name" => "required_if:type,>,3",
+            "person_2_email" => "required_if:type,>,3"
         ]);
 
         $type_id = $request->get("type");

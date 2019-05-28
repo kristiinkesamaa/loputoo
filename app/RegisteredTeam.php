@@ -131,4 +131,26 @@ class RegisteredTeam extends Model
         return $team_ids;
     }
 
+    public static function get_by_subgroup($subgroup_id)
+    {
+        $teams = DB::table('registered_teams')
+            ->where('subgroup_id', '=', $subgroup_id)
+            ->get();
+
+        $team_ids = [];
+
+        foreach ($teams as $team) {
+            $team_ids[] = $team->id;
+        }
+
+        return $team_ids;
+    }
+
+    public static function remove_from_subgroup($subgroup_id)
+    {
+        DB::table('registered_teams')
+            ->where('subgroup_id', '=', $subgroup_id)
+            ->update(['subgroup_id' => 0, 'subgroup_order' => 0]);
+    }
+
 }

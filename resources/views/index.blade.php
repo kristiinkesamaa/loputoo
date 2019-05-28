@@ -30,7 +30,7 @@
                         <div class="mini-stat clearfix bg-white border-green">
                             <span class="mini-stat-icon bg-light"><i class="fa fa-check text-green"></i></span>
                             <div class="mini-stat-info text-right text-muted">
-                                <span class="counter text-green">{{ $past_competitions }}</span>
+                                <span class="counter text-green">{{ $past_competition_count }}</span>
                                 Toimunud võistlust kokku
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="mini-stat clearfix bg-white border-pink">
                             <span class="mini-stat-icon bg-light"><i class="fa fa-calendar-o text-pink"></i></span>
                             <div class="mini-stat-info text-right text-muted">
-                                <span class="counter text-pink">{{ $future_competitions }}</span>
+                                <span class="counter text-pink">{{ $future_competition_count }}</span>
                                 Võistlust tulemas
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         <div class="mini-stat clearfix bg-white border-orange">
                             <span class="mini-stat-icon bg-light"><i class="fa fa-users text-orange"></i></span>
                             <div class="mini-stat-info text-right text-muted">
-                                <span class="counter text-orange">{{ $past_contestants }}</span>
+                                <span class="counter text-orange">{{ $past_contestant_count }}</span>
                                 Võistlejat osalenud kokku
                             </div>
                         </div>
@@ -111,6 +111,28 @@
                                         <span>Eesolevaid võistlusi pole.</span>
                                     @else
                                         @foreach ($competitions as $competition)
+
+                                            <li class="competition">
+                                                <a class="text-grey" href="/competitions/{{ $competition->id }}">
+                                                    {{ $competition->title }},
+                                                    {{ $competition->location }},
+                                                    @foreach ($competition->leagues as $league)
+                                                        {{ $league->name }},
+                                                    @endforeach
+                                                    {{ $competition->datetime }}
+                                                </a>
+                                            </li>
+
+                                        @endforeach
+                                    @endif
+                                </ul>
+                            </div>
+
+                            <div class="competition">
+                                <ul>
+                                    @if(!$past_competitions->count() < 1)
+                                        <h4 class="mt-0 header-title mb-4">Toimunud võistlused</h4>
+                                        @foreach ($past_competitions as $competition)
 
                                             <li class="competition">
                                                 <a class="text-grey" href="/competitions/{{ $competition->id }}">
@@ -344,7 +366,7 @@
                                                             class="input-group-text"><i
                                                                 class="mdi mdi-calendar"></i></span></div>
                                                 <input type="text" class="form-control ml-4" name="registration ends"
-                                                       placeholder="Lõppeb" autocomplete="off" required/>
+                                                       placeholder="Lõpeb" autocomplete="off" required/>
                                                 <div class="input-group-append bg-custom b-0"><span
                                                             class="input-group-text"><i
                                                                 class="mdi mdi-calendar"></i></span></div>

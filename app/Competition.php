@@ -55,4 +55,24 @@ class Competition extends Model
             ->where('id', '=', $id)
             ->get($item);
     }
+
+    public static function get_all_future()
+    {
+        $now = DB::select(DB::raw('SELECT NOW() AS now'))[0]->now;
+
+        return DB::table('competitions')
+            ->where('datetime', '>', $now)
+            ->orderBy('datetime')
+            ->get();
+    }
+
+    public static function get_all_past()
+    {
+        $now = DB::select(DB::raw('SELECT NOW() AS now'))[0]->now;
+
+        return DB::table('competitions')
+            ->where('datetime', '<', $now)
+            ->orderBy('datetime')
+            ->get();
+    }
 }

@@ -114,7 +114,9 @@
                                                                    value="{{ $team_ids[3] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[0] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -138,7 +140,9 @@
                                                                    value="{{ $team_ids[3] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[1] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -162,7 +166,9 @@
                                                                    value="{{ $team_ids[2] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[2] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -264,7 +270,9 @@
                                                                    value="{{ $team_ids[4] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[0] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -288,7 +296,9 @@
                                                                    value="{{ $team_ids[3] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[1] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -312,7 +322,9 @@
                                                                    value="{{ $team_ids[3] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[2] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -336,7 +348,9 @@
                                                                    value="{{ $team_ids[4] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[3] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -360,7 +374,9 @@
                                                                    value="{{ $team_ids[2] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[4] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -384,7 +400,9 @@
                                                                    value="{{ $team_ids[4] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[5] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -507,7 +525,9 @@
                                                                    value="{{ $team_ids[5] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[0] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -531,7 +551,9 @@
                                                                    value="{{ $team_ids[4] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[1] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -555,7 +577,9 @@
                                                                    value="{{ $team_ids[5] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[2] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -579,7 +603,9 @@
                                                                    value="{{ $team_ids[3] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[3] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -603,7 +629,9 @@
                                                                    value="{{ $team_ids[4] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[4] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -627,7 +655,9 @@
                                                                    value="{{ $team_ids[5] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[5] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -651,7 +681,9 @@
                                                                    value="{{ $team_ids[3] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[6] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -675,7 +707,9 @@
                                                                    value="{{ $team_ids[4] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[7] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -699,7 +733,9 @@
                                                                    value="{{ $team_ids[2] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[8] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>
@@ -723,7 +759,9 @@
                                                                    value="{{ $team_ids[5] }}">
 
                                                         </div>
-                                                        <button type="submit">Lisa</button>
+                                                        <div style="{{ $button_states[9] ? "" : 'display: none' }}">
+                                                            <button type="submit">Lisa</button>
+                                                        </div>
                                                     </form>
                                                 </td>
                                             </tr>

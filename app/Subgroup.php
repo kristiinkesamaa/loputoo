@@ -58,4 +58,14 @@ class Subgroup extends Model
                 'subgroups.title as title',
             ]);
     }
+
+    public static function get_title_for_queue($team_id)
+    {
+        return DB::table('subgroups')
+            ->leftJoin('registered_teams', 'subgroup_id', '=', 'subgroups.id')
+            ->where('registered_teams.id', '=', $team_id)
+            ->get('title');
+    }
+
+
 }

@@ -18,6 +18,7 @@ class CreateQueuesTable extends Migration
             $table->unsignedBigInteger('team_1_id');
             $table->unsignedBigInteger('team_2_id');
             $table->integer('queue_number');
+            $table->string('game_title');
             $table->timestamps();
             $table->foreign('team_1_id')->references('id')->on('registered_teams')->onDelete("cascade");
             $table->foreign('team_2_id')->references('id')->on('registered_teams')->onDelete("cascade");

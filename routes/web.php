@@ -21,6 +21,10 @@ Route::resource('competitions', "Competitions");
 
 Route::post('/competitions/{id}/queue', "Pages@queue");
 
+Route::delete('/competitions/{id}/subgroup/{subgroup_id}', "Pages@destroy_subgroup");
+
+Route::delete('/competitions/{id}/queue/{queue_id}', "Pages@destroy_queue");
+
 
 Route::get('/competitions/{id}/{league}/{type}', "Groups@show");
 
@@ -31,7 +35,7 @@ Route::patch('/competitions/{id}/{league}/{type}/{team_id}', "Groups@update");
 Route::delete('/competitions/{id}/{league}/{type}/{team_id}', "Groups@destroy");
 
 
-Route::post('/competitions/{id}/{league}/{type}/subgroup', "Pages@add_subgroup");
+Route::post('/competitions/{id}/{league}/{type}/subgroup', "Pages@store_subgroup");
 
 
 Route::post('/competitions/{id}/register', 'Registration@register');

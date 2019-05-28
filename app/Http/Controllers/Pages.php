@@ -19,21 +19,26 @@ class Pages extends Controller
      */
     public function index()
     {
-        $competitions = Competition::all();
-        $past_competitions = Competition::get_number_of_past_competitions($competitions);
-        $future_competitions = count($competitions) - $past_competitions;
-        $past_contestants = RegisteredContestant::get_past_contestants();
-        $competitions = Competition::convert_datetime_for_view($competitions);
+        $competitions = Competition::convert_datetime_for_view(Competition::get_all_future());
+        $past_competitions = Competition::convert_datetime_for_view(Competition::get_all_past());
+        $past_competition_count = Competition::get_number_of_past_competitions($competitions);
+        $future_competition_count = count($competitions) - $past_competition_count;
+        $past_contestant_count = RegisteredContestant::get_past_contestants();
 
         foreach ($competitions as $key => $competition) {
             $competitions[$key]->leagues = CompetitionLeague::get_league_names($competition->id);
         }
 
+        foreach ($past_competitions as $key => $competition) {
+            $past_competitions[$key]->leagues = CompetitionLeague::get_league_names($competition->id);
+        }
+
         return view('index', [
             'competitions' => $competitions,
             'past_competitions' => $past_competitions,
-            'future_competitions' => $future_competitions,
-            'past_contestants' => $past_contestants
+            'past_competition_count' => $past_competition_count,
+            'future_competition_count' => $future_competition_count,
+            'past_contestant_count' => $past_contestant_count
         ]);
     }
 
@@ -44,7 +49,7 @@ class Pages extends Controller
         return redirect()->back();
     }
 
-    public function add_subgroup(Request $request)
+    public function store_subgroup(Request $request)
     {
         // Make sure required fields are filled
         request()->validate([
@@ -93,13 +98,22 @@ class Pages extends Controller
             'title' => $subgroup_contestants[0]->league_name . ' ' . $subgroup_contestants[0]->short_name . ' - ' . $subgroup->title,
             'competition_id' => $id,
             'second_person' => $second_person,
-            'team_ids' => $team_ids
+            'team_ids' => $team_ids,
+            'button_states' => Queue::find_if_added($subgroup_id, $subgroup_contestants)
         ]);
     }
 
     public function queue($id, Request $request)
     {
         $queue_number = Queue::get_highest_queue_number_by_competition_id($id);
+        $team_1_id = $request->get('team_1_id');
+        $team_2_id = $request->get('team_2_id');
+
+        if (empty($request->get('game_title'))) {
+            $title = Subgroup::get_title_for_queue($team_1_id)[0]->title;
+        } else {
+            $title = $request->get('game_title');
+        }
 
         if (empty($queue_number)) {
             $queue_number = 1;
@@ -109,14 +123,33 @@ class Pages extends Controller
 
         $queue = new Queue();
 
-        $queue->team_1_id = $request->get('team_1_id');
-        $queue->team_2_id = $request->get('team_2_id');
+        $queue->team_1_id = $team_1_id;
+        $queue->team_2_id = $team_2_id;
         $queue->queue_number = $queue_number;
+        $queue->game_title = $title;
 
         $queue->save();
 
         return back()->with("queue_added", true);
     }
 
+    public function destroy_subgroup($id, $subgroup_id)
+    {
+        $subgroup_team_ids = RegisteredTeam::get_by_subgroup($subgroup_id);
+        RegisteredTeam::remove_from_subgroup($subgroup_id);
+
+        Queue::destroy_by_subgroup($subgroup_team_ids);
+
+        Subgroup::destroy($subgroup_id);
+
+        return back()->with("subgroup_deleted", true);
+    }
+
+    public function destroy_queue($id, $queue_id)
+    {
+        Queue::destroy_by_id($queue_id);
+
+        return back()->with("queue_deleted", true);
+    }
 
 }
