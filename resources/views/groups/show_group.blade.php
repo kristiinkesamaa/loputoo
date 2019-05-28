@@ -16,7 +16,6 @@
                             </ol>
                         </div>
                         <h6 class="page-title">{{ $competition_title }}</h6>
-                        <h6>{{ Auth::check() ? 'Osalejate info muutmine: ' . $title : $title }}</h6>
 
                     </div>
                 </div>
@@ -55,6 +54,8 @@
                                         </div>
                                     @endif
 
+                                    <h6>{{ Auth::check() ? 'Osalejate info muutmine: ' . $title : $title }}</h6>
+
                                     @if(Auth::check())
                                         <div class="dropdown float-right mb-3">
                                             <button class="btn btn-change text-white dropdown-toggle" type="button"
@@ -85,16 +86,15 @@
                                                 </thead>
                                                 <tbody>
 
-                                                <?php $a = 0 ?>
                                                 @foreach($contestants as $contestant)
-                                                    @if($a % 2 === 0)
+                                                    @if($loop->odd)
                                                         <tr style="{{ $contestant->subgroup_id === 0 ? "" : "background: #99ff99" }}">
                                                             @endif
 
                                                             <td>{{ $contestant->name }}</td>
                                                             <td>{{ $contestant->email }}</td>
 
-                                                            @if($a % 2 === 1)
+                                                            @if($loop->even)
                                                                 <td>{{ $contestant->type_name }}</td>
                                                                 <td>{{ $contestant->league_name }}</td>
                                                                 <td>
@@ -109,8 +109,6 @@
                                                                 </td>
                                                         </tr>
                                                     @endif
-
-                                                    <?php $a++ ?>
                                                 @endforeach
 
                                                 </tbody>
@@ -183,7 +181,7 @@
                                                             id="select-3-1" required>
                                                         <option selected value="">Vali mängija(d)</option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -200,7 +198,7 @@
                                                             Vali mängija(d)
                                                         </option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -217,7 +215,7 @@
                                                             Vali mängija(d)
                                                         </option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -268,7 +266,7 @@
                                                             id="select-4-1" required>
                                                         <option selected value="">Vali mängija(d)</option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -284,7 +282,7 @@
                                                             id="select-4-2" required>
                                                         <option selected value="">Vali mängija(d)</option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -300,7 +298,7 @@
                                                             id="select-4-3" required>
                                                         <option selected value="">Vali mängija(d)</option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -316,7 +314,7 @@
                                                             id="select-4-4" required>
                                                         <option selected value="">Vali mängija(d)</option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -369,7 +367,7 @@
                                                             id="select-5-1" required>
                                                         <option selected value="">Vali mängija(d)</option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -386,7 +384,7 @@
                                                             id="select-5-2" required>
                                                         <option selected value="">Vali mängija(d)</option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -403,7 +401,7 @@
                                                             id="select-5-3" required>
                                                         <option selected value="">Vali mängija(d)</option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -420,7 +418,7 @@
                                                             id="select-5-4" required>
                                                         <option selected value="">Vali mängija(d)</option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -437,7 +435,7 @@
                                                             id="select-5-5" required>
                                                         <option selected value="">Vali mängija(d)</option>
 
-                                                                @include("partials/subgroup_team_select")
+                                                        @include("partials/subgroup_team_select")
 
                                                     </select>
                                                 </th>
@@ -453,30 +451,46 @@
                                     </form>
                                 </div>
 
-                                    @else
-                                        <table class="table table-sm table-bordered">
-                                            <thead class="thead-default">
-                                            <tr>
-                                                <th>Osaleja nimi</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            @foreach($contestants as $contestant)
-                                                <tr>
-                                                    <td>{{ $contestant->name }}</td>
-                                                </tr>
-                                            @endforeach
-                                            </tbody>
-                                        </table>
-                                    @endif
-                                </div>
+                                @else
+                                    <table class="table table-sm table-bordered">
+                                        <thead class="thead-default">
+                                        <tr>
+                                            <th>Osaleja nimi</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($contestants as $contestant)
+                                            @if($loop->odd)
 
+                                                <tr>
+                                                    <td>
+                                                        <table>
+                                                            <tr>
+                                                                <td>{{ $contestant->name }}</td>
+                                                            </tr>
+
+                                                            @else
+
+                                                                <tr>
+                                                                    <td>{{ $contestant->name }}</td>
+                                                                </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+
+                                            @endif
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @endif
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Tiimi kustutamise modal -->
@@ -556,8 +570,8 @@
             $("#select-3-1").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-3-2 option[value="' + select_values[0] + '"]').show();
-                    $('#select-3-3 option[value="' + select_values[0] + '"]').show();
+                $('#select-3-2 option[value="' + select_values[0] + '"]').show();
+                $('#select-3-3 option[value="' + select_values[0] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-3-2 option[value="' + this_value + '"]').hide();
@@ -570,8 +584,8 @@
             $("#select-3-2").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-3-1 option[value="' + select_values[1] + '"]').show();
-                    $('#select-3-3 option[value="' + select_values[1] + '"]').show();
+                $('#select-3-1 option[value="' + select_values[1] + '"]').show();
+                $('#select-3-3 option[value="' + select_values[1] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-3-1 option[value="' + this_value + '"]').hide();
@@ -584,8 +598,8 @@
             $("#select-3-3").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-3-1 option[value="' + select_values[2] + '"]').show();
-                    $('#select-3-2 option[value="' + select_values[2] + '"]').show();
+                $('#select-3-1 option[value="' + select_values[2] + '"]').show();
+                $('#select-3-2 option[value="' + select_values[2] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-3-1 option[value="' + this_value + '"]').hide();
@@ -601,9 +615,9 @@
             $("#select-4-1").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-4-2 option[value="' + select_values[3] + '"]').show();
-                    $('#select-4-3 option[value="' + select_values[3] + '"]').show();
-                    $('#select-4-4 option[value="' + select_values[3] + '"]').show();
+                $('#select-4-2 option[value="' + select_values[3] + '"]').show();
+                $('#select-4-3 option[value="' + select_values[3] + '"]').show();
+                $('#select-4-4 option[value="' + select_values[3] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-4-2 option[value="' + this_value + '"]').hide();
@@ -617,9 +631,9 @@
             $("#select-4-2").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-4-1 option[value="' + select_values[4] + '"]').show();
-                    $('#select-4-3 option[value="' + select_values[4] + '"]').show();
-                    $('#select-4-4 option[value="' + select_values[4] + '"]').show();
+                $('#select-4-1 option[value="' + select_values[4] + '"]').show();
+                $('#select-4-3 option[value="' + select_values[4] + '"]').show();
+                $('#select-4-4 option[value="' + select_values[4] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-4-1 option[value="' + this_value + '"]').hide();
@@ -633,9 +647,9 @@
             $("#select-4-3").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-4-1 option[value="' + select_values[5] + '"]').show();
-                    $('#select-4-2 option[value="' + select_values[5] + '"]').show();
-                    $('#select-4-4 option[value="' + select_values[5] + '"]').show();
+                $('#select-4-1 option[value="' + select_values[5] + '"]').show();
+                $('#select-4-2 option[value="' + select_values[5] + '"]').show();
+                $('#select-4-4 option[value="' + select_values[5] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-4-1 option[value="' + this_value + '"]').hide();
@@ -649,9 +663,9 @@
             $("#select-4-4").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-4-1 option[value="' + select_values[6] + '"]').show();
-                    $('#select-4-2 option[value="' + select_values[6] + '"]').show();
-                    $('#select-4-3 option[value="' + select_values[6] + '"]').show();
+                $('#select-4-1 option[value="' + select_values[6] + '"]').show();
+                $('#select-4-2 option[value="' + select_values[6] + '"]').show();
+                $('#select-4-3 option[value="' + select_values[6] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-4-1 option[value="' + this_value + '"]').hide();
@@ -668,10 +682,10 @@
             $("#select-5-1").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-5-2 option[value="' + select_values[7] + '"]').show();
-                    $('#select-5-3 option[value="' + select_values[7] + '"]').show();
-                    $('#select-5-4 option[value="' + select_values[7] + '"]').show();
-                    $('#select-5-5 option[value="' + select_values[7] + '"]').show();
+                $('#select-5-2 option[value="' + select_values[7] + '"]').show();
+                $('#select-5-3 option[value="' + select_values[7] + '"]').show();
+                $('#select-5-4 option[value="' + select_values[7] + '"]').show();
+                $('#select-5-5 option[value="' + select_values[7] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-5-2 option[value="' + this_value + '"]').hide();
@@ -686,10 +700,10 @@
             $("#select-5-2").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-5-1 option[value="' + select_values[8] + '"]').show();
-                    $('#select-5-3 option[value="' + select_values[8] + '"]').show();
-                    $('#select-5-4 option[value="' + select_values[8] + '"]').show();
-                    $('#select-5-5 option[value="' + select_values[8] + '"]').show();
+                $('#select-5-1 option[value="' + select_values[8] + '"]').show();
+                $('#select-5-3 option[value="' + select_values[8] + '"]').show();
+                $('#select-5-4 option[value="' + select_values[8] + '"]').show();
+                $('#select-5-5 option[value="' + select_values[8] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-5-1 option[value="' + this_value + '"]').hide();
@@ -704,10 +718,10 @@
             $("#select-5-3").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-5-1 option[value="' + select_values[9] + '"]').show();
-                    $('#select-5-2 option[value="' + select_values[9] + '"]').show();
-                    $('#select-5-4 option[value="' + select_values[9] + '"]').show();
-                    $('#select-5-5 option[value="' + select_values[9] + '"]').show();
+                $('#select-5-1 option[value="' + select_values[9] + '"]').show();
+                $('#select-5-2 option[value="' + select_values[9] + '"]').show();
+                $('#select-5-4 option[value="' + select_values[9] + '"]').show();
+                $('#select-5-5 option[value="' + select_values[9] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-5-1 option[value="' + this_value + '"]').hide();
@@ -722,10 +736,10 @@
             $("#select-5-4").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-5-1 option[value="' + select_values[10] + '"]').show();
-                    $('#select-5-2 option[value="' + select_values[10] + '"]').show();
-                    $('#select-5-3 option[value="' + select_values[10] + '"]').show();
-                    $('#select-5-5 option[value="' + select_values[10] + '"]').show();
+                $('#select-5-1 option[value="' + select_values[10] + '"]').show();
+                $('#select-5-2 option[value="' + select_values[10] + '"]').show();
+                $('#select-5-3 option[value="' + select_values[10] + '"]').show();
+                $('#select-5-5 option[value="' + select_values[10] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-5-1 option[value="' + this_value + '"]').hide();
@@ -740,10 +754,10 @@
             $("#select-5-5").on("change", function () {
                 var this_value = $(this).val();
 
-                    $('#select-5-1 option[value="' + select_values[11] + '"]').show();
-                    $('#select-5-2 option[value="' + select_values[11] + '"]').show();
-                    $('#select-5-3 option[value="' + select_values[11] + '"]').show();
-                    $('#select-5-4 option[value="' + select_values[11] + '"]').show();
+                $('#select-5-1 option[value="' + select_values[11] + '"]').show();
+                $('#select-5-2 option[value="' + select_values[11] + '"]').show();
+                $('#select-5-3 option[value="' + select_values[11] + '"]').show();
+                $('#select-5-4 option[value="' + select_values[11] + '"]').show();
 
                 if (this_value !== "") {
                     $('#select-5-1 option[value="' + this_value + '"]').hide();
