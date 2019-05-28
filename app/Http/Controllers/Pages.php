@@ -99,7 +99,7 @@ class Pages extends Controller
             'competition_id' => $id,
             'second_person' => $second_person,
             'team_ids' => $team_ids,
-            'button_states' => Queue::find_if_added($subgroup_id, $subgroup_contestants)
+            'button_states' => Queue::find_if_added($subgroup_id, $team_ids, $second_person)
         ]);
     }
 

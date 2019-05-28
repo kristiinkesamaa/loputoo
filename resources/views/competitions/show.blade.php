@@ -157,7 +157,7 @@
                                                 <div class="row justify-content-center">
 
                                                     @if(Auth::check())
-                                                        <a class="btn btn-change" href="/competitions/{{ $competition->id }}/edit">
+                                                        <a class="btn btn-changed" href="/competitions/{{ $competition->id }}/edit">
                                                             Muuda
                                                         </a>
                                                     @else

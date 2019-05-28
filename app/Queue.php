@@ -142,159 +142,177 @@ class Queue extends Model
             ]);
     }
 
-    public static function find_if_added($subgroup_id, $subgroup_contestants)
+    public static function find_if_added($subgroup_id, $team_ids, $second_person)
     {
         $queues = Queue::get_by_subgroup_id($subgroup_id);
-        $number = count($subgroup_contestants);
+        $number = count($team_ids);
+
+            if ($number === 3) {
+                $button_states = array_fill(0, 3, true);
 
 
-        if ($number === 3) {
-            $button_states = array_fill(0, 3, true);
+                $team_1_id = $team_ids[0];
+                $team_2_id = $team_ids[2];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[0] = false : false;
+                }
+
+                $team_1_id = $team_ids[1];
+                $team_2_id = $team_ids[2];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[1] = false : false;
+                }
+
+                $team_1_id = $team_ids[0];
+                $team_2_id = $team_ids[1];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[2] = false : false;
+                }
 
 
-            $team_1_id = $subgroup_contestants[0]->team_id;
-            $team_2_id = $subgroup_contestants[2]->team_id;
+            } elseif ($number === 4) {
+                $button_states = array_fill(0, 6, true);
 
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[0] = false : false;
+
+                $team_1_id = $team_ids[0];
+                $team_2_id = $team_ids[3];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[0] = false : false;
+                }
+
+                $team_1_id = $team_ids[1];
+                $team_2_id = $team_ids[2];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[1] = false : false;
+                }
+
+                $team_1_id = $team_ids[0];
+                $team_2_id = $team_ids[2];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[2] = false : false;
+                }
+
+                $team_1_id = $team_ids[1];
+                $team_2_id = $team_ids[3];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[3] = false : false;
+                }
+
+                $team_1_id = $team_ids[0];
+                $team_2_id = $team_ids[1];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[4] = false : false;
+                }
+
+                $team_1_id = $team_ids[2];
+                $team_2_id = $team_ids[3];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[5] = false : false;
+                }
+
+
+            } else {
+                $button_states = array_fill(0, 10, true);
+
+
+                $team_1_id = $team_ids[1];
+                $team_2_id = $team_ids[4];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[0] = false : false;
+                }
+
+                $team_1_id = $team_ids[2];
+                $team_2_id = $team_ids[3];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[1] = false : false;
+                }
+
+                $team_1_id = $team_ids[0];
+                $team_2_id = $team_ids[4];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[2] = false : false;
+                }
+
+                $team_1_id = $team_ids[1];
+                $team_2_id = $team_ids[2];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[3] = false : false;
+                }
+
+                $team_1_id = $team_ids[0];
+                $team_2_id = $team_ids[3];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[4] = false : false;
+                }
+
+                $team_1_id = $team_ids[2];
+                $team_2_id = $team_ids[4];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[5] = false : false;
+                }
+
+                $team_1_id = $team_ids[0];
+                $team_2_id = $team_ids[2];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[6] = false : false;
+                }
+
+                $team_1_id = $team_ids[1];
+                $team_2_id = $team_ids[3];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[7] = false : false;
+                }
+
+                $team_1_id = $team_ids[0];
+                $team_2_id = $team_ids[1];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[8] = false : false;
+                }
+
+                $team_1_id = $team_ids[3];
+                $team_2_id = $team_ids[4];
+
+                foreach ($queues as $queue) {
+                    $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id ||
+                    $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[9] = false : false;
+                }
             }
-
-            $team_1_id = $subgroup_contestants[1]->team_id;
-            $team_2_id = $subgroup_contestants[2]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[1] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[0]->team_id;
-            $team_2_id = $subgroup_contestants[1]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[2] = false : false;
-            }
-
-
-        } elseif ($number === 4) {
-            $button_states = array_fill(0, 6, true);
-
-
-            $team_1_id = $subgroup_contestants[0]->team_id;
-            $team_2_id = $subgroup_contestants[3]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[0] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[1]->team_id;
-            $team_2_id = $subgroup_contestants[2]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[1] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[0]->team_id;
-            $team_2_id = $subgroup_contestants[2]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[2] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[1]->team_id;
-            $team_2_id = $subgroup_contestants[3]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[3] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[0]->team_id;
-            $team_2_id = $subgroup_contestants[1]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[4] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[2]->team_id;
-            $team_2_id = $subgroup_contestants[3]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[5] = false : false;
-            }
-
-
-        } else {
-            $button_states = array_fill(0, 10, true);
-
-
-            $team_1_id = $subgroup_contestants[1]->team_id;
-            $team_2_id = $subgroup_contestants[4]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[0] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[2]->team_id;
-            $team_2_id = $subgroup_contestants[3]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[1] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[0]->team_id;
-            $team_2_id = $subgroup_contestants[4]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[2] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[1]->team_id;
-            $team_2_id = $subgroup_contestants[2]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[3] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[0]->team_id;
-            $team_2_id = $subgroup_contestants[3]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[4] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[2]->team_id;
-            $team_2_id = $subgroup_contestants[4]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[5] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[0]->team_id;
-            $team_2_id = $subgroup_contestants[2]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[6] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[1]->team_id;
-            $team_2_id = $subgroup_contestants[3]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[7] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[0]->team_id;
-            $team_2_id = $subgroup_contestants[1]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[8] = false : false;
-            }
-
-            $team_1_id = $subgroup_contestants[3]->team_id;
-            $team_2_id = $subgroup_contestants[4]->team_id;
-
-            foreach ($queues as $queue) {
-                $queue->team_1_id === $team_1_id && $queue->team_2_id === $team_2_id || $queue->team_1_id === $team_2_id && $queue->team_2_id === $team_1_id ? $button_states[9] = false : false;
-            }
-        }
 
         return $button_states;
     }

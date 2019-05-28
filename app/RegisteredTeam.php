@@ -86,11 +86,11 @@ class RegisteredTeam extends Model
             $team_ids = [0, 0, 0];
             foreach ($subgroup_contestants as $contestant) {
                 if ($contestant->subgroup_order === 1) {
-                    $team_ids[1] = $contestant->team_id;
+                    $team_ids[0] = $contestant->team_id;
                 } elseif ($contestant->subgroup_order === 2) {
-                    $team_ids[2] = $contestant->team_id;
+                    $team_ids[1] = $contestant->team_id;
                 } elseif ($contestant->subgroup_order === 3) {
-                    $team_ids[3] = $contestant->team_id;
+                    $team_ids[2] = $contestant->team_id;
                 }
             }
 
@@ -99,13 +99,13 @@ class RegisteredTeam extends Model
             $team_ids = [0, 0, 0, 0];
             foreach ($subgroup_contestants as $contestant) {
                 if ($contestant->subgroup_order === 1) {
-                    $team_ids[1] = $contestant->team_id;
+                    $team_ids[0] = $contestant->team_id;
                 } elseif ($contestant->subgroup_order === 2) {
-                    $team_ids[2] = $contestant->team_id;
+                    $team_ids[1] = $contestant->team_id;
                 } elseif ($contestant->subgroup_order === 3) {
-                    $team_ids[3] = $contestant->team_id;
+                    $team_ids[2] = $contestant->team_id;
                 } elseif ($contestant->subgroup_order === 4) {
-                    $team_ids[4] = $contestant->team_id;
+                    $team_ids[3] = $contestant->team_id;
                 }
             }
 
@@ -114,15 +114,15 @@ class RegisteredTeam extends Model
             $team_ids = [0, 0, 0, 0, 0];
             foreach ($subgroup_contestants as $contestant) {
                 if ($contestant->subgroup_order === 1) {
-                    $team_ids[1] = $contestant->team_id;
+                    $team_ids[0] = $contestant->team_id;
                 } elseif ($contestant->subgroup_order === 2) {
-                    $team_ids[2] = $contestant->team_id;
+                    $team_ids[1] = $contestant->team_id;
                 } elseif ($contestant->subgroup_order === 3) {
-                    $team_ids[3] = $contestant->team_id;
+                    $team_ids[2] = $contestant->team_id;
                 } elseif ($contestant->subgroup_order === 4) {
-                    $team_ids[4] = $contestant->team_id;
+                    $team_ids[3] = $contestant->team_id;
                 } elseif ($contestant->subgroup_order === 5) {
-                    $team_ids[5] = $contestant->team_id;
+                    $team_ids[4] = $contestant->team_id;
                 }
             }
 

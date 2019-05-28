@@ -109,9 +109,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[1] }}">
+                                                                   value="{{ $team_ids[0] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[3] }}">
+                                                                   value="{{ $team_ids[2] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[0] ? "" : 'display: none' }}">
@@ -135,9 +135,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[2] }}">
+                                                                   value="{{ $team_ids[1] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[3] }}">
+                                                                   value="{{ $team_ids[2] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[1] ? "" : 'display: none' }}">
@@ -161,9 +161,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[1] }}">
+                                                                   value="{{ $team_ids[0] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[2] }}">
+                                                                   value="{{ $team_ids[1] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[2] ? "" : 'display: none' }}">
@@ -265,9 +265,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[1] }}">
+                                                                   value="{{ $team_ids[0] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[4] }}">
+                                                                   value="{{ $team_ids[3] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[0] ? "" : 'display: none' }}">
@@ -291,9 +291,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[2] }}">
+                                                                   value="{{ $team_ids[1] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[3] }}">
+                                                                   value="{{ $team_ids[2] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[1] ? "" : 'display: none' }}">
@@ -317,9 +317,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[1] }}">
+                                                                   value="{{ $team_ids[0] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[3] }}">
+                                                                   value="{{ $team_ids[2] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[2] ? "" : 'display: none' }}">
@@ -343,9 +343,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[2] }}">
+                                                                   value="{{ $team_ids[1] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[4] }}">
+                                                                   value="{{ $team_ids[3] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[3] ? "" : 'display: none' }}">
@@ -369,9 +369,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[1] }}">
+                                                                   value="{{ $team_ids[0] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[2] }}">
+                                                                   value="{{ $team_ids[1] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[4] ? "" : 'display: none' }}">
@@ -395,9 +395,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[3] }}">
+                                                                   value="{{ $team_ids[2] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[4] }}">
+                                                                   value="{{ $team_ids[3] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[5] ? "" : 'display: none' }}">
@@ -520,9 +520,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[2] }}">
+                                                                   value="{{ $team_ids[1] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[5] }}">
+                                                                   value="{{ $team_ids[4] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[0] ? "" : 'display: none' }}">
@@ -546,9 +546,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[3] }}">
+                                                                   value="{{ $team_ids[2] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[4] }}">
+                                                                   value="{{ $team_ids[3] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[1] ? "" : 'display: none' }}">
@@ -572,9 +572,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[1] }}">
+                                                                   value="{{ $team_ids[0] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[5] }}">
+                                                                   value="{{ $team_ids[4] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[2] ? "" : 'display: none' }}">
@@ -598,9 +598,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[2] }}">
+                                                                   value="{{ $team_ids[1] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[3] }}">
+                                                                   value="{{ $team_ids[2] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[3] ? "" : 'display: none' }}">
@@ -624,9 +624,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[1] }}">
+                                                                   value="{{ $team_ids[0] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[4] }}">
+                                                                   value="{{ $team_ids[3] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[4] ? "" : 'display: none' }}">
@@ -650,9 +650,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[3] }}">
+                                                                   value="{{ $team_ids[2] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[5] }}">
+                                                                   value="{{ $team_ids[4] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[5] ? "" : 'display: none' }}">
@@ -676,9 +676,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[1] }}">
+                                                                   value="{{ $team_ids[0] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[3] }}">
+                                                                   value="{{ $team_ids[2] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[6] ? "" : 'display: none' }}">
@@ -702,9 +702,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[2] }}">
+                                                                   value="{{ $team_ids[1] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[4] }}">
+                                                                   value="{{ $team_ids[3] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[7] ? "" : 'display: none' }}">
@@ -728,9 +728,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[1] }}">
+                                                                   value="{{ $team_ids[0] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[2] }}">
+                                                                   value="{{ $team_ids[1] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[8] ? "" : 'display: none' }}">
@@ -754,9 +754,9 @@
 
                                                         <div style="display: none">
                                                             <input type="number" name="team_1_id"
-                                                                   value="{{ $team_ids[4] }}">
+                                                                   value="{{ $team_ids[3] }}">
                                                             <input type="number" name="team_2_id"
-                                                                   value="{{ $team_ids[5] }}">
+                                                                   value="{{ $team_ids[4] }}">
 
                                                         </div>
                                                         <div style="{{ $button_states[9] ? "" : 'display: none' }}">
