@@ -949,7 +949,7 @@ code {
 }
 
 .no-border {
-    border: none;
+    border: none !important;
 }
 
 .bx-shadow {
@@ -1241,13 +1241,18 @@ code {
     border: 1px solid #468189;
 }
 
+.btn-outline-info:hover {
+    background-color: #ffffff;
+    color: #468189;
+}
+
 .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .btn-info.focus,
 .btn-info:active, .btn-info:focus, .btn-info:hover, .open > .dropdown-toggle.btn-info,
 .btn-outline-info.active, .btn-outline-info:active,
-.show > .btn-outline-info.dropdown-toggle, .btn-outline-info:hover, .btn-info.active, .btn-info:active,
+.show > .btn-outline-info.dropdown-toggle, .btn-info.active, .btn-info:active,
 .show > .btn-info.dropdown-toggle {
-    background-color: #468189;
     border: 1px solid #468189;
+    color: #ffffff;
 }
 
 .btn-warning {
@@ -1318,8 +1323,8 @@ code {
 }
 
 .btn-outline-info {
-    color: #0097a7;
-    border-color: #0097a7;
+    color: #468189;
+    border-color: #468189;
 }
 
 .btn-outline-warning {
@@ -3398,6 +3403,7 @@ body {
 .topbar-custom .nav-link {
     line-height: 60px;
     color: #ffffff;
+    font-size: 13px;
 }
 
 .topbar-custom .dropdown-toggle:after {

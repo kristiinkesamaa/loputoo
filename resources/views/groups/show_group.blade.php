@@ -16,7 +16,6 @@
                             </ol>
                         </div>
                         <h6 class="page-title">{{ $competition_title }}</h6>
-
                     </div>
                 </div>
             </div>
@@ -41,7 +40,7 @@
                                                     aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
-                                            <span><strong>Hästi!</strong> Tiim on kustutatud.</span>
+                                            <span><strong>Hästi!</strong> Võistleja(d) on kustutatud.</span>
                                         </div>
                                     @elseif ( session()->has('subgroup_added') )
                                         <div class="alert alert-success alert-dismissible fade show"
@@ -54,7 +53,7 @@
                                         </div>
                                     @endif
 
-                                    <h6>{{ Auth::check() ? 'Osalejate info muutmine: ' . $title : $title }}</h6>
+                                    <h6 class="float-left mb-3 mt-4">{{ Auth::check() ? 'Osalejate info muutmine: ' . $title : $title }}</h6>
 
                                     @if(Auth::check())
                                         <div class="dropdown float-right mb-3">
@@ -88,7 +87,7 @@
 
                                                 @foreach($contestants as $contestant)
                                                     @if($loop->odd)
-                                                        <tr style="{{ $contestant->subgroup_id === 0 ? "" : "background: #99ff99" }}">
+                                                        <tr style="{{ $contestant->subgroup_id === 0 ? "" : "background: #edfdff" }}">
                                                             @endif
 
                                                             <td>{{ $contestant->name }}</td>
@@ -125,7 +124,7 @@
                                                 <tbody>
 
                                                 @foreach($contestants as $contestant)
-                                                    <tr style="{{ $contestant->subgroup_id === 0 ? "" : "background: #99ff99" }}">
+                                                    <tr style="{{ $contestant->subgroup_id === 0 ? "" : "background: #edfdff" }}">
                                                         <td>{{ $contestant->name }}</td>
                                                         <td>{{ $contestant->email }}</td>
                                                         <td>{{ $contestant->type_name }}</td>
@@ -225,7 +224,7 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <button class="btn btn-add mt-2 mb-2" type="submit">Lisa</button>
+                                        <button class="btn btn-change mt-2 mb-2" type="submit">Lisa</button>
                                     </form>
                                 </div>
 
@@ -326,7 +325,7 @@
                                             </tbody>
                                         </table>
 
-                                        <button class="btn btn-add mt-2 mb-2" type="submit">Lisa</button>
+                                        <button class="btn btn-change mt-2 mb-2" type="submit">Lisa</button>
                                     </form>
                                 </div>
 
@@ -447,7 +446,7 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <button class="btn btn-add mt-2 mb-5" type="submit">Lisa</button>
+                                        <button class="btn btn-change mt-2 mb-5" type="submit">Lisa</button>
                                     </form>
                                 </div>
 
@@ -466,13 +465,12 @@
                                                     <td>
                                                         <table>
                                                             <tr>
-                                                                <td>{{ $contestant->name }}</td>
+                                                                <td class="no-border">{{ $contestant->name }}</td>
                                                             </tr>
 
                                                             @else
-
                                                                 <tr>
-                                                                    <td>{{ $contestant->name }}</td>
+                                                                    <td class="no-border">{{ $contestant->name }}</td>
                                                                 </tr>
                                                         </table>
                                                     </td>

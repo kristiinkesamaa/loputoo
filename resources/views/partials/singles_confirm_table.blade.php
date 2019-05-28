@@ -11,7 +11,7 @@
             <th>Mängija email</th>
             <th>Mänguliik</th>
             <th>Liiga</th>
-            <th><input class="ml-2" type="checkbox" id="confirm"></th>
+            <th class="text-center"><input type="checkbox" id="confirm"></th>
         </tr>
         </thead>
         <tbody>

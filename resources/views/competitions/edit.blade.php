@@ -16,10 +16,9 @@
             </div>
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12 pr-5 pl-5">
                     <div class="card m-b-30">
                         <div class="card-body pl-5 pr-5">
-
                             <form method="post" action="/competitions/{{ $competition->id }}"
                                   enctype="multipart/form-data">
                                 @method("patch")
@@ -35,10 +34,12 @@
                                 @endif
 
                                 <div class="form-group row">
-                                    <label for="competition-name" class="col-sm-4 col-form-label">Võistluse nimi</label>
+                                    <label for="competition-name" class="col-sm-4 col-form-label">Võistluse
+                                        nimi</label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="competition-name" name="title"
-                                               value="{{ $competition->title }}" placeholder="Sisesta võistluse nimi"
+                                               value="{{ $competition->title }}"
+                                               placeholder="Sisesta võistluse nimi"
                                                required/>
                                     </div>
                                 </div>
@@ -47,7 +48,8 @@
                                         Võistluse koht
                                     </label>
                                     <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="competition-place" name="location"
+                                        <input type="text" class="form-control" id="competition-place"
+                                               name="location"
                                                value="{{ $competition->location }}"
                                                placeholder="Sisesta võistluse koht" required/>
                                     </div>
@@ -81,7 +83,8 @@
                                     </label>
                                     <div class="col-sm-8">
                                         <div class="input-group">
-                                            <select name="leagues[]" class="selectpicker" multiple title="Vali liigad">
+                                            <select name="leagues[]" class="selectpicker" multiple
+                                                    title="Vali liigad" required>
                                                 <option value="1">Meistriliiga</option>
                                                 <option value="2">Esiliiga</option>
                                                 <option value="3">2. liiga</option>
@@ -99,7 +102,8 @@
                                             <input type="file" class="custom-file-input" id="customFile"
                                                    name="instructions"
                                                    accept=".pdf" value="">
-                                            <label class="custom-file-label" id="instructions-label" for="customFile">
+                                            <label class="custom-file-label" id="instructions-label"
+                                                   for="customFile">
                                                 {{ $competition->instructions }}
                                             </label>
                                             <small id="guideHelp" class="form-text text-muted">
@@ -110,10 +114,12 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="customImage" class="col-sm-4 col-form-label">Võistluse kaanepilt</label>
+                                    <label for="customImage" class="col-sm-4 col-form-label">Võistluse
+                                        kaanepilt</label>
                                     <div class="col-sm-8">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="customImage" name="image"
+                                            <input type="file" class="custom-file-input" id="customImage"
+                                                   name="image"
                                                    accept=".png">
                                             <label class="custom-file-label" id="image-label" for="customImage">
                                                 {{ $competition->image }}
@@ -152,17 +158,20 @@
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Checkbox1"
                                                        value="3" name="types[]">
-                                                <label class="form-check-label" for="inlineCheckbox1">Meespaar</label>
+                                                <label class="form-check-label"
+                                                       for="inlineCheckbox1">Meespaar</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Checkbox2"
                                                        value="4" name="types[]">
-                                                <label class="form-check-label" for="inlineCheckbox2">Naispaar</label>
+                                                <label class="form-check-label"
+                                                       for="inlineCheckbox2">Naispaar</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="Checkbox3"
                                                        value="5" name="types[]">
-                                                <label class="form-check-label" for="inlineCheckbox2">Segapaar</label>
+                                                <label class="form-check-label"
+                                                       for="inlineCheckbox2">Segapaar</label>
                                             </div>
                                         </div>
                                     </div>
@@ -175,12 +184,14 @@
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="CheckboxMen1"
                                                        value="1" name="types[]">
-                                                <label class="form-check-label" for="inlineCheckbox1">Meesüksik</label>
+                                                <label class="form-check-label"
+                                                       for="inlineCheckbox1">Meesüksik</label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="checkbox" id="CheckboxWomen2"
                                                        value="2" name="types[]">
-                                                <label class="form-check-label" for="inlineCheckbox2">Naisüksik</label>
+                                                <label class="form-check-label"
+                                                       for="inlineCheckbox2">Naisüksik</label>
                                             </div>
                                         </div>
                                     </div>
@@ -221,7 +232,6 @@
                                     <button type="submit" class="btn btn-add" id="sa-success">Muuda</button>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div> <!-- end col -->

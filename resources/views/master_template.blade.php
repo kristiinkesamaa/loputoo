@@ -43,7 +43,7 @@
             <!-- Logo container-->
             <div class="logo">
                 <a href="/" class="logo">
-                    <img src="{{ url('images/logo.png') }}" alt="logo" height="25" class="logo-small">
+                    <img src="{{ url('images/logo.png') }}" alt="logo" height="30" class="logo-small">
                     <img src="{{ url('images/logo.png') }}" alt="logo" height="45" class="logo-large">
                 </a>
 

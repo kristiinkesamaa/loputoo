@@ -102,7 +102,7 @@
                                                 <?php $i = 3 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -115,7 +115,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[0] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -128,7 +128,7 @@
                                                 <?php $i = 3 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -141,7 +141,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[1] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -154,7 +154,7 @@
                                                 <?php $i = 2 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -167,7 +167,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[2] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -258,7 +258,7 @@
                                                 <?php $i = 4 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -271,7 +271,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[0] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -284,7 +284,7 @@
                                                 <?php $i = 3 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -297,7 +297,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[1] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -310,7 +310,7 @@
                                                 <?php $i = 3 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -323,7 +323,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[2] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -336,7 +336,7 @@
                                                 <?php $i = 4 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -349,7 +349,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[3] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -362,7 +362,7 @@
                                                 <?php $i = 2 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -375,7 +375,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[4] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -388,7 +388,7 @@
                                                 <?php $i = 4 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -401,7 +401,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[5] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -513,7 +513,7 @@
                                                 <?php $i = 5 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -526,7 +526,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[0] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -539,7 +539,7 @@
                                                 <?php $i = 4 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -552,7 +552,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[1] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -565,7 +565,7 @@
                                                 <?php $i = 5 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -578,7 +578,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[2] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -591,7 +591,7 @@
                                                 <?php $i = 3 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -604,7 +604,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[3] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -617,7 +617,7 @@
                                                 <?php $i = 4 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -630,7 +630,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[4] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -643,7 +643,7 @@
                                                 <?php $i = 5 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -656,7 +656,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[5] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -669,7 +669,7 @@
                                                 <?php $i = 3 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -682,7 +682,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[6] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -695,7 +695,7 @@
                                                 <?php $i = 4 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -708,7 +708,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[7] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -721,7 +721,7 @@
                                                 <?php $i = 2 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -734,7 +734,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[8] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>
@@ -747,7 +747,7 @@
                                                 <?php $i = 5 ?>
                                                 @include('partials/subgroup_td')
 
-                                                <td>
+                                                <td style="border: 1px solid #ffffff;">
                                                     <form action="/competitions/{{ $competition_id }}/queue"
                                                           method="post">
                                                         @csrf
@@ -760,7 +760,7 @@
 
                                                         </div>
                                                         <div style="{{ $button_states[9] ? "" : 'display: none' }}">
-                                                            <button type="submit">Lisa</button>
+                                                            <button class="btn btn-outline-info btn-sm" type="submit">Lisa järjekorda</button>
                                                         </div>
                                                     </form>
                                                 </td>

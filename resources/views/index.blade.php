@@ -74,7 +74,7 @@
                         <div class="mini-stat clearfix bg-white border-green">
                             <span class="mini-stat-icon bg-light"><i class="fa fa-check text-green"></i></span>
                             <div class="mini-stat-info text-right text-muted">
-                                <span class="counter text-green">{{ $past_competitions }}</span>
+                                <span class="counter text-green">{{ $past_competition_count }}</span>
                                 Toimunud võistlust kokku
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                         <div class="mini-stat clearfix bg-white border-pink">
                             <span class="mini-stat-icon bg-light"><i class="fa fa-trophy text-pink"></i></span>
                             <div class="mini-stat-info text-right text-muted">
-                                <span class="counter text-pink">{{ $future_competitions }}</span>
+                                <span class="counter text-pink">{{ $future_competition_count }}</span>
                                 Võistlust tulemas
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                         <div class="mini-stat clearfix bg-white border-orange">
                             <span class="mini-stat-icon bg-light"><i class="fa fa-users text-orange"></i></span>
                             <div class="mini-stat-info text-right text-muted">
-                                <span class="counter text-orange">{{ $past_contestants }}</span>
+                                <span class="counter text-orange">{{ $past_contestant_count }}</span>
                                 Võistlejat osalenud kokku
                             </div>
                         </div>

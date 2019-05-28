@@ -246,7 +246,7 @@
                                                 <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
                                                 <div class="col-sm-8">
                                                     <select class="custom-select form-control" id="leagues"
-                                                            name="league">
+                                                            name="league" required>
                                                         <option selected>Vali</option>
 
                                                         @foreach($competition->leagues as $league)
