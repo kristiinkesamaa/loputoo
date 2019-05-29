@@ -808,7 +808,6 @@
                 $("#team_2_id").children('option').not(':first').show();
 
                 $("#team_1_id").children('option').not(':first').each(function () {
-                    debugger;
                     if ($(this).data("type_id") != type_value || $(this).data("league_id") != league_value) {
                         $(this).hide()
                     }
