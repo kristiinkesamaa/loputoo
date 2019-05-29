@@ -43,7 +43,7 @@
             <!-- Logo container-->
             <div class="logo">
                 <a href="/" class="logo">
-                    <img src="{{ url('images/logo.png') }}" alt="logo" height="30" class="logo-small">
+                    <img src="{{ url('images/logo.png') }}" alt="logo" height="25" class="logo-small">
                     <img src="{{ url('images/logo.png') }}" alt="logo" height="45" class="logo-large">
                 </a>
 
@@ -151,10 +151,18 @@
 </footer>
 <!-- End Footer -->
 
+<!-- custom js -->
+<script src="{{ url('js/custom.js') }}"></script>
+
 <!-- jQuery  -->
 <script src="{{ url('js/jquery.min.js') }}"></script>
+<script src="{{ url('js/popper.min.js') }}"></script>
 <script src="{{ url('js/bootstrap.min.js') }}"></script>
+<script src="{{ url('js/modernizr.min.js') }}"></script>
 <script src="{{ url('js/waves.js') }}"></script>
+<script src="{{ url('js/jquery.slimscroll.js') }}"></script>
+<script src="{{ url('js/jquery.nicescroll.js') }}"></script>
+<script src="{{ url('js/jquery.scrollTo.min.js') }}"></script>
 
 
 <!--Morris Chart-->
