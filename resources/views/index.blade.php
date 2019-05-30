@@ -488,7 +488,7 @@
         }
 
 
-        // Change Valmis! button when checkboxes are checked
+        // Change Lisa võistlus button when checkboxes are checked
         $("input[class='form-check-input']").click(function () {
             if ($("input:checkbox:checked").length > 1) {
 

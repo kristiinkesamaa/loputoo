@@ -60,7 +60,7 @@
                                                             aria-label="Close">
                                                         <span class="close-modal">&times;</span>
                                                     </button>
-                                                    <img class="modal-content">
+                                                    <img class="modal-content" style="margin-top: 150px;">
                                                 </div>
                                             </div>
                                             <div class="col-md">
@@ -207,7 +207,7 @@
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
                      aria-labelledby="myLargeModalLabel"
                      aria-hidden="true" id="register-modal-{{ $competition->id }}">
-                    <div class="modal-dialog modal-lg">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title" id="exampleModalLongTitle">

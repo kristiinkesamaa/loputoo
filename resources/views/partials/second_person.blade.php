@@ -3,7 +3,7 @@
         <label for="second-contestant-name" class="col-sm-4 col-form-label">2. mängija nimi</label>
         <div class="col-sm-8">
             <input type="text" class="form-control" id="second-contestant-name" placeholder="Sisesta mängija nimi"
-            name="person_2_name" required>
+            name="person_2_name" required autocomplete="off">
         </div>
     </div>
 
@@ -11,7 +11,7 @@
         <label for="second-contestant-email" class="col-sm-4 col-form-label">2. mängija meiliaadress</label>
         <div class="col-sm-8">
             <input type="email" class="form-control" id="second-contestant-email" placeholder="Sisesta meiliaadress"
-            name="person_2_email" required>
+            name="person_2_email" required autocomplete="off">
         </div>
     </div>
 </div>

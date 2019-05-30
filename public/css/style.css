@@ -1252,6 +1252,7 @@ code {
 .show > .btn-outline-info.dropdown-toggle, .btn-info.active, .btn-info:active,
 .show > .btn-info.dropdown-toggle {
     border: 1px solid #468189;
+    background-color: #468189;
     color: #ffffff;
 }
 

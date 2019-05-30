@@ -456,7 +456,7 @@
     <!-- registreeru võistlusele Modal -->
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
          aria-hidden="true" id="register-modal">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">
@@ -508,7 +508,7 @@
                                     </label>
                                     <div class="col-sm-8">
                                         <input type="text" class="form-control" id="first-contestant-name"
-                                               placeholder="Sisesta mängija nimi" name="person_1_name" required>
+                                               placeholder="Sisesta mängija nimi" autocomplete="off" name="person_1_name" required>
                                     </div>
                                 </div>
 
@@ -518,7 +518,7 @@
                                     </label>
                                     <div class="col-sm-8">
                                         <input type="email" class="form-control" id="first-contestant-email"
-                                               placeholder="Sisesta meiliaadress" name="person_1_email" required>
+                                               placeholder="Sisesta meiliaadress" autocomplete="off" name="person_1_email" required>
                                     </div>
                                 </div>
 
@@ -705,7 +705,7 @@
                                         @endif
 
                                         <div class="modal-footer no-border">
-                                            <input type="submit" class="btn btn-add" value="Lisa võistlus">
+                                            <input type="submit" class="btn btn-add" value="Lisa mäng">
                                         </div>
                                     </form>
                                 </div>

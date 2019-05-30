@@ -24,7 +24,8 @@
                                         <div class="form-group row">
                                             <label for="types" class="col-sm-4 col-form-label">Vali mänguliik</label>
                                             <div class="col-sm-8">
-                                                <select class="custom-select form-control" id="types" name="type" required>
+                                                <select class="custom-select form-control" id="types" name="type"
+                                                        required>
                                                     <option value="" selected>Vali</option>
 
                                                     @foreach ($competition_types as $type)
@@ -39,7 +40,8 @@
                                         <div class="form-group row">
                                             <label for="leagues" class="col-sm-4 col-form-label">Vali liiga</label>
                                             <div class="col-sm-8">
-                                                <select class="custom-select form-control" id="leagues" name="league" required>
+                                                <select class="custom-select form-control" id="leagues" name="league"
+                                                        required>
                                                     <option selected>Vali</option>
 
                                                     @foreach($competition_leagues as $league)
@@ -57,7 +59,8 @@
                                             <div class="col-sm-8">
                                                 <input type="text" class="form-control" id="first-contestant-name"
                                                        value="{{ $contestants[0]->name }}" required
-                                                       placeholder="Sisesta mängija nimi" name="person_1_name">
+                                                       placeholder="Sisesta mängija nimi" name="person_1_name"
+                                                       autocomplete="off">
                                             </div>
                                         </div>
 
@@ -68,7 +71,8 @@
                                             <div class="col-sm-8">
                                                 <input type="email" class="form-control" id="first-contestant-email"
                                                        value="{{ $contestants[0]->email }}" required
-                                                       placeholder="Sisesta meiliaadress" name="person_1_email">
+                                                       placeholder="Sisesta meiliaadress" name="person_1_email"
+                                                       autocomplete="off">
                                             </div>
                                         </div>
 

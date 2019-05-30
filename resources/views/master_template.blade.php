@@ -145,11 +145,52 @@
         <div class="row">
             <div class="col-12 text-grey-light">
                 © 2019 MTÜ Sulgpalliklubi BadMint. Kõik õigused kaitstud.
+                <a class="text-blue"
+                   style="text-decoration: underline;"
+                   id="myLargeModalLabel" href="#"
+                   data-toggle="modal"
+                   data-target="#personal">
+                    Isikuandmete töötlemine.</a>
             </div>
         </div>
     </div>
 </footer>
 <!-- End Footer -->
+
+<!-- Isikuandmed -->
+<div id="personal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+     aria-labelledby="myLargeModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title centered" id="exampleModalLongTitle">Isikuandmete töötlemine</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mb-5">
+                <h6>Milliseid isikuandmeid töödeldakse</h6>
+                <ul style="list-style-type:disc; margin-left: 50px;">
+                    <li>Nimi;</li>
+                    <li>E-posti aadress.</li>
+                </ul>
+                <h6>Mis eesmärgil isikuandmeid töödeldakse</h6>
+                <ul>
+                    <li>Isikuandmeid nagu nimi ja e-posti aadress, töödeldakse selleks, et saaks teha võistlusega seotud
+                        toiminguid.
+                    </li>
+                </ul>
+                <h6>Isikuandmete säilitamine</h6>
+                <ul>
+                    <li>Isikuandmeid säilitatakse aasta aega.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- custom js -->
 <script src="{{ url('js/custom.js') }}"></script>
